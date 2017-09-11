@@ -1,0 +1,112 @@
+
+  <div class="col-sm-offset-1 col-sm-10">
+    <div class="col-sm-offset-1 col-sm-5" >
+     <h1 style="color:#55803b">vvschool | 微校园login</h1>
+    </div>
+    <div class="col-sm-offset-2 col-sm-4" style="color:green">
+      <h3>我已注册，现在就  <button type="button" (click)="toLogin()" class="btn btn-default" style="color:green">登入</button></h3>
+    </div>
+  </div>
+  <div class="col-sm-offset-1 col-sm-10">
+    <hr >
+  </div>
+
+<div class="col-sm-6 col-sm-offset-3" style="margin-top: 30px">
+
+<form class="form-horizontal">
+  <div class="form-group">
+    <label for="telephone" class="col-sm-2 control-label">手机号</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="telephone" name="user_id" placeholder="请输入手机号">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password" class="col-sm-2 control-label">密码</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="password" name="user_pwd" placeholder="请输入密码">
+    </div>
+  </div>
+
+  <div class="form-group">
+  <label for="Redpassword" class="col-sm-2 control-label">确认密码</label>
+  <div class="col-sm-10">
+    <input type="password" class="form-control" id="Redpassword"  placeholder="请确认密码">
+  </div>
+  </div>
+
+  <div class="form-group">
+    <label for="school" class="col-sm-2 control-label">学校/专业</label>
+    <div class="col-sm-5" id="school">
+      <select class="form-control col-sm-6">
+        <option>东华理工大学</option>
+        <option>南昌航空大学</option>
+        <option>清华大学</option>
+        <option>北京大学</option>
+        <option>浙江大学</option>
+      </select>
+    </div>
+
+      <div class="col-sm-5" id="">
+        <select class="form-control col-sm-6">
+          <option>管理系</option>
+          <option>计算机</option>
+          <option>物流</option>
+          <option>英语</option>
+          <option>文学</option>
+        </select>
+      </div>
+  </div>
+
+  <div class="form-group">
+    <label  class="col-sm-2 control-label"></label>
+    <div class="col-sm-5" >
+      <input type="text" class="form-control"   placeholder="输入验证码">
+    </div>
+    <div class="col-sm-5">
+      <input type="button" class="form-control"   value="发送验证码">
+    </div>
+  </div>
+
+
+
+
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox">
+          阅读并接受《微校园用户协议》及《微校园隐私权保护声明》
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="button" class="btn btn-default">注册</button>
+    </div>
+  </div>
+</form>
+</div>
+
+
+
+
+
+<form class="form-inline">
+  <div class="form-group has-success has-feedback">
+    <label class="control-label" for="inputSuccess4">Input with success</label>
+    <input type="text" class="form-control" id="inputSuccess4" aria-describedby="inputSuccess4Status">
+    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+    <span id="inputSuccess4Status" class="sr-only">(success)</span>
+  </div>
+
+
+  <div class="form-group has-error has-feedback">
+    <label class="control-label" for="inputError2">Input with error</label>
+    <input type="text" class="form-control" id="inputError2" aria-describedby="inputError2Status">
+    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+    <span id="inputError2Status" class="sr-only">(error)</span>
+  </div>
+</form>

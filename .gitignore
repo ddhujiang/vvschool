@@ -1,0 +1,15 @@
+# 
+# JetBrains Project files
+.idea
+
+# npm
+node_modules/
+
+/*
+!/.gitignore
+!/*.md
+!/client/
+!/server/
+!/doc/
+
+
