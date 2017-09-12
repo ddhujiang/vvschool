@@ -5,11 +5,16 @@
 # npm
 node_modules/
 
+# website.config
+/server/website.config.js
+
+
 /*
 !/.gitignore
 !/*.md
 !/client/
 !/server/
 !/doc/
+!/database
 
 
