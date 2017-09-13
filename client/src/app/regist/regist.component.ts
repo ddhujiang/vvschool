@@ -31,7 +31,7 @@ export class RegistComponent implements OnInit {
       console.log(result)
       if(result.code=='u200'){
         alert(JSON.stringify(result));
-        that.router.navigate(['/index',result.ID]);   //登入成功来到首页
+        that.router.navigate(['/index']);   //登入成功来到首页
       }else if(result.code=='u101') {
         that.regist_res='用户已存在'
       }
