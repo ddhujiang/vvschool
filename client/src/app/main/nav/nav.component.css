@@ -1,0 +1,26 @@
+.nav_bg{
+  background-color: #0066CC;
+  padding-left: 175px;
+  padding-right: 100px;
+}
+.logo{
+  color: white;
+  font-size: 28px;
+}
+li a{
+  color: white;
+}
+.button_ask{
+  background-color: #0D79D1;
+  display: inline-block;
+  cursor: pointer;
+  height: 35px;
+  width:60px;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 2px;
+  color: white;
+}
+.button_ask:hover{
+  background-color: #0969d1;
+}

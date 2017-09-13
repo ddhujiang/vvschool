@@ -1,0 +1,36 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid nav_bg">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand logo" routerLink='/index'routerLinkActive="active" >微校园</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <a routerLink='/index'routerLinkActive="active" >首页</a>
+        <a routerLink="/daily" routerLinkActive="active">日常</a>
+        <a  routerLink="/club" routerLinkActive="active">社区</a>
+        <a  routerLink="/confession" routerLinkActive="active">表白墙</a>
+
+      </ul>
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="搜索你感兴趣的内容">
+        </div>
+        <div type="button"class="button_ask">问学长</div>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">通知</a></li>
+        <li><a href="#">私聊</a></li>
+        <li><a href="#"><img src="../../assets/images/icon.jpg" height="25" width="25"/></a></li>
+        <a  routerLink="/personal" routerLinkActive="active">用户名</a>
+      </ul>
+    </div>
+  </div>
+</nav>

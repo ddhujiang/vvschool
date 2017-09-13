@@ -1,0 +1,21 @@
+span{
+  padding: 10px;
+  font-size: 20px;
+  line-height: 75px;
+}
+.bgcolor_grey{
+  background-color: #F3F3F3;
+}
+.bgcolor_white{
+  background-color: white;
+}
+.nav_right{
+  height: 75px;
+  width: 310px;
+  text-align: center;
+}
+.nav_right_content{
+  height: 300px;
+  width: 310px;
+  margin-top: 20px;
+}

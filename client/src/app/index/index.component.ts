@@ -10,7 +10,7 @@ export class IndexComponent implements OnInit {
 
 
   constructor(
-    private route: Router,
+    private router: Router,
   ) {
 
   }
@@ -18,5 +18,7 @@ export class IndexComponent implements OnInit {
   ngOnInit() {
 
   }
-
+ toAnswer(){
+   this.router.navigate(['answer']);
+ }
 }

@@ -10,9 +10,18 @@ import { IndexComponent } from './index/index.component';
 import { LoginComponent } from './login/login.component';
 import {RegistComponent} from './regist/regist.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { NavComponent } from './main/nav/nav.component';
+import { ClubComponent } from './club/club.component';
+import { PersonalComponent } from './personal/personal.component';
+import { ConfessionComponent } from './confession/confession.component';
+import { DailyComponent } from './daily/daily.component';
+import { ProblemDetailComponent } from './problem-detail/problem-detail.component';
+import { AnswerComponent } from './answer/answer.component';
 
 //导入根路由模块
 import {AppRoutingModule} from './app-routing.module';
+
+
 
 @NgModule({
   declarations: [
@@ -20,7 +29,14 @@ import {AppRoutingModule} from './app-routing.module';
     IndexComponent,
     LoginComponent,
     RegistComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    NavComponent,
+    ClubComponent,
+    PersonalComponent,
+    ConfessionComponent,
+    DailyComponent,
+    ProblemDetailComponent,
+    AnswerComponent
   ],
   imports: [
     BrowserModule,
