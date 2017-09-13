@@ -8,13 +8,16 @@ node_modules/
 # website.config
 /server/website.config.js
 
+!/server/public/uploads/README.md
+/server/public/uploads/*
 
 /*
 !/.gitignore
-!/*.md
+!*.md
 !/client/
 !/server/
 !/doc/
 !/database
+
 
 
