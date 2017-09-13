@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';    //要用表单必须导入这个模块
+import {HttpClientModule} from '@angular/common/http';
 
 //导入组件
 import { AppComponent } from './app.component';
@@ -24,6 +25,7 @@ import {AppRoutingModule} from './app-routing.module';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],

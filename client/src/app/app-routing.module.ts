@@ -8,7 +8,7 @@ import {RegistComponent} from './regist/regist.component';
 import {PageNotFoundComponent } from './page-not-found/page-not-found.component';
 const routes: Routes = [
   {
-    path: 'index/:val',
+    path: 'index/:ID',
     component: IndexComponent
   },
   {
