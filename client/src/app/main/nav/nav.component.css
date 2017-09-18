@@ -1,6 +1,6 @@
 .nav_bg{
   background-color: white;
-  padding-left: 175px;
+  padding-left: 140px;
   padding-right: 100px;
 }
 .logo{
@@ -28,6 +28,9 @@ li a:hover{
 }
 .button_ask:hover{
   background-color: #51d2b7;
+}
+.navbar-right{
+  margin-right: 50px;
 }
 
 @font-face {font-family: "iconfont";

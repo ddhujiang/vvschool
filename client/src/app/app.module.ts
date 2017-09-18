@@ -29,6 +29,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {PersonalRoutingModule} from './personal/personal-routing.module';
 //管道
 import { CutPipe } from './pipes/cut.pipe';
+import { SetComponent } from './set/set.component';
 
 
 
@@ -51,7 +52,8 @@ import { CutPipe } from './pipes/cut.pipe';
     OthersCommentsComponent,
     PublishCommentsComponent,
     SayComponent,
-    SayCardComponent
+    SayCardComponent,
+    SetComponent
   ],
   imports: [
     BrowserModule,
