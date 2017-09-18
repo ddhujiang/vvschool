@@ -1,0 +1,69 @@
+.others_comments{
+  width: 100%;
+
+}
+.single_comment{
+  background-color: white;
+  padding-top: 10px;
+  border-top: solid 1px darkgrey;
+  border-bottom: solid 1px darkgrey;
+  height: 66px;
+}
+.others_icon{
+  width: 44px;
+  height: 44px;
+  float: left;
+}
+.others_icon img{
+  width: 44px;
+  height: 44px;
+  border: solid 1px rgba(255, 255, 255, 0);
+  border-radius: 22px;
+  float: left;
+  margin-left: 20px;
+}
+.comments_text{
+  padding-left: 66px;
+}
+.comments_text a{
+  text-decoration: none;
+  color: rgba(255, 0, 0, 0.6);
+}
+.view_more{
+  background-color: white;
+  height: 33px;
+  width: 100%;
+  text-align: center !important;
+  line-height: 33px;
+  color: rgba(0, 0, 0, 0.67);
+  margin-top: px;
+}
+.view_more:hover{
+  color: rgba(255, 0, 0, 0.6)!important;
+  cursor: pointer;
+}
+.respond{
+  float: right;
+  margin-top: -35px;
+  margin-right: 10px;
+}
+.respond li{
+  float: left;
+  list-style: none;
+}
+.respond_reply{
+  border-right: solid 1px darkgrey;
+  padding-right:20px;
+}
+.respond_reply:hover{
+  cursor: pointer;
+  color: rgba(255, 0, 0, 0.6);
+}
+.respond_like{
+  padding-left: 20px;
+}
+.respond_like:hover{
+  cursor: pointer;
+  color: rgba(255, 0, 0, 0.6);
+}
+

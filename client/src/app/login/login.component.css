@@ -1,4 +1,16 @@
+/*.container{*/
+  /*background-color: #F3F3F3;*/
+/*}*/
+
 .err{
-  color: #ff5847;
+  color: #a94442;
   margin-top: 10px;
 }
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442;
+}
+

@@ -1,21 +1,29 @@
-span{
+
+.bgcolor_white{
+  background-color: white;
+}
+
+.top{
+  margin-top: 10px;
+  font-size: 1.2em;
+}
+
+/*!*right==============================================*!*/
+.span_left{
   padding: 10px;
   font-size: 20px;
   line-height: 75px;
 }
-.bgcolor_grey{
-  background-color: #F3F3F3;
+.fa-camera-retro{
+  margin-left: 40px;
+  margin-right: 5px;
 }
-.bgcolor_white{
-  background-color: white;
+i:hover{
+  color: #51d2b7;
 }
-.nav_right{
-  height: 75px;
-  width: 310px;
-  text-align: center;
+.main_right{
+  margin-left: 50px;
 }
-.nav_right_content{
-  height: 300px;
-  width: 310px;
-  margin-top: 20px;
-}
+
+
+

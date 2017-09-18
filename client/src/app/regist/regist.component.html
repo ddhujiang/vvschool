@@ -1,10 +1,10 @@
 
 <div class="col-sm-offset-1 col-sm-10">
   <div class="col-sm-offset-1 col-sm-5" >
-    <h1 style="color:#55803b">vvschool | 微校园login</h1>
+    <h1 style="color:#51d2b7">vvschool | 微校园login</h1>
   </div>
-  <div class="col-sm-offset-2 col-sm-4" style="color:green">
-    <h3>我已注册，现在就  <button type="button" (click)="toLogin()" class="btn btn-default" style="color:green">登入</button></h3>
+  <div class="col-sm-offset-2 col-sm-4" style="color:#51d2b7">
+    <h3>我已注册，现在就  <button type="button" (click)="toLogin()" class="btn btn-default" style="color:#51d2b7">登入</button></h3>
   </div>
 </div>
 
@@ -23,7 +23,7 @@
       <input type="text" #tel="ngModel" class="form-control" id="telephone" name="user_tel" [(ngModel)]="_telephone"
              pattern="^1(3|4|5|7|8)\d{9}$" placeholder="请输入手机号" required>
     </div>
-    <div class="col-sm-offset-2 col-sm-10 " *ngIf="tel.invalid && (tel.dirty||tel.touched)">
+    <div class="col-sm-offset-2 col-sm-10 " *ngIf="tel.invalid &&tel.touched">
       <div *ngIf="tel.errors.required" class="err">
         号码不能为空
       </div>
@@ -38,7 +38,7 @@
       <input type="password" class="form-control" #pas="ngModel" id="password" minlength="6" [(ngModel)]="_password"
              name="user_pwd" placeholder="请输入密码" required>
     </div>
-    <div class="col-sm-offset-2 col-sm-10 " *ngIf="pas.invalid && (pas.dirty||pas.touched)">
+    <div class="col-sm-offset-2 col-sm-10 " *ngIf="pas.invalid && pas.touched">
       <div *ngIf="pas.errors.required" class="err">
         密码不能为空
       </div>
@@ -51,15 +51,22 @@
   <div class="form-group">
   <label for="Redpassword" class="col-sm-2 control-label">确认密码</label>
   <div class="col-sm-10">
-    <input type="password" class="form-control" id="Redpassword"  placeholder="请确认密码">
+    <input type="password" class="form-control" #repas="ngModel" name="hh" id="Redpassword" minlength="6" [(ngModel)]="_repassword"
+           placeholder="请确认密码" required>
   </div>
+    <div class="col-sm-offset-2 col-sm-10" *ngIf="repas.touched && pas.value!=repas.value" >
+        <div class="err">
+          密码不一致
+        </div>
+    </div>
   </div>
 
   <div class="form-group">
     <label for="school" class="col-sm-2 control-label">学校/专业</label>
     <div class="col-sm-5" id="school">
+
       <select class="form-control col-sm-6" name="school_id"  [(ngModel)]="_school" >
-        <option value="10">东华理工大学</option>
+        <option value="10" >东华理工大学</option>
         <option value="11">南昌航空大学</option>
       <!--  <option>清华大学</option>
         <option>北京大学</option>
@@ -68,12 +75,9 @@
     </div>
 
       <div class="col-sm-5" id="">
-        <select class="form-control col-sm-6" name="profession_id" [(ngModel)]="_profession">
-          <option value="1">管理系</option>
+        <select class="form-control col-sm-6" name="profession_id" [(ngModel)]="_profession" >
+          <option value="1" selected="selected">管理系</option>
           <option value="2">计算机</option>
-        <!--  <option>物流</option>
-          <option>英语</option>
-          <option>文学</option>-->
         </select>
       </div>
   </div>
@@ -105,10 +109,11 @@
       <button type="button" (click)="toIndex(registForm)"  [disabled]="registForm.form.invalid"
               class="btn btn-default">注册</button>
     </div>
+    <div *ngIf="regist_res"  class="col-sm-offset-2 col-sm-10 err">
+      {{regist_res}}
+    </div>
   </div>
-  <div *ngIf="regist_res" class="err">
-    {{regist_res}}
-  </div>
+
 </form>
 </div>
 

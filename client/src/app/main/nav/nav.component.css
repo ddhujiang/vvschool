@@ -1,26 +1,49 @@
 .nav_bg{
-  background-color: #0066CC;
+  background-color: white;
   padding-left: 175px;
   padding-right: 100px;
 }
 .logo{
-  color: white;
+  color: #51d2b7;
   font-size: 28px;
 }
 li a{
-  color: white;
+  color: black;
+  font-size: 16px;
 }
+li a:hover{
+  color:#51d2b7 ;
+}
+
 .button_ask{
-  background-color: #0D79D1;
+  background-color: #51d2b7;
   display: inline-block;
   cursor: pointer;
-  height: 35px;
+  height: 32px;
   width:60px;
   text-align: center;
-  line-height: 35px;
-  border-radius: 2px;
+  line-height: 32px;
+  border-radius: 4px;
   color: white;
 }
 .button_ask:hover{
-  background-color: #0969d1;
+  background-color: #51d2b7;
 }
+
+@font-face {font-family: "iconfont";
+  src: url('../../../assets/nav/iconfont.eot'); /* IE9*/
+  src: url('../../../assets/nav/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../../../assets/nav/iconfont.woff') format('woff'), /* chrome, firefox */
+  url('../../../assets/nav/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../../../assets/nav/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:20px !important;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
