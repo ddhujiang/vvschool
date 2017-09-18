@@ -29,7 +29,7 @@ router.post("/iconUpload", function (req, res) {
     if (!req.file) {res.json({"code": "f303"});}
     else {
       // 连接数据库
-      res.json({"code": "f200", "src": "/static/uploads/"+req.file.filename});
+      res.json({"code": "f200", "src": "/static/"+req.file.filename});
     }
   });
 });
@@ -55,7 +55,7 @@ router.post("/photoUpload", function (req, res) {
       var src = [];
       var length = req.files.length;
       for (var i = 0; i < length; i++) {
-        src.push("/static/uploads/"+req.files[i].filename);
+        src.push("/static/"+req.files[i].filename);
       }
       // 连接数据库
       res.json({"code": "f200", "src": src});
@@ -86,7 +86,7 @@ router.post("/files", function (req, res) {
       var src = [];
       var length = req.files.length;
       for (var i = 0; i < length; i++) {
-        src.push("/static/uploads/"+req.files[i].filename);
+        src.push("/static/"+req.files[i].filename);
       }
 
       // 连接数据库;

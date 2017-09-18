@@ -36,7 +36,7 @@ app.all("*", function (req, res, next) {
   }
   else {next();}
 });
-app.use('/static', express.static(path.join(__dirname, "public")));
+app.use('/static', express.static(path.join(__dirname, "public/uploads")));
 app.use("/users", users);
 app.use("/api", api);
 // app.use('/register',register);
