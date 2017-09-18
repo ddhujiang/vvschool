@@ -1,10 +1,13 @@
-/*node-crypto*/
+/*node-modules*/
 var crypto = require("crypto");
+var moment = require("moment");
 /*express*/
 var express = require("express");
 var router = express.Router();
 /*数据库*/
 var db = require("./../database/DAO/user.dao").userDao;
+/*令牌*/
+var _token = require("./../tool/token");
 
 /*登录*/
 router.post("/login", function (req, res, next) {
@@ -16,8 +19,14 @@ router.post("/login", function (req, res, next) {
       else {
         if (!result.length) {res.json({"code": "u301"}); }
         else {
-          if (result[0].user_pwd === userInfo.user_pwd) {res.json({"code": "u200", "ID": result[0].user_id});}
-          else {res.json({"code": "u302"});}
+          if (result[0].user_pwd === userInfo.user_pwd) {
+            // 设置令牌
+            var token = _token.jwtEn({
+              iss: result[0].user_id,
+              exp: moment().add(1, "d").valueOf()
+            });
+            res.json({"code": "u200", "ID": result[0].user_id,"token":token});
+          } else {res.json({"code": "u302"});}
         }
       }
     });
@@ -43,12 +52,25 @@ router.post("/register", function (req, res, next) {
           res.json({"code": "err501"});
           break;
         case 1:
-          res.json({"code": "u200", "ID": userInfo.user_id});
+          // 设置令牌
+          var token = _token.jwtEn({
+            iss: userInfo.user_id,
+            exp: moment().add(1, "d").valueOf()
+          });
+          res.json({"code": "u200", "ID": userInfo.user_id, "token": token});
           break;
       }
     });
   } else {res.json({"code": "err601"});}
 });
+
+/*测试接口*/
+/*router.post("/test",_token.power ,function (req, res, next) {
+  res.json({"已验证ID":req.ID});
+});*/
+
+
+
 
 module.exports = router;
 

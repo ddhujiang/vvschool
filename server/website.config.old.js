@@ -1,5 +1,6 @@
 var websiteCfg = {
   // ip:"http://127.0.0.1:4200",
+  privateKey:"",
   sql: {
     host: "127.0.0.1",
     port: "3306",
