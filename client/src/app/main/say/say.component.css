@@ -1,0 +1,47 @@
+ul{
+  list-style: none;
+}
+li{
+  float: left;
+  padding-left: 20px;
+  position: relative;
+  right: 50px;
+}
+.send {
+  float: right;
+  position: relative;
+  right: 20px;
+}
+.send_div{
+  border: solid 1px grey;
+  border-radius: 4px;
+  height:30px;
+  width: 56px;
+  text-align: center;
+  line-height: 30px;
+  background-color: #51D2B7;
+  color: white;
+}
+.send_div:hover{
+  cursor: pointer;
+}
+.say_component{
+  background-color: white;
+  height: 250px;
+}
+.saywhat{
+  font-size: 20px;
+  color: #51D2B7;
+}
+
+.iconfont {
+  color: #51D2B7;
+}
+.icon_text{
+ color: black;
+  padding-left: 5px;
+}
+.iconfont :hover{
+  cursor: pointer;
+  color: red;
+}

@@ -9,11 +9,13 @@ import {UserService} from '../services/user.service';  //导入服务
   providers:[UserService]
 })
 export class RegistComponent implements OnInit {
+
   regist_res:string ;
   _telephone="13047903160";
   _password="123456";
-  _school:string;
-  _profession:string;
+  _repassword="123456";
+  _school="东华理工大学";
+  _profession="计算机专业";
 
   constructor(private router:Router,
               private userSer:UserService) { }
@@ -31,9 +33,11 @@ export class RegistComponent implements OnInit {
       console.log(result)
       if(result.code=='u200'){
         alert(JSON.stringify(result));
-        that.router.navigate(['/index',result.ID]);   //登入成功来到首页
+        that.router.navigate(['/index']);   //登入成功来到首页
       }else if(result.code=='u101') {
         that.regist_res='用户已存在'
+      }else if(result.code=='err501'){
+        that.regist_res='请选择学校和专业'
       }
 
     })

@@ -1,0 +1,52 @@
+.nav_bg{
+  background-color: white;
+  padding-left: 140px;
+  padding-right: 100px;
+}
+.logo{
+  color: #51d2b7;
+  font-size: 28px;
+}
+li a{
+  color: black;
+  font-size: 16px;
+}
+li a:hover{
+  color:#51d2b7 ;
+}
+
+.button_ask{
+  background-color: #51d2b7;
+  display: inline-block;
+  cursor: pointer;
+  height: 32px;
+  width:60px;
+  text-align: center;
+  line-height: 32px;
+  border-radius: 4px;
+  color: white;
+}
+.button_ask:hover{
+  background-color: #51d2b7;
+}
+.navbar-right{
+  margin-right: 50px;
+}
+
+@font-face {font-family: "iconfont";
+  src: url('../../../assets/nav/iconfont.eot'); /* IE9*/
+  src: url('../../../assets/nav/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../../../assets/nav/iconfont.woff') format('woff'), /* chrome, firefox */
+  url('../../../assets/nav/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../../../assets/nav/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:20px !important;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+

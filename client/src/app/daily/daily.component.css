@@ -1,0 +1,141 @@
+.bgcolor_grey{
+  background-color: #F3F3F3;
+}
+.main{
+  float: left;
+  width: 55%;
+  height: 1000px;
+  margin-left: 10%;
+}
+.right_part{
+  float: left;
+  width: 20%;
+  margin-left: 5%;
+  height:  740px;
+}
+.user_profile{
+  height: 250px;
+  width: 100%;
+background-color: white;
+  position: relative;
+}
+.bg_pic img{
+  width: 100%;
+  height: 108px;
+}
+.user_icon{
+  position: absolute;
+  left: 105px;
+  top:66px;
+}
+.user_icon img{
+  width: 66px;
+  height: 66px;
+  border: solid 1px darkgrey;
+  border-radius: 33px;
+}
+.userId{
+  width: 100%;
+  text-align: center;
+  margin-top: 22px;
+}
+.self_introduct{
+  width: 100%;
+  text-align: center;
+}
+.three_data_count{
+margin-top: 16px;
+}
+.three_data_count div{
+  float: left;
+  width: 30%;
+}
+.three_data_count div ul{
+  list-style: none;
+  margin: 0 auto;
+}
+.three_data_count div ul li:first-child{
+  font-size: 20px;
+}
+.three_data_count div ul li:first-child:hover{
+  cursor: pointer;
+  color: red;
+}
+.three_data_count div ul li:last-child{
+  color: darkgrey;
+}
+.probable_freinds{
+  margin-top: 20px;
+  height: 470px;
+  background-color: white;
+}
+.title{
+  width: 100%;
+  height: 50px;
+  border-bottom: solid 1px rgba(169, 169, 169, 0.39);
+  text-align: left;
+  line-height: 50px;
+  padding-left: 10px;
+}
+.how_could_you_know{
+  height: 35px;
+  width: 100%;
+  line-height: 35px;
+  padding-left: 10px;
+}
+.single_friend{
+  width: 100%;
+  height: 70px;
+  background-color: #F2F2F5;
+  padding-left: 10px;
+}
+.friend_icon img{
+  width: 44px;
+  height: 44px;
+  border: solid 1px darkgrey;
+  border-radius: 22px;
+  margin-top: 13px;
+}
+.friend_icon{
+float: left;
+}
+.friend_text{
+  float: left;
+  width: 56%;
+  height: 44px;
+  padding: 12px;
+}
+.friendId{
+  color: rgba(255, 0, 0, 0.55);
+  height: 50%;
+}
+.friend_profile{
+  height: 50%;
+}
+.follow_click{
+  width: 56px;
+  height: 28px;
+  border: solid 1px rgba(128, 128, 128, 0.33);
+  float: left;
+  border-radius: 4px;
+  margin-top: 18px;
+  background-color: white;
+  box-shadow:0px 2px 2px rgba(128, 128, 128, 0.55);
+  line-height: 28px;
+  text-align: center;
+}
+.follow_click:hover{
+  cursor: pointer;
+}
+.follow_click i{
+  color: rgba(255, 0, 0, 0.55); ;
+}
+
+.iconfont {
+  font-size:10px !important;
+  color: rgba(255, 0, 0, 0.55);
+}
+
+
+
+

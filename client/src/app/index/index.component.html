@@ -1,5 +1,63 @@
-<p>
-  index works!
-</p>
+<div class="contain">
+  <div>
+    <app-nav></app-nav>
+  </div>
 
+  <div class="container-fluid">
+    <div class="col-sm-7 col-sm-offset-1  bgcolor_white ">
+      <div>
+        <p class="top"><img src="../../assets/胡江.jpg" alt="用户头像">
+          <span>用户名</span>
+        </p>
+      </div>
+      <app-comment></app-comment>
+    </div>
+    <div class="col-sm-3 bgcolor_white main_right">
+      <span class="span_left" data-toggle="modal" data-target="#myModal">
+        <i class="fa fa-camera-retro fa-1x "></i>问学长</span>
 
+      <span class="span_left" (click)="toAnswer()">
+        <i class="fa fa-refresh fa-spin fa-1x fa-fw"></i>解疑惑</span>
+    </div>
+
+<!--==========================================================================================================-->
+    <!--<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">-->
+    <!--问学长-->
+    <!--</button>-->
+
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+          <h2 class="modal-title" id="myModalLabel" style="text-align: center">写下你的问题</h2>
+          <span style="display: block;text-align: center">描述精确的问题更易得到解答</span>
+        </div>
+
+        <form class="form-horizontal" #registForm="ngForm">
+          <div class="modal-body">
+            <textarea rows="5" cols="7" style="width:560px;height:50px;" placeholder="请写下问题标题" required></textarea>
+
+            <p>请选择专业：</p>
+            <select class="form-control">
+              <option value="1" selected="selected">管理系</option>
+              <option value="2">计算机</option>
+            </select>
+
+            <p style="margin-top: 5px">问题描述（可选）：</p>
+
+            <textarea rows="5" cols="7" style="width:560px;height:200px;" placeholder="请写下问题内容" required></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" style="text-align: center">提交</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,62 @@
+li img{
+  height:166px;
+  width: 166px;
+}
+ul{
+  list-style: none;
+}
+li{
+  margin-top: 15px;
+}
+.say_card_component{
+  /*width: 758px;*/
+  /*height: 346px;*/
+background-color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  padding-left: 20px;
+  padding-top: 5px;
+}
+.user_icon img{
+  width: 66px;
+  height: 66px;
+border: solid 1px rgba(255, 255, 255, 0);
+  border-radius: 33px;
+  float: left;
+}
+
+.interact{
+  float: left;
+  width: 30%;
+  text-align: center;
+  margin: 10px;
+}
+.interact:hover{
+  cursor: pointer;
+  color: red;
+}
+.interact_part{
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+.middle{
+  border-left: solid 1px darkgrey;
+  border-right: solid 1px darkgrey;
+}
+.publish_comments{
+  width: 100%;
+  height: 116px;
+  background-color: white;
+  margin-top: -20px;
+  padding-top: 10px;
+  border-top: solid 1px darkgrey;
+  border-top: solid 1px darkgrey;
+}
+
+
+
+
+

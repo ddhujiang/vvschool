@@ -1,0 +1,50 @@
+.comment{
+  background-color: white;
+}
+
+a{
+  font-size: 25px;
+  color: #212121;
+  text-decoration: none;
+}
+
+a:hover{
+  color: #51d2b7;
+}
+.read{
+  color: #7a7a7a;
+}
+
+.top{
+  margin-top: 10px;
+}
+.til{
+  margin-left: 5px;
+}
+.btn{
+  margin-left: 5px;
+}
+.btm .btn {
+  padding: 0 16px;
+  font-size: 14px;
+  line-height: 32px;
+  color: #8590a6;
+  text-align: center;
+  cursor: pointer;
+  background: none;
+  border: 1px solid #ccd8e1;
+  border-radius: 3px;
+}
+.con{
+  line-height: 1.67;
+  font-size:1.2em;
+  margin-left: 5px;
+}
+
+.main_right{
+  margin-left: 50px;
+}
+
+i:hover{
+  color: #51d2b7;
+}

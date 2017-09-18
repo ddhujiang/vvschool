@@ -1,0 +1,29 @@
+
+.bgcolor_white{
+  background-color: white;
+}
+
+.top{
+  margin-top: 10px;
+  font-size: 1.2em;
+}
+
+/*!*right==============================================*!*/
+.span_left{
+  padding: 10px;
+  font-size: 20px;
+  line-height: 75px;
+}
+.fa-camera-retro{
+  margin-left: 40px;
+  margin-right: 5px;
+}
+i:hover{
+  color: #51d2b7;
+}
+.main_right{
+  margin-left: 50px;
+}
+
+
+
