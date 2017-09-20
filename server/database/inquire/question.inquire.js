@@ -1,5 +1,5 @@
 exports.query={
-  getListByPro:"select p.prob_id,a.answer_id,a.user_ans_id,icon.user_icon_path,max(icon.user_icon_id) ic_id,prof.profession_name,info.user_nickname,info.user_self,p.prob_title,a.ans_content,sumcm,a.like_num,sumt,sumc \n" +
+  getListByPro:"select p.prob_id,a.answer_id,a.user_ans_id,icon.user_icon_path,max(icon.user_icon_id) ic_id,prof.profession_name,info.user_nickname,info.user_self,p.prob_title,a.ans_content,a.ans_time,sumcm,a.like_num,sumt,sumc \n" +
   "from profession prof \n" +
   "join user u\n" +
   "join user_info info \n" +

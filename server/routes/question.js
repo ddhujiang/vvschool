@@ -1,4 +1,9 @@
+var interCgf = require("./../tool/internationalization");
+
 /*node-modules*/
+var moment = require("moment");
+// 国际化
+moment.locale("zh-cn", interCgf.moment);
 
 /*express*/
 var express = require("express");
@@ -7,7 +12,6 @@ var router = express.Router();
 var db = require("./../database/DAO/question.dao").questionDAO;
 /*令牌*/
 var _token = require("./../tool/token");
-
 /**/
 
 /*首页渲染*/
@@ -35,17 +39,20 @@ router.get("/index", _token.power, function (req, res, next) {
               "answer": {
                 "id": result[i].answer_id,
                 "type": result[i].profession_name,
-                "link": result[i].ans_content
+                "link": result[i].ans_content,
+                "time": moment() - moment(result[i].ans_time, moment.ISO_8601) > 259200000
+                          ? moment(result[i].ans_time).format("YYYY年MMMDo,dddd,h:mm:ss")
+                          : moment(result[i].ans_time, moment.ISO_8601).fromNow()
               },
               "quantity": {
                 "praise": result[i].like_num ? result[i].like_num : "0",
                 "comment": result[i].sumcm,
                 "transpond": result[i].sumt,
-                "collect": result[i].sumc
+                "collect": moment() - result[i].sumc
               }
             });
           }
-          res.json(arr);
+          res.json({"code": "q200", "data": arr});
         }
       }
     });
