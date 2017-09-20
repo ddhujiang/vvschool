@@ -5,7 +5,7 @@ var moment = require("moment");
 var express = require("express");
 var router = express.Router();
 /*数据库*/
-var db = require("./../database/DAO/user.dao").userDao;
+var db = require("./../database/DAO/user.dao").userDAO;
 /*令牌*/
 var _token = require("./../tool/token");
 
@@ -25,7 +25,7 @@ router.post("/login", function (req, res, next) {
               iss: result[0].user_id,
               exp: moment().add(1, "d").valueOf()
             });
-            res.json({"code": "u200", "ID": result[0].user_id,"token":token});
+            res.json({"code": "u200", "ID": result[0].user_id, "token": token});
           } else {res.json({"code": "u302"});}
         }
       }
@@ -64,12 +64,44 @@ router.post("/register", function (req, res, next) {
   } else {res.json({"code": "err601"});}
 });
 
+
+/*获取用户数据*/
+router.get("/data", _token.power, function (req, res, next) {
+  if (req.ID) {
+    db.getDataById(req.ID, function (result) {
+      if (result === "err501") {res.json({"code": result});}
+      else {
+        if (!result.length) {res.json({"code": "u301"}); } else {
+          res.json({"code": "u200", "nickname": result[0].user_nickname, "icon": result[0].user_icon_path});
+        }
+      }
+    });
+  } else {
+    res.json({"code": "err"});
+  }
+});
+
+
+/*获取用户详情*/
+router.post("/info", function (req, res, next) {
+  var ID = req.body.ID;
+  if (!ID) {res.json({"code": "err601"});} else {
+    db.getInfoById(req.ID, function (result) {
+      if (result === "err501") {res.json({"code": result});}
+      else {
+        if (!result.length) {res.json({"code": "u301"}); } else {
+          // res.json({"code": "u200", "nickname": result[0].user_nickname, "icon": result[0].user_icon_path});
+        }
+      }
+    });
+  }
+  res.json(ID);
+});
+
 /*测试接口*/
 /*router.post("/test",_token.power ,function (req, res, next) {
   res.json({"已验证ID":req.ID});
 });*/
-
-
 
 
 module.exports = router;

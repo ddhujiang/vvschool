@@ -2,15 +2,17 @@ var fileUp = require("./../configs/fileUpload.config");
 /*express*/
 var express = require("express");
 var router = express.Router();
-
-
+/*数据库*/
+var db = require("./../database/DAO/api.dao").apiDAO;
+/*令牌*/
+var _token = require("./../tool/token");
 // router.post("/singleFile", fileUp.upload.single("icon"), function (req, res, next) {
 //   console.log("qqq");
 //   console.log(req.file);
 //   res.end();
 // });
 
-router.post("/iconUpload", function (req, res) {
+router.post("/iconUpload", _token.power, function (req, res) {
   fileUp.icon(req, res, function (err) {
     if (err) {
       switch (err.message) {
@@ -29,7 +31,15 @@ router.post("/iconUpload", function (req, res) {
     if (!req.file) {res.json({"code": "f303"});}
     else {
       // 连接数据库
-      res.json({"code": "f200", "src": "/static/"+req.file.filename});
+      // var filePath = req.file.filename;
+      db.iconUpload(req, function (result) {
+        if (result === "err501") {res.json({"code": result});}
+        else {
+          res.json({"code": "f200", "src": "/static/"+req.file.filename});
+          console.log(result);
+        }
+      });
+      // res.json({"code": "f200", "src": "/static/"+req.file.filename});
     }
   });
 });
@@ -55,7 +65,7 @@ router.post("/photoUpload", function (req, res) {
       var src = [];
       var length = req.files.length;
       for (var i = 0; i < length; i++) {
-        src.push("/static/"+req.files[i].filename);
+        src.push("/static/" + req.files[i].filename);
       }
       // 连接数据库
       res.json({"code": "f200", "src": src});
@@ -86,7 +96,7 @@ router.post("/files", function (req, res) {
       var src = [];
       var length = req.files.length;
       for (var i = 0; i < length; i++) {
-        src.push("/static/"+req.files[i].filename);
+        src.push("/static/" + req.files[i].filename);
       }
 
       // 连接数据库;

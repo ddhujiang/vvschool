@@ -10,6 +10,7 @@ var bodyParser = require("body-parser");
 // var index = require('./routes/index');
 var users = require("./routes/users");
 var api = require("./routes/api");
+var question = require("./routes/question");
 
 
 var app = express();
@@ -39,6 +40,7 @@ app.all("*", function (req, res, next) {
 app.use('/static', express.static(path.join(__dirname, "public/uploads")));
 app.use("/users", users);
 app.use("/api", api);
+app.use("/question", question);
 // app.use('/register',register);
 
 

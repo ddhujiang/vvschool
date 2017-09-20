@@ -1,48 +1,47 @@
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';               //导入路由模块
 
-import { NgModule }             from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';               //导入路由模块
-
-import { IndexComponent } from './index/index.component';
-import { LoginComponent } from './login/login.component';
+import {IndexComponent} from './index/index.component';
+import {LoginComponent} from './login/login.component';
 import {RegistComponent} from './regist/regist.component';
-import {PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ClubComponent } from './club/club.component';
-import { ConfessionComponent } from './confession/confession.component';
-import { DailyComponent } from './daily/daily.component';
-import { ProblemDetailComponent } from './problem-detail/problem-detail.component';
-import { AnswerComponent } from './answer/answer.component';
-import { SetComponent } from './set/set.component';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+import {ClubComponent} from './club/club.component';
+import {ConfessionComponent} from './confession/confession.component';
+import {DailyComponent} from './daily/daily.component';
+import {ProblemDetailComponent} from './problem-detail/problem-detail.component';
+import {AnswerComponent} from './answer/answer.component';
+// import { SetComponent } from './set/set.component';
 const routes: Routes = [
   {
     path: 'index',
     component: IndexComponent
   },
-  { path: 'club',
+  {
+    path: 'club',
     component: ClubComponent
   },
-  { path: 'confession',
+  {
+    path: 'confession',
     component: ConfessionComponent
   },
-  { path: 'daily',
+  {
+    path: 'daily',
     component: DailyComponent
   },
   {
     path: 'problem-detail',
-    component:ProblemDetailComponent
+    component: ProblemDetailComponent
   },
   {
-    path:'answer',
+    path: 'answer',
     component: AnswerComponent
   },
   {
     path: 'login',
     component: LoginComponent
-  },{
-    path:'regist',
-    component:RegistComponent
-  },{
-    path:'set',
-    component:SetComponent
+  }, {
+    path: 'regist',
+    component: RegistComponent
   },
   {
     path: '',
@@ -56,7 +55,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],          //forRoot根路由
-  exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(routes)],          //forRoot根路由
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}

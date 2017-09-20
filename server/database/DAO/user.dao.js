@@ -2,7 +2,7 @@ var pool = require("./../db.pool").pool;
 var inquire = require("./../inquire/user.inquire").query;
 
 
-var userDao = {
+var userDAO = {
   getPasswordByTel: function (tel, cb) {
     pool.getConnection(function (err, client) {
       if (err) {
@@ -54,7 +54,43 @@ var userDao = {
         client.release();
       });
     });
+  },
+  getDataById:function (id, cb) {
+    pool.getConnection(function (err, client) {
+      if (err) {
+        console.error("getDataById: " + err.message);
+        cb("err501");
+        return;
+      }
+      client.query(inquire.getDataById, [id,id], function (err, result) {
+        if (err) {
+          cb("err501");
+          console.error("getDataById: " + err.message);
+          return;
+        }
+        cb(result);
+        client.release();
+      });
+    });
+  },
+  getInfoById:function (id,cb) {
+    pool.getConnection(function (err, client) {
+      if (err) {
+        console.error("getInfoById: " + err.message);
+        cb("err501");
+        return;
+      }
+      client.query(inquire.getInfoById, [], function (err, result) {
+        if (err) {
+          cb("err501");
+          console.error("getInfoById: " + err.message);
+          return;
+        }
+        cb(result);
+        client.release();
+      });
+    });
   }
 };
 
-exports.userDao = userDao;
+exports.userDAO = userDAO;
