@@ -11,7 +11,6 @@ var token = {
   power: function (req, res, next) {
     try {
       var token = jwt.decode(req.header("token"), key);
-      console.log(token);
       if(!token.iss){
         res.json({"code": "err604"});
       }else if(token.exp-moment().valueOf()<=0){
@@ -26,8 +25,9 @@ var token = {
     }
   }
 };
+/*测试数据*/
 console.log(token.jwtEn({
-  iss:"18679197606",
-  exp:moment().add(1,"m").valueOf()
+  iss:"kkkk",
+  exp:moment().add(1,"y").valueOf()
 }));
 module.exports = token;
