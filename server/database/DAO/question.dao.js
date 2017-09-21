@@ -20,6 +20,25 @@ var questionDAO = {
         client.release();
       });
     });
+  },
+  getInfoByAsnId:function (id,cb) {
+    pool.getConnection(function (err, client) {
+      if (err) {
+        console.error("getInfoByAsnId: " + err.message);
+        cb("err501");
+        return;
+      }
+      client.query(inquire.getInfoByAsnId, [id], function (err, result) {
+        if (err) {
+          cb("err501");
+          console.error("getInfoByAsnId: " + err.message);
+          return;
+        }
+        console.log(result);
+        cb(result);
+        client.release();
+      });
+    });
   }
 };
 

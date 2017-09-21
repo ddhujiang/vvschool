@@ -79,7 +79,7 @@ var userDAO = {
     });
   },
   getInfoById: function (id, cb) {
-    sqlclient.queries(inquire.getInfoById, [[id, id], [id], [id]], function (err, results) {
+    sqlclient.queries(inquire.getInfoById, [[id], [id], [id]], function (err, results) {
       console.log(results);
       if (!!err) {
         cb({"code": "err501"});

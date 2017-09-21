@@ -88,7 +88,7 @@ router.get("/data", _token.power, function (req, res, next) {
             "code": "u200", "data": extendParameters({
               "id": req.ID,
               "name": result[0].user_nickname,
-              "icon": result[0].user_icon_path
+              "icon": "static/"+result[0].user_icon_path
             }, defaults)
           });
         }
@@ -96,7 +96,7 @@ router.get("/data", _token.power, function (req, res, next) {
       }
     });
   } else {
-    res.json({"code": "err"});
+    res.json({"code": "err601"});
   }
 });
 
@@ -111,6 +111,7 @@ router.post("/info", function (req, res, next) {
         "name": "",
         "describe": "",
         "icon": "",
+        "profession":"",
         "follower":0,
         "fans":0
       };
@@ -124,7 +125,8 @@ router.post("/info", function (req, res, next) {
           "id": req.ID,
           "name": results[0][0]["user_nickname"],
           "describe": results[0][0]["user_self"],
-          "icon": results[0][0]["user_icon_path"],
+          "icon": "static/"+results[0][0]["user_icon_path"],
+          "profession":results[0][0]["profession_name"],
           "follower": results[1][0]["by_att"],
           "fans": results[2][0]["att"]
         }, defaults);
