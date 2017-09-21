@@ -1,3 +1,8 @@
+var dbCfg = require("./../../website.config").websizeCfg.sql;
+/*查询多条SQLs*/
+var sqlclient = require("mysql-queries").init(dbCfg);
+
+/*连接数据库池*/
 var pool = require("./../db.pool").pool;
 var inquire = require("./../inquire/user.inquire").query;
 
@@ -55,14 +60,14 @@ var userDAO = {
       });
     });
   },
-  getDataById:function (id, cb) {
+  getDataById: function (id, cb) {
     pool.getConnection(function (err, client) {
       if (err) {
         console.error("getDataById: " + err.message);
         cb("err501");
         return;
       }
-      client.query(inquire.getDataById, [id,id], function (err, result) {
+      client.query(inquire.getDataById, [id, id], function (err, result) {
         if (err) {
           cb("err501");
           console.error("getDataById: " + err.message);
@@ -73,24 +78,44 @@ var userDAO = {
       });
     });
   },
-  getInfoById:function (id,cb) {
-    pool.getConnection(function (err, client) {
-      if (err) {
-        console.error("getInfoById: " + err.message);
-        cb("err501");
-        return;
-      }
-      client.query(inquire.getInfoById, [], function (err, result) {
-        if (err) {
-          cb("err501");
-          console.error("getInfoById: " + err.message);
-          return;
+  getInfoById: function (id, cb) {
+    sqlclient.queries(inquire.getInfoById, [[id, id], [id], [id]], {
+      skip: function (i, arg, results) {
+        var skip = false;
+        switch (i) {
+          case 1:
+            skip = results[0].length === 0;
+            break;
+          case 2:
+            skip = results[0].length === 0;
+            break;
         }
-        cb(result);
-        client.release();
-      });
+        return skip;
+      }
+    }, function (err, results) {
+      console.log(id);
+      if (!!err) {
+        cb({"code": "err501"});
+        console.log("getInfoById:" + err.message);
+      } else {
+        if (!results[0].length) {
+          cb({"code": "u301"});
+        } else {
+          var data = {
+            "id": id,
+            "name": results[0][0]["user_nickname"],
+            "describe": results[0][0]["user_self"],
+            "icon": results[0][0]["user_icon_path"],
+            "follower": results[1][0]["by_att"],
+            "fans": results[2][0]["att"]
+          };
+          console.log(results[0][0].user_self);
+          cb({"code": "u200", "data": data});
+        }
+      }
     });
   }
 };
 
 exports.userDAO = userDAO;
+

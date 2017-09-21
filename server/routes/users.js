@@ -84,18 +84,10 @@ router.get("/data", _token.power, function (req, res, next) {
 
 /*获取用户详情*/
 router.post("/info", function (req, res, next) {
-  var ID = req.body.ID;
-  if (!ID) {res.json({"code": "err601"});} else {
-    db.getInfoById(req.ID, function (result) {
-      if (result === "err501") {res.json({"code": result});}
-      else {
-        if (!result.length) {res.json({"code": "u301"}); } else {
-          // res.json({"code": "u200", "nickname": result[0].user_nickname, "icon": result[0].user_icon_path});
-        }
-      }
-    });
+  req.ID = req.body.ID;
+  if (!req.ID) {res.json({"code": "err601"});} else {
+    db.getInfoById(req.ID, function (result) {res.json(result);});
   }
-  res.json(ID);
 });
 
 /*测试接口*/

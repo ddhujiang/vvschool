@@ -17,6 +17,7 @@
     "morgan": "~1.8.1",
     "multer": "^1.3.0",
     "mysql": "^2.14.1",
+    "mysql-queries": "^0.2.0",
     "serve-favicon": "~2.4.2",
     "uuid-js": "^0.7.5"
   },
