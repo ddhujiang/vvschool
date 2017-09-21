@@ -79,40 +79,12 @@ var userDAO = {
     });
   },
   getInfoById: function (id, cb) {
-    sqlclient.queries(inquire.getInfoById, [[id, id], [id], [id]], {
-      skip: function (i, arg, results) {
-        var skip = false;
-        switch (i) {
-          case 1:
-            skip = results[0].length === 0;
-            break;
-          case 2:
-            skip = results[0].length === 0;
-            break;
-        }
-        return skip;
-      }
-    }, function (err, results) {
-      console.log(id);
+    sqlclient.queries(inquire.getInfoById, [[id, id], [id], [id]], function (err, results) {
+      console.log(results);
       if (!!err) {
         cb({"code": "err501"});
         console.log("getInfoById:" + err.message);
-      } else {
-        if (!results[0].length) {
-          cb({"code": "u301"});
-        } else {
-          var data = {
-            "id": id,
-            "name": results[0][0]["user_nickname"],
-            "describe": results[0][0]["user_self"],
-            "icon": results[0][0]["user_icon_path"],
-            "follower": results[1][0]["by_att"],
-            "fans": results[2][0]["att"]
-          };
-          console.log(results[0][0].user_self);
-          cb({"code": "u200", "data": data});
-        }
-      }
+      } else {cb(results);}
     });
   }
 };

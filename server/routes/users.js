@@ -71,9 +71,28 @@ router.get("/data", _token.power, function (req, res, next) {
     db.getDataById(req.ID, function (result) {
       if (result === "err501") {res.json({"code": result});}
       else {
-        if (!result.length) {res.json({"code": "u301"}); } else {
-          res.json({"code": "u200", "nickname": result[0].user_nickname, "icon": result[0].user_icon_path});
+        var defaults = {
+          "id": "",
+          "name": "",
+          "icon": ""
+        };
+        if (!result.length) {
+          res.json({
+            "code": "u402", "data": extendParameters({
+              "id": req.ID,
+              "name": req.ID
+            }, defaults)
+          });
+        } else {
+          res.json({
+            "code": "u200", "data": extendParameters({
+              "id": req.ID,
+              "name": result[0].user_nickname,
+              "icon": result[0].user_icon_path
+            }, defaults)
+          });
         }
+
       }
     });
   } else {
@@ -86,7 +105,32 @@ router.get("/data", _token.power, function (req, res, next) {
 router.post("/info", function (req, res, next) {
   req.ID = req.body.ID;
   if (!req.ID) {res.json({"code": "err601"});} else {
-    db.getInfoById(req.ID, function (result) {res.json(result);});
+    db.getInfoById(req.ID, function (results) {
+      var defaults = {
+        "id": "",
+        "name": "",
+        "describe": "",
+        "icon": "",
+        "follower":0,
+        "fans":0
+      };
+      if (!results[0].length) {
+        var data = extendParameters({
+          "id": req.ID,
+          "name": req.ID
+        }, defaults);
+      } else {
+        var data = extendParameters({
+          "id": req.ID,
+          "name": results[0][0]["user_nickname"],
+          "describe": results[0][0]["user_self"],
+          "icon": results[0][0]["user_icon_path"],
+          "follower": results[1][0]["by_att"],
+          "fans": results[2][0]["att"]
+        }, defaults);
+      }
+      res.json({"code": "u200", "data": data});
+    });
   }
 });
 
