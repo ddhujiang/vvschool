@@ -39,6 +39,25 @@ var questionDAO = {
         client.release();
       });
     });
+  },
+  getMoreByQueId:function (ansId,queId,cb) {
+    pool.getConnection(function (err, client) {
+      if (err) {
+        console.error("getMoreByQueId: " + err.message);
+        cb("err501");
+        return;
+      }
+      client.query(inquire.getMoreByQueId, [ansId,queId], function (err, result) {
+        if (err) {
+          cb("err501");
+          console.error("getMoreByQueId: " + err.message);
+          return;
+        }
+        console.log(result);
+        cb(result);
+        client.release();
+      });
+    });
   }
 };
 

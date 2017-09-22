@@ -30,7 +30,7 @@ router.get("/index", _token.power, function (req, res, next) {
                 "id": result[i].user_ans_id,
                 "name": result[i].user_nickname,
                 "describe": result[i].user_self,
-                "profession":result[i].profession_name,
+                "profession": result[i].profession_name,
                 "icon": result[i].user_icon_path ? "static/" + result[i].user_icon_path : "static/icon.default.png"
               },
               "question": {
@@ -75,9 +75,9 @@ router.post("/info", function (req, res, next) {
                 "id": result[0].user_ans_id,
                 "name": result[0].user_nickname,
                 "describe": result[0].user_self,
-                "profession":result[0].profession_name,
+                "profession": result[0].profession_name,
                 "icon": result[0].user_icon_path ? "static/" + result[0].user_icon_path : "static/icon.default.png"
-              },"answer": {
+              }, "answer": {
                 "id": result[0].answer_id,
                 "link": result[0].ans_content,
                 "time": moment() - moment(result[0].ans_time, moment.ISO_8601) > 259200000
@@ -90,16 +90,26 @@ router.post("/info", function (req, res, next) {
                 "collect": result[0].sumc
               }
             };
-            res.json({"code": "q200", "data":data});
+            res.json({"code": "q200", "data": data});
           }
         }
         // res.json(result);
       }
     );
   }
-})
-;
+});
 
+/*加载更多数据*/
+router.post("/more", function (req, res, next) {
+  console.log(req.body.queId);
+  if (req.body.ansId && req.body.queId) {
+    db.getMoreByQueId(req.body.ansId, req.body.queId, function (result) {
+      if (result === "err501") {res.json({"code": result});} else {
+
+      }
+    });
+  } else {res.json({"code": "err601"});}
+});
 
 module.exports = router;
 

@@ -36,7 +36,21 @@ exports.query = {
   "and icon.user_id=a.user_ans_id \n" +
   "and a.user_ans_id=info.user_id \n" +
   "and comm.answer_id=a.answer_id \n" +
-  "and a.answer_id=?\n"
+  "and a.answer_id=?\n",
+
+  getMoreByQueId:"select a.ans_content,a.like_num,sumcm,sumc,sumt \n" +
+  "from problem p\n" +
+  "join answer a \n" +
+  "join view_tran vt\n" +
+  "join view_coll vc\n" +
+  "join view_comm comm\n" +
+  "on a.prob_id=p.prob_id\n" +
+  "and a.answer_id!=?\n" +
+  "and p.prob_id=?\n" +
+  "and comm.answer_id=a.answer_id\n" +
+  "and vc.answer_id=vt.answer_id \n" +
+  "and vc.answer_id=a.answer_id\n" +
+  "ORDER BY a.like_num DESC"
 };
 
 

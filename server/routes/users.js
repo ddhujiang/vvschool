@@ -115,6 +115,7 @@ router.post("/info", function (req, res, next) {
         "follower":0,
         "fans":0
       };
+      console.log(results[0].length);
       if (!results[0].length) {
         var data = extendParameters({
           "id": req.ID,
