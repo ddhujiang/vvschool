@@ -1,3 +1,68 @@
-<p>
-  problem-detail works!
-</p>
+<div class="main">
+<app-nav [_user]="user_name"></app-nav>
+
+<div class="col-sm-12  main-det">
+  <div class="col-sm-offset-2 col-sm-8">
+
+    <h3>{{detail.question.title}}</h3>
+    <p> {{detail.question.link}}</p>
+    <button type="button" class="btn-det" >
+      写回答
+    </button>
+  </div>
+</div>
+
+<div class="col-sm-12" >
+  <div class="col-sm-8 col-sm-offset-2 main-ans">
+  <div style="padding: 10px">
+    <!--<p class="top"><img src="http://localhost:3000/{{detail.answerer.icon}}" alt="用户头像">-->
+      <!--<span style="font-size: 1.2em">{{detail.answerer.name}}</span>-->
+    <!--</p>-->
+
+    <img src="http://localhost:3000/{{detail.answerer.icon}}" alt="用户头像" class="user_icon"  style="float: left">
+    <div style="float: left;margin-left: 15px">
+      <span style="font-size: 1.2em">{{detail.answerer.name}}</span>
+      <span>{{detail.answerer.profession}}</span>
+      <div>{{detail.answerer.describe}}</div>
+    </div>
+
+  </div>
+  <app-more-comment [_detail]="detail"></app-more-comment>
+   </div>
+</div>
+<div  class="col-sm-12">
+  <div class="col-sm-8 col-sm-offset-2 main-more">
+     <div class="moretxt" (click)="toMore()">
+       <span>查看更多回答</span>
+     </div>
+  </div>
+</div>
+
+
+
+
+  <div class="col-sm-12" *ngIf="isTrue">
+    <div class="col-sm-8 col-sm-offset-2 main-ans" *ngFor="let _detail of more">
+      <div style="padding: 10px">
+        <img src="http://localhost:3000/{{_detail.answerer.icon}}" alt="用户头像" class="user_icon"  style="float: left">
+        <div style="float: left;margin-left: 15px">
+          <span style="font-size: 1.3em">{{_detail.answerer.name}}</span>
+          <span style="margin-left: 15px;color: #6a6a6a">,{{_detail.answerer.profession}}</span>
+          <div style="color: #6a6a6a">{{_detail.answerer.describe}}</div>
+        </div>
+
+      </div>
+      <app-more-comment [_detail]="_detail"></app-more-comment>
+    </div>
+  </div>
+
+  <div class="col-sm-8 col-sm-offset-2 noMore" *ngIf="noTrue" >
+    <span>.........{{noMore}}.........</span>
+
+  </div>
+
+
+<div class="col-sm-12 footer">
+
+</div>
+</div>

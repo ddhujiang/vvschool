@@ -17,11 +17,17 @@ import { ConfessionComponent } from './confession/confession.component';
 import { DailyComponent } from './daily/daily.component';
 import { ProblemDetailComponent } from './problem-detail/problem-detail.component';
 import { AnswerComponent } from './answer/answer.component';
-import { CommentComponent } from './personal/comment/comment.component';
+import { CommentComponent } from './main/comment/comment.component';
 import { OthersCommentsComponent } from './main/others-comments/others-comments.component';
 import {PublishCommentsComponent} from './main/publish-comments/publish-comments.component';
 import {SayComponent} from './main/say/say.component';
 import {SayCardComponent} from './personal/say-card/say-card.component';
+import { MoreCommentComponent } from './main/more-comment/more-comment.component';
+import { SetComponent } from './set/set.component';
+import { FollowerComponent } from './personal/follower/follower.component';
+import { FansComponent } from './personal/fans/fans.component';
+import { TranspondComponent } from './personal/transpond/transpond.component';
+import { CollectComponent } from './personal/collect/collect.component';
 
 //导入根路由模块
 import {AppRoutingModule} from './app-routing.module';
@@ -29,9 +35,16 @@ import {AppRoutingModule} from './app-routing.module';
 import {PersonalRoutingModule} from './personal/personal-routing.module';
 //管道
 import { CutPipe } from './pipes/cut.pipe';
-import { SetComponent } from './set/set.component';
-
-
+//导入服务
+import {LocalStorageService} from './services/local-storage.service';
+import { MyanswerComponent } from './personal/myanswer/myanswer.component';
+import { SearchComponent } from './search/search.component';
+//导入指令
+import { LikeDirective } from './directives/like.directive';
+import { SetNavClickDirective } from './directives/set-nav-click.directive';
+import { AnswerNavClickDirective } from './directives/Answer-nav-click.directive';
+import { HoverProfileDirective } from './directives/hoverProfile';
+import { HoverDirective } from './directives/hover.directive';
 
 @NgModule({
   declarations: [
@@ -53,7 +66,10 @@ import { SetComponent } from './set/set.component';
     PublishCommentsComponent,
     SayComponent,
     SayCardComponent,
-    SetComponent
+    SetComponent,
+    MoreCommentComponent,
+    MyanswerComponent,
+    SearchComponent,LikeDirective,SetNavClickDirective,AnswerNavClickDirective,HoverProfileDirective,HoverDirective, FollowerComponent, FansComponent, TranspondComponent, CollectComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +78,7 @@ import { SetComponent } from './set/set.component';
     PersonalRoutingModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [LocalStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

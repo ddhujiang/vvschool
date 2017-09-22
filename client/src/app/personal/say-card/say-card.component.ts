@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {bufferToggle} from "rxjs/operator/bufferToggle";
+// import {bufferToggle} from "rxjs/operator/bufferToggle";
 // import {LikeDirective} from './../../directives/like.directive'
 
 @Component({

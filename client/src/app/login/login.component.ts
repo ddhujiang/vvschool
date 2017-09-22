@@ -28,13 +28,16 @@ export class LoginComponent implements OnInit {
   toIndex(login_form){
 
     let that=this;
-    //console.log(login_form.value);
-    that.userSer.login(login_form.form.value,function (result) {
 
-      console.log(result)
+    console.log(login_form.value);
+    that.userSer.login(login_form.form.value,function (result) {
+         console.log(login_form.form.value);
+
+      // console.log(result)
       if(result.code=='u200'){
         alert(JSON.stringify(result));
         that.localstorage.set('token',result.token);
+        that.localstorage.set('id',result.ID);
         alert('token'+that.localstorage.get('token'))
         that.router.navigate(['/index']);   //登入成功来到首页
       }else if(result.code=='u301') {

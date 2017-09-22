@@ -1,35 +1,31 @@
 <div class="say_card_component">
   <div class="single_card">
-    <div class="user_icon">
-      <img src="../../../assets/images/user_icon001.jpg"/></div>
-    <ul>
-      <li>哔哩哔哩智能姬</li>
-      <li>
+    <div class="user_icon"><img src="../../../assets/images/user_icon001.jpg"/></div>
+      <div class="othersId">哔哩哔哩智能姬</div>
+      <div class="when_where">
         <span>9月12日 22:59 </span>
         <span>来自vvschool</span>
-      </li>
-      <li>
+      </div>
+      <div class="daily_content_text">
         晚安啦 该困觉觉啦 ( ‘-ωก̀ )
         (不然起不来了_(:з」∠)_
         你们有啥快速入睡的好办法咩(ฅ´ω`ฅ) ​​​​
-      </li>
-      <li>
+      </div>
+      <div class="img_div">
         <img src="../../../assets/images/post_pic01.jpg"/>
-      </li>
-      <li class="interact_part">
-        <ul>
-          <li class="interact" id="repost"><i class="fa fa-reply-all" aria-hidden="true"></i> 88</li>
-          <li class="interact middle" id="comment" (click)="comments()"><i class="fa fa-commenting-o" aria-hidden="true"></i> 88</li>
-          <li class="interact" id="like" appLike (click)="like()"><i class="fa fa-thumbs-up" aria-hidden="true"></i>{{like_count}}</li>
-        </ul>
-      </li>
-    </ul>
+      </div>
+      <div class="interact_part">
+          <div class="interact" id="repost"><i class="fa fa-reply-all" aria-hidden="true"></i> 88</div>
+          <div class="interact middle" id="comment" (click)="comments()"><i class="fa fa-commenting-o" aria-hidden="true"></i> 88</div>
+          <div class="interact" id="like" appLike (click)="like()"><i class="fa fa-thumbs-up" aria-hidden="true"></i>{{like_count}}</div>
+      </div>
+  </div>
+  <div class="publish_comments" *ngIf="_comment">
+    <app-publish-comments></app-publish-comments>
+  </div>
+
+  <div class="others_comments" *ngIf="_comment">
+    <app-others-comments></app-others-comments>
   </div>
 </div>
-<div class="publish_comments" *ngIf="_comment">
-<app-publish-comments></app-publish-comments>
-</div>
 
-<div class="others_comments" *ngIf="_comment">
-  <app-others-comments></app-others-comments>
-</div>
