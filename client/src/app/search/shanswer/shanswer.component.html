@@ -1,0 +1,41 @@
+
+<div *ngIf="noAns">
+  <p class="noMore">
+    ...........没有相关的问题............
+  </p>
+
+</div>
+
+<div *ngIf="isAns">
+  <div *ngFor="let _serValue of serValue">
+   <div style="margin: 15px 0 ">
+
+   </div>
+    <div style="background-color: white;padding: 10px">
+      <div style="margin-bottom: 10px">
+      <span style="margin-left: 10px;font-size: 1.2em;"> {{_serValue.answerer.name}}</span>
+      <span style="margin-left: 5px;color: #797979"> ,{{_serValue.answerer.describe}}</span>
+      </div>
+      <app-comment [_qus]="_serValue" ></app-comment>
+    </div>
+  </div>
+</div>
+
+<!--<div *ngIf="isAns" style="background-color: white;padding: 10px;margin-top: 10px">-->
+  <!--<div style="margin-top: 10px">-->
+  <!--<div *ngFor="let _serValue of serValue">-->
+    <!--<h4>{{_serValue.question.title}}</h4>-->
+    <!--<div>-->
+      <!--<span style="font-size: 16px;margin-right: 20px">-->
+        <!--{{_serValue.answerer.name}}-->
+      <!--</span>-->
+      <!--<span style="color: #4d4d4d;font-size: 12px">-->
+        <!--,{{_serValue.answerer.describe}}-->
+      <!--</span>-->
+    <!--</div>-->
+    <!--<p>-->
+      <!--{{_serValue.answer.link}}-->
+    <!--</p>-->
+  <!--</div>-->
+  <!--</div>-->
+<!--</div>-->

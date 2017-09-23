@@ -5,18 +5,16 @@ import { Component, OnInit,Input } from '@angular/core';
   selector: 'app-comment',
   templateUrl: './comment.component.html',
   styleUrls: ['./comment.component.css'],
-  // providers:[DetailService]
 })
 export class CommentComponent implements OnInit {
   @Input() _qus:any;
-  // detail:any;
+
   constructor(
-    // private detailSer:DetailService
   ) { }
   isTrue:boolean=false;
   isCut:boolean=true;
   noCut:boolean=false;
-
+  _like=false;
   ngOnInit() {
   }
   toSee(){
@@ -26,12 +24,15 @@ export class CommentComponent implements OnInit {
     this.isCut=!this.isCut;
     this.noCut=!this.noCut;
   }
-  // upId(anwId){
-  //   let that=this;
-  //   that.detailSer.getDetail(anwId ,function (result){
-  //     that.detail=result.data;
-  //   });
-  //   that.detailSer.getVar(that.detail);
-  // }
+
+
+  like(){
+    this._like=! this._like;
+    if( this._like){
+      this._qus.quantity.praise+=1;
+    }else{
+      this._qus.quantity.praise-=1;
+    }
+  }
 
 }

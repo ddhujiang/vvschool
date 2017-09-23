@@ -11,15 +11,17 @@ import {DailyComponent} from './daily/daily.component';
 import {ProblemDetailComponent} from './problem-detail/problem-detail.component';
 import {AnswerComponent} from './answer/answer.component';
  import { SetComponent } from './set/set.component';
-import { SearchComponent } from './search/search.component';
+// import { SearchComponent } from './search/search.component';
 const routes: Routes = [
   {
     path: 'index',
     component: IndexComponent
-  },{
-    path: 'search/:id',
-    component: SearchComponent
   },
+  // {
+  //   path: 'search/:id',
+  //   component: SearchComponent
+  // }
+  // ,
   {
     path:'set',
     component:SetComponent

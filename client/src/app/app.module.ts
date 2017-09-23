@@ -28,23 +28,27 @@ import { FollowerComponent } from './personal/follower/follower.component';
 import { FansComponent } from './personal/fans/fans.component';
 import { TranspondComponent } from './personal/transpond/transpond.component';
 import { CollectComponent } from './personal/collect/collect.component';
-
+import { MyanswerComponent } from './personal/myanswer/myanswer.component';
+import { SearchComponent } from './search/search.component';
 //导入根路由模块
 import {AppRoutingModule} from './app-routing.module';
 //导入子路由
 import {PersonalRoutingModule} from './personal/personal-routing.module';
+import {SearchRoutingModule} from './search/search-routing.module';
 //管道
 import { CutPipe } from './pipes/cut.pipe';
 //导入服务
 import {LocalStorageService} from './services/local-storage.service';
-import { MyanswerComponent } from './personal/myanswer/myanswer.component';
-import { SearchComponent } from './search/search.component';
+
 //导入指令
 import { LikeDirective } from './directives/like.directive';
 import { SetNavClickDirective } from './directives/set-nav-click.directive';
 import { AnswerNavClickDirective } from './directives/Answer-nav-click.directive';
 import { HoverProfileDirective } from './directives/hoverProfile';
 import { HoverDirective } from './directives/hover.directive';
+import { ShanswerComponent } from './search/shanswer/shanswer.component';
+import { ShpeopleComponent } from './search/shpeople/shpeople.component';
+import { ShdailyComponent } from './search/shdaily/shdaily.component';
 
 @NgModule({
   declarations: [
@@ -69,12 +73,13 @@ import { HoverDirective } from './directives/hover.directive';
     SetComponent,
     MoreCommentComponent,
     MyanswerComponent,
-    SearchComponent,LikeDirective,SetNavClickDirective,AnswerNavClickDirective,HoverProfileDirective,HoverDirective, FollowerComponent, FansComponent, TranspondComponent, CollectComponent
+    SearchComponent,LikeDirective,SetNavClickDirective,AnswerNavClickDirective,HoverProfileDirective,HoverDirective, FollowerComponent, FansComponent, TranspondComponent, CollectComponent, ShanswerComponent, ShpeopleComponent, ShdailyComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    SearchRoutingModule,
     PersonalRoutingModule,
     AppRoutingModule
   ],

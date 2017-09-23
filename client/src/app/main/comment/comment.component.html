@@ -18,24 +18,24 @@
          </span>
   </div>
   <div class="btm">
-    <button type="button" class="btn">
+    <button type="button" class="btn" (click)="like()">
       <i class="fa fa-heart" aria-hidden="true"></i>
       {{_qus.quantity.praise}}
     </button>
     <button type="button" class="btn" (click)="toSee()">
       <i class="fa fa-comment-o" aria-hidden="true"></i>
       <!--452条评论-->
-      {{_qus.quantity.comment}}
+      {{_qus.quantity.comment}}条评论
     </button>
     <button type="button" class="btn ">
       <i class="fa fa-star-half-o" aria-hidden="true"></i>
       <!--收藏-->
-      {{_qus.quantity.collect}}
+      收藏{{_qus.quantity.collect}}
     </button>
     <button type="button" class="btn">
       <i class="fa fa-reply-all" aria-hidden="true"></i>
       <!--转发123-->
-      {{_qus.quantity.transpond}}
+      转发{{_qus.quantity.transpond}}
     </button>
   </div>
 
