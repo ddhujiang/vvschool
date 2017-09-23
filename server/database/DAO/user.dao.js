@@ -123,7 +123,6 @@ var userDAO = {
     });
   },
   getAnswerByUId: function (req, cb) {
-    console.log(req.body.id);
     pool.getConnection(function (err, client) {
       if (err) {
         console.error("getAnswerByUId: " + err.message);

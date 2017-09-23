@@ -199,6 +199,33 @@ router.post("/more", function (req, res, next) {
      });
    } else {res.json({"code": "err601"});}
  });
+
+ /*提问*/
+router.post("/put",_token.power,function (req, res, next) {
+  if (req.ID&&req.body.title&&req.body.profession&&req.body.link) {
+    db.setQuestion(req, function (result) {
+      if (result === "err501") {res.json({"code": result});}
+      else {
+          res.json({"code": result});
+      }
+    });
+  } else {res.json({"code": "err601"});}
+});
+
+/*有可能有BUG*/
+router.post("/like",_token.power,function (req, res, next) {
+  if (req.body.id) {
+    db.addLikeNum(req, function (result) {
+      if (result === "err501") {res.json({"code": result});}
+      else {
+        res.json({"code": result});
+      }
+    });
+  } else {res.json({"code": "err601"});}
+});
+
+
+
 module.exports = router;
 
 function extendParameters (options, defaults) {
@@ -210,4 +237,3 @@ function extendParameters (options, defaults) {
   }
   return options;
 }
-

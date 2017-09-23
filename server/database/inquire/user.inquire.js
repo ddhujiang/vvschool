@@ -37,12 +37,18 @@ exports.query = {
   "  and an.prob_id=p.prob_id\n" +
   "ORDER BY p.prob_time desc",
 
-  getAnswerByUId:"select p.prob_id,p.prob_content,p.prob_time,a.answer_id,a.ans_content,a.ans_time,a.like_num\n" +
+  getAnswerByUId:"select p.prob_id,p.prob_content,p.prob_title,p.prob_time,a.answer_id,a.ans_content,a.ans_time,comm.sumcm,a.like_num,tran.sumt,coll.sumc\n" +
   "from problem p \n" +
   "join answer a \n" +
   "join user u\n" +
+  "join view_comm comm\n" +
+  "join view_coll coll\n" +
+  "join view_tran tran\n" +
   "on p.prob_id=a.prob_id\n" +
   "and u.user_id=a.user_ans_id \n" +
   "and u.user_id=?\n" +
+  "and a.answer_id=comm.answer_id\n" +
+  "and a.answer_id=coll.answer_id\n" +
+  "and a.answer_id=tran.answer_id\n" +
   "ORDER BY ?? desc"
 };

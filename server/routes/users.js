@@ -195,7 +195,6 @@ router.post("/question", function (req, res, next) {
 
 /*用户回答*/
 router.post("/answer", function (req, res, next) {
-  console.log(req.body.id);
   if (req.body.id) {
     db.getAnswerByUId(req, function (result) {
       if (result === "err501") {res.json({"code": result});}
@@ -220,7 +219,12 @@ router.post("/answer", function (req, res, next) {
                   ? moment(result[i].prob_time).format("YYYY年MMMDo,dddd,h:mm:ss")
                   : moment(result[i].prob_time, moment.ISO_8601).fromNow()
               },
-              "praise": result[i].like_num ? result[i].like_num : "0"
+              "quantity": {
+                "praise": result[i].like_num ? result[i].like_num : "0",
+                "comment": result[i].sumcm,
+                "transpond": result[i].sumt,
+                "collect": result[i].sumc
+              }
             });
           }
           res.json({"code": "u200", "data": arr});

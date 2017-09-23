@@ -86,7 +86,14 @@ exports.query = {
   "and prof.profession_id=p.profession_id \n" +
   "and p.prob_title regexp ? \n" +
   "group by p.prob_id\n" +
-  "order by ?? desc"
+  "order by ?? desc",
+
+  setQuestion:" insert into problem(iss_id,prob_title,profession_id,prob_content,prob_time) values(?,?,?,?,now())",
+
+  addLikeNum:"update answer a\n" +
+  " set a.like_num=a.like_num+(?)\n" +
+  " where a.answer_id=?"
+
 };
 
 
