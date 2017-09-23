@@ -16,4 +16,15 @@ export class IndexService {
         console.log(error.message);
       })
   }
+  getQus(title,link,profession,callback){
+    let _head = new HttpHeaders({token: this.ls.get('token')});
+    this.http.post(this.url + '/put',{"title":title,"link":link,"profession":profession},{headers: _head}).subscribe(function (result) {
+        console.log(result);
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      })
+  }
+
 }

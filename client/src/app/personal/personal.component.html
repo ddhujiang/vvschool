@@ -20,7 +20,7 @@
   <div class="row"   >
     <div class=" col-sm-3 col-sm-offset-1" >
       <ul class="list-group ">
-        <a routerLink="./myanswer" routerLinkActive="active">
+        <a [routerLink]="['./myanswer',user_id]" routerLinkActive="active">
           <li class="list-group-item">
             <i class="fa fa-adjust" aria-hidden="true"></i>
             <span class="badge">20</span>
@@ -28,35 +28,35 @@
           </li>
         </a>
 
-        <a routerLink="./say-card" routerLinkActive="active">
+        <a [routerLink]="['./say-card',user_id]" routerLinkActive="active">
           <li class="list-group-item ">
             <i class="fa fa-shower" aria-hidden="true"></i>
             <span class="badge">14</span>
             我的日常
           </li>
         </a>
-        <a routerLink="./" routerLinkActive="active">
+        <a [routerLink]="['./',user_id]" routerLinkActive="active">
         <li class="list-group-item">
           <span class="badge">20</span>
           <i class="fa fa-quora" aria-hidden="true"></i>
           我的提问
         </li>
         </a>
-        <a routerLink="./collect" routerLinkActive="active">
+        <a [routerLink]="['./collect',user_id]" routerLinkActive="active">
         <li class="list-group-item">
           <i class="fa fa-fire" aria-hidden="true"></i>
           <span class="badge">20</span>
           我的收藏
         </li>
         </a>
-        <a routerLink="./follower" routerLinkActive="active">
+        <a [routerLink]="['./follower',user_id]" routerLinkActive="active">
         <li class="list-group-item" >
           <i class="fa fa-asterisk" aria-hidden="true"></i>
           <span class="badge">||</span>
           我的关注
         </li>
         </a>
-        <a routerLink="./fans" routerLinkActive="active">
+        <a [routerLink]="['./fans',user_id]" routerLinkActive="active">
         <li class="list-group-item" >
           <i class="fa fa-asterisk" aria-hidden="true"></i>
           <span class="badge">||</span>

@@ -22,11 +22,11 @@ const routes: Routes = [
         component:ShanswerComponent
       },
       {
-        path: 'shpeople',
+        path: 'shpeople/:id',
         component:ShpeopleComponent
       },
       {
-        path: 'shdaily',
+        path: 'shdaily/:id',
         component:ShdailyComponent
       }
     ]

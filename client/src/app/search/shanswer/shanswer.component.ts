@@ -19,7 +19,6 @@ export class ShanswerComponent implements OnInit {
     let that=this;
     that.value=that.ar.snapshot.params['id'];
     that.detailSer.getSearch(that.value,function (result) {
-      // alert(result)
       if(result.code=="q200"){
         that.serValue=result.data;
         that.isAns=true;

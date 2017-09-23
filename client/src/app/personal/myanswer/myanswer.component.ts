@@ -1,29 +1,40 @@
 import { Component, OnInit,Input  } from '@angular/core';
-import {IndexService} from '../../services/index.service';
-
+import {ActivatedRoute} from '@angular/router';
+import {UserService} from '../../services/user.service';  //导入服务
 @Component({
   selector: 'app-myanswer',
   templateUrl: './myanswer.component.html',
   styleUrls: ['./myanswer.component.css'],
-  providers:[
-    IndexService]
+  providers:[UserService]
 })
 export class MyanswerComponent implements OnInit {
   isTrue:boolean=false;
   isCut:boolean=true;
   noCut:boolean=false;
   qus:any;
+  user_id:any;
+  userValue:any;
+  isAns:boolean=false;
+  noAns:boolean=false;
 
-  constructor(private indexSer:IndexService) { }
-
+  constructor(private ar:ActivatedRoute,private userSer:UserService) { }
 
   ngOnInit() {
     let that=this;
-    that.indexSer.getAnswerer(function (result) {
-     that.qus=result.data;
-       })
-  }
+    that.user_id=that.ar.snapshot.params['id'];
+    that.userSer.getsMyanswer(that.user_id,function (result) {
+      if(result.code=="u200"){
+        that.userValue=result.data;
+        that.isAns=true;
+      }else if(result.code=="u303"){
+        that.noAns=true;
+      }else if(result.code=="err601"){
+        alert(result.code)
+        console.log("逻辑错误")
+      }
+    })
 
+  }
 
   toSee(){
     this.isTrue=!this.isTrue;

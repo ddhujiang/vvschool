@@ -31,7 +31,7 @@ export class UserService {
   editUser() {
 
   }
-  //{headers: _head,params:param}
+
   getAllUser(callback) {
     let _head = new HttpHeaders({token: this.ls.get('token')});
     // let param=new HttpParams().set('id','001');
@@ -55,5 +55,28 @@ export class UserService {
       }
     )
   }
+
+  getsPeople(keyword,callback) {
+    this.http.post(this.url + '/search', {"keyword": keyword}).subscribe(function (result) {
+        console.log(result);
+        // console.log(result);
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      })
+  }
+
+  getsMyanswer(id,callback) {
+    this.http.post(this.url + '/answer', {"id": id}).subscribe(function (result) {
+        console.log(result);
+        // console.log(result);
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      })
+  }
+
 
 }

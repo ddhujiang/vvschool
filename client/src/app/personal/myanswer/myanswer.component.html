@@ -1,4 +1,10 @@
-<div *ngFor="let _qus of qus" >
+<div *ngIf="noAns">
+  <p class="noMore">
+    ...........没有回答............
+  </p>
+</div>
+<div *ngIf="isAns">
+<div *ngFor="let _qus of userValue" >
    <div class="comment" style="padding:10px" >
 
     <p class="til">
@@ -22,18 +28,18 @@
    <div class="btm">
     <span class="btn_span">
     <i class="fa fa-heart" aria-hidden="true"></i>
-    {{_qus.quantity.praise}}
+    点赞数 {{_qus.quantity.praise}}
     </span>
 
      <span class="btn_span">
       <i class="fa fa-star-half-o" aria-hidden="true"></i>
       <!--收藏-->
-      {{_qus.quantity.collect}}
+      收藏数 {{_qus.quantity.collect}}
     </span>
     <span class="btn_span">
       <i class="fa fa-reply-all" aria-hidden="true"></i>
       <!--转发123-->
-      {{_qus.quantity.transpond}}
+      转发数 {{_qus.quantity.transpond}}
     </span>
 
     <span  class="btn_span btn_com" (click)="toSee()">
@@ -41,6 +47,7 @@
       {{_qus.quantity.comment}}条评论
     </span>
     </div>
+</div>
 </div>
 </div>
 <div *ngIf="isTrue">

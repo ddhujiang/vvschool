@@ -1,0 +1,16 @@
+.btn-det{
+  border-radius: 5px;
+  border: 1px solid #f1f1f1;
+  font-size: 17px;
+  padding: 10px 18px;
+  color: #898989;
+  text-align: center;
+  cursor: pointer;
+}
+.noMore{
+  height: 40px;background-color: white;
+  font-size: 1.2em;
+  text-align: center;
+  margin-top: 10px;
+  line-height: 40px;
+}

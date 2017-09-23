@@ -1,3 +1,27 @@
-<p>
-  shpeople works!
-</p>
+
+<div *ngIf="noAns">
+  <p class="noMore">
+    ...........没有相关的用户............
+  </p>
+
+</div>
+
+<div *ngIf="isAns" style="margin-top: 10px">
+  <ul class="list-group ">
+  <li class="list-group-item" style="height: 70px" *ngFor="let _serValue of serValue">
+    <div>
+      <img src="http://localhost:3000/{{_serValue.user.icon}}" style="width: 50px;height: 50px;float: left">
+      <div style="float: left;margin-left: 20px;">
+        <span style="font-size:1.3em;color: #474747">{{_serValue.user.name}}</span>
+        <span  style="font-size:1em;color: #636363;margin-left: 10px">,{{_serValue.user.profession}}</span>
+        <div style="font-size:0.8em;color: #8b8b8b">
+          {{_serValue.user.describe}}
+        </div>
+      </div>
+      <button type="button" class="btn-det" style="float: right">
+        关注
+      </button>
+    </div>
+  </li>
+  </ul>
+</div>
