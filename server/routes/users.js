@@ -51,7 +51,7 @@ router.post("/register", function (req, res, next) {
         case "err501":
           res.json({"code": "err501"});
           break;
-        case 1:
+        case "u200":
           // 设置令牌
           var token = _token.jwtEn({
             iss: userInfo.user_id,
@@ -63,7 +63,6 @@ router.post("/register", function (req, res, next) {
     });
   } else {res.json({"code": "err601"});}
 });
-
 
 /*获取用户数据*/
 router.get("/data", _token.power, function (req, res, next) {
@@ -88,7 +87,7 @@ router.get("/data", _token.power, function (req, res, next) {
             "code": "u200", "data": extendParameters({
               "id": req.ID,
               "name": result[0].user_nickname,
-              "icon": "static/"+result[0].user_icon_path
+              "icon": "static/" + result[0].user_icon_path ? result[0].user_icon_path : "icon.default.png"
             }, defaults)
           });
         }
@@ -100,41 +99,135 @@ router.get("/data", _token.power, function (req, res, next) {
   }
 });
 
-
 /*获取用户详情*/
+/*有BUG----------------------------------------------------------------------*/
 router.post("/info", function (req, res, next) {
   req.ID = req.body.ID;
   if (!req.ID) {res.json({"code": "err601"});} else {
     db.getInfoById(req.ID, function (results) {
-      var defaults = {
-        "id": "",
-        "name": "",
+      var data, defaults = {
+        "id": req.ID,
+        "name": req.ID.substr(0, 8),
         "describe": "",
         "icon": "",
-        "profession":"",
-        "follower":0,
-        "fans":0
+        "profession": "",
+        "follower": 0,
+        "fans": 0,
+        "question": 0,
+        "answer": 0
       };
       console.log(results[0].length);
-      if (!results[0].length) {
-        var data = extendParameters({
-          "id": req.ID,
-          "name": req.ID
-        }, defaults);
-      } else {
-        var data = extendParameters({
-          "id": req.ID,
+      if (results[0].length) {
+        data = extendParameters({
           "name": results[0][0]["user_nickname"],
           "describe": results[0][0]["user_self"],
-          "icon": "static/"+results[0][0]["user_icon_path"],
-          "profession":results[0][0]["profession_name"],
-          "follower": results[1][0]["by_att"],
-          "fans": results[2][0]["att"]
+          "icon": "static/" + results[0][0]["user_icon_path"] ? results[0][0]["user_icon_path"] : "icon.default.png"
         }, defaults);
+      } else {
+        data = extendParameters({}, defaults);
       }
+
+      data["profession"] = results[0][0]["profession_name"];
+      data["follower"] = results[1][0]["by_att"];
+      data["fans"] = results[2][0]["att"];
+      data["question"] = results[3][0]["count"];
+      data["answer"] = results[4][0]["count"];
       res.json({"code": "u200", "data": data});
     });
   }
+});
+
+/*搜索用户*/
+router.post("/search", function (req, res, next) {
+  if (req.body.keyword) {
+    db.getSearchByKeyName(req.body.keyword, function (result) {
+      if (result === "err501") {res.json({"code": result});}
+      else {
+        if (!result.length) {res.json({"code": "u302"}); }
+        else {
+          var arr = [];
+          for (var i in result) {
+            arr.push({
+              "user": {
+                "id": result[i].id,
+                "name": result[i].user_nickname,
+                "describe": result[i].user_self,
+                "profession": result[i].profession_name,
+                "icon": result[i].user_icon_path ? "static/" + result[i].user_icon_path : "static/icon.default.png"
+              }
+            });
+          }
+          res.json({"code": "u200", "data": arr});
+        }
+      }
+    });
+  } else {res.json({"code": "err601"});}
+});
+
+/*用户提问*/
+router.post("/question", function (req, res, next) {
+  if (req.body.id) {
+    db.getQuestionByUId(req.body.id, function (result) {
+      if (result === "err501") {res.json({"code": result});}
+      else {
+        if (!result.length) {res.json({"code": "u302"}); }
+        else {
+          var arr = [];
+          for (var i in result) {
+            arr.push({
+              "question": {
+                "id": result[i].prob_id,
+                "title": result[i].prob_title,
+                "link": result[i].prob_content,
+                "time": moment() - moment(result[i].prob_time, moment.ISO_8601) > 259200000
+                  ? moment(result[i].prob_time).format("YYYY年MMMDo,dddd,h:mm:ss")
+                  : moment(result[i].prob_time, moment.ISO_8601).fromNow(),
+                "ansNum": result[i].sumdan
+              }
+            });
+          }
+          res.json({"code": "u200", "data": arr});
+        }
+      }
+    });
+  } else {res.json({"code": "err601"});}
+});
+
+/*用户回答*/
+router.post("/answer", function (req, res, next) {
+  console.log(req.body.id);
+  if (req.body.id) {
+    db.getAnswerByUId(req, function (result) {
+      if (result === "err501") {res.json({"code": result});}
+      else {
+        if (!result.length) {res.json({"code": "u302"}); }
+        else {
+          var arr = [];
+          for (var i in result) {
+            arr.push({
+              "answer": {
+                "id": result[i].answer_id,
+                "link": result[i].ans_content,
+                "time": moment() - moment(result[i].ans_time, moment.ISO_8601) > 259200000
+                  ? moment(result[i].ans_time).format("YYYY年MMMDo,dddd,h:mm:ss")
+                  : moment(result[i].ans_time, moment.ISO_8601).fromNow()
+              },
+              "question": {
+                "id": result[i].prob_id,
+                "title": result[i].prob_title,
+                "link": result[i].prob_content,
+                "time": moment() - moment(result[i].prob_time, moment.ISO_8601) > 259200000
+                  ? moment(result[i].prob_time).format("YYYY年MMMDo,dddd,h:mm:ss")
+                  : moment(result[i].prob_time, moment.ISO_8601).fromNow()
+              },
+              "praise": result[i].like_num ? result[i].like_num : "0"
+            });
+          }
+          res.json({"code": "u200", "data": arr});
+        }
+      }
+    });
+  } else {res.json({"code": "err601"});}
 });
 
 /*测试接口*/
@@ -154,3 +247,5 @@ function extendParameters (options, defaults) {
   }
   return options;
 }
+
+

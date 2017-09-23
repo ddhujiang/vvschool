@@ -1,3 +1,7 @@
+var dbCfg = require("./../../website.config").websizeCfg.sql;
+/*查询多条SQLs*/
+var sqlclient = require("mysql-queries").init(dbCfg);
+
 var pool = require("./../db.pool").pool;
 var inquire = require("./../inquire/question.inquire").query;
 
@@ -72,7 +76,6 @@ var questionDAO = {
           console.error("getSearchByKey: " + err.message);
           return;
         }
-        console.log(result);
         cb(result);
         client.release();
       });
