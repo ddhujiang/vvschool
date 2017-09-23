@@ -3,9 +3,8 @@
 }
 
 a{
-  font-size: 25px;
-  color: #212121;
   text-decoration: none;
+  color: #2f2f2f;
 }
 
 a:hover{
@@ -14,15 +13,27 @@ a:hover{
 .read{
   color: #7a7a7a;
 }
+.read:hover{
+  cursor: pointer;
+  background-color:#51d2b7 ;
+}
+
 
 .top{
   margin-top: 10px;
 }
 .til{
+  margin-top: -5px;
   margin-left: 5px;
+  font-size: 1.5em;
 }
 .btn{
   margin-left: 5px;
+}
+.btm{
+  margin-top: 15px;
+  margin-bottom: 10px;
+  clear: both;
 }
 .btm .btn {
   padding: 0 16px;
@@ -34,10 +45,11 @@ a:hover{
   background: none;
   border: 1px solid #ccd8e1;
   border-radius: 3px;
+
 }
 .con{
   line-height: 1.67;
-  font-size:1.2em;
+  font-size:1.1em;
   margin-left: 5px;
 }
 

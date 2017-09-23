@@ -1,76 +1,75 @@
 <div class="contain">
-  <app-nav></app-nav>
-  <div class="left col-sm-3  ">
+  <app-nav [_user]="user_name"></app-nav>
 
-    <div class="left-top">
-      <img src="../../assets/大图胡江.jpg" alt="" style="height:100px;width:100px;border-radius:10px;float: left">
-      <span class="span-name">胡江大大</span>
-      <span class="span-profession">    专业 <span style="color:#212121">计算机</span>  </span>
-    </div>
+  <div class="row" style="margin-top: -8px">
+      <div class="col-sm-10 col-sm-offset-1">
+        <div style="height: 100px;background-color: #96A1A9">
+        </div>
+        <div style="height: 100px;background-color:white">
+          <img src="../../assets/大图胡江.jpg" alt="" class="u-img" >
+          <div style="margin-left: 20px;float: left">
+          <span class="span-name" >{{info.name}}</span>
+          <span class="span-profession">专业jjjjjjj <span style="color:#212121">{{info.profession}}</span></span>
+          <div>{{info.describe}}jjjjjhhhhhhhhhssssss</div>
+          </div>
+        </div>
 
-
-    <ul class="list-group">
-
-      <a routerLink="./say-card" routerLinkActive="active">
-      <li class="list-group-item ">
-        <i class="fa fa-shower" aria-hidden="true"></i>
-        <span class="badge">14</span>
-        我的日常
-      </li>
-      </a>
-
-      <li class="list-group-item">
-        <span class="badge">20</span>
-        <i class="fa fa-quora" aria-hidden="true"></i>
-        我的提问
-      </li>
-      <a routerLink="./comment" routerLinkActive="active">
-      <li class="list-group-item">
-        <i class="fa fa-adjust" aria-hidden="true"></i>
-        <span class="badge">20</span>
-        我的回答
-      </li>
-      </a>
-      <li class="list-group-item">
-        <i class="fa fa-flag" aria-hidden="true"></i>
-        <span class="badge">20</span>
-        我的社区
-      </li>
-      <li class="list-group-item">
-        <i class="fa fa-fire" aria-hidden="true"></i>
-        <span class="badge">20</span>
-        我的表白
-      </li>
-      <li class="list-group-item">
-        <i class="fa fa-fire" aria-hidden="true"></i>
-        <span class="badge">20</span>
-        我的收藏
-      </li>
-      <li class="list-group-item">
-        <i class="fa fa-asterisk" aria-hidden="true"></i>
-        <span class="badge">||</span>
-        个人设置
-      </li>
-      <li class="list-group-item " style="background-color: #51d2b7">
-      </li>
-    </ul>
+      </div>
   </div>
-   <div class="col-sm-6">
-     <router-outlet>
-     </router-outlet>
-   </div>
 
-  <div class="col-sm-3">
-  <ul class="list-group">
-      <li class="list-group-item ">
-        <span class="badge">14</span>
-        我的关注
-      </li>
-    <li class="list-group-item " >
-      <span class="badge">14</span>
-      我的粉丝
-    </li>
-  </ul>
- </div>
+  <div class="row"   >
+    <div class=" col-sm-3 col-sm-offset-1" >
+      <ul class="list-group ">
+        <a routerLink="./myanswer" routerLinkActive="active">
+          <li class="list-group-item">
+            <i class="fa fa-adjust" aria-hidden="true"></i>
+            <span class="badge">20</span>
+            我的回答
+          </li>
+        </a>
 
+        <a routerLink="./say-card" routerLinkActive="active">
+          <li class="list-group-item ">
+            <i class="fa fa-shower" aria-hidden="true"></i>
+            <span class="badge">14</span>
+            我的日常
+          </li>
+        </a>
+        <a routerLink="./" routerLinkActive="active">
+        <li class="list-group-item">
+          <span class="badge">20</span>
+          <i class="fa fa-quora" aria-hidden="true"></i>
+          我的提问
+        </li>
+        </a>
+        <a routerLink="./collect" routerLinkActive="active">
+        <li class="list-group-item">
+          <i class="fa fa-fire" aria-hidden="true"></i>
+          <span class="badge">20</span>
+          我的收藏
+        </li>
+        </a>
+        <a routerLink="./follower" routerLinkActive="active">
+        <li class="list-group-item" >
+          <i class="fa fa-asterisk" aria-hidden="true"></i>
+          <span class="badge">||</span>
+          我的关注
+        </li>
+        </a>
+        <a routerLink="./fans" routerLinkActive="active">
+        <li class="list-group-item" >
+          <i class="fa fa-asterisk" aria-hidden="true"></i>
+          <span class="badge">||</span>
+          我的粉丝
+        </li>
+        </a>
+        <li class="list-group-item " style="background-color: #51d2b7">
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-7" >
+      <router-outlet>
+      </router-outlet>
+    </div>
+  </div>
 </div>

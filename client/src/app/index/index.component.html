@@ -1,31 +1,66 @@
 <div class="contain">
   <div>
-    <app-nav></app-nav>
+    <app-nav [_user]="user_name"></app-nav>
   </div>
 
-  <div class="container-fluid">
-    <div class="col-sm-7 col-sm-offset-1  bgcolor_white ">
+  <div class="container-fluid" >
+    <div class="col-sm-7 col-sm-offset-1  main_contain" *ngFor="let _qus of qus">
       <div>
-        <p class="top"><img src="../../assets/胡江.jpg" alt="用户头像">
-          <span>用户名</span>
+        <p class="top">
+          <img src="http://localhost:3000/{{_qus.answerer.icon}}" appHover alt="用户头像" class="user_icon">
+          <span style="margin-left: 10px;font-size: 1.2em"> {{_qus.answerer.name}}</span>
+          <span style="margin-left: 5px;color: #797979"> {{_qus.answerer.describe}}</span>
         </p>
+
+        <div class="user_profile" apphoverProfile>
+          <div class="top_part">
+            <div class="user_profile_icon"><img src="http://localhost:3000/{{_qus.answerer.icon}}" alt="用户头像"></div>
+            <div class="user_profile_top_right">
+              <span>{{_qus.answerer.name}}</span>
+              <span>{{_qus.answerer.describe}}</span>
+            </div>
+          </div>
+          <div class="middle_part">
+            <div>
+              <p>回答</p>
+              <p>88</p>
+            </div>
+            <div>
+              <p>文章</p>
+              <p>88</p>
+            </div>
+            <div>
+              <p>关注着</p>
+              <p>88</p>
+            </div>
+          </div>
+          <div class="bottom_part">
+            <div><i class="fa fa-plus" aria-hidden="true"></i> 关注他</div>
+            <div><i class="fa fa-comments-o" aria-hidden="true"></i>发私信</div>
+          </div>
+        </div>
+
+
+
+
       </div>
-      <app-comment></app-comment>
+      <app-comment [_qus]="_qus"></app-comment>
     </div>
-    <div class="col-sm-3 bgcolor_white main_right">
+
+  <div class="col-sm-3  main_right">
       <span class="span_left" data-toggle="modal" data-target="#myModal">
         <i class="fa fa-camera-retro fa-1x "></i>问学长</span>
-
-      <span class="span_left" (click)="toAnswer()">
+    <span class="span_left" (click)="toAnswer()">
         <i class="fa fa-refresh fa-spin fa-1x fa-fw"></i>解疑惑</span>
-    </div>
+  </div>
 
+</div>
 <!--==========================================================================================================-->
     <!--<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">-->
     <!--问学长-->
     <!--</button>-->
 
-  </div>
+
   <!-- Modal -->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">

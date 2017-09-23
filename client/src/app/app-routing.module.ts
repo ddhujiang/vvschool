@@ -10,11 +10,19 @@ import {ConfessionComponent} from './confession/confession.component';
 import {DailyComponent} from './daily/daily.component';
 import {ProblemDetailComponent} from './problem-detail/problem-detail.component';
 import {AnswerComponent} from './answer/answer.component';
-// import { SetComponent } from './set/set.component';
+ import { SetComponent } from './set/set.component';
+import { SearchComponent } from './search/search.component';
 const routes: Routes = [
   {
     path: 'index',
     component: IndexComponent
+  },{
+    path: 'search/:id',
+    component: SearchComponent
+  },
+  {
+    path:'set',
+    component:SetComponent
   },
   {
     path: 'club',
@@ -29,7 +37,7 @@ const routes: Routes = [
     component: DailyComponent
   },
   {
-    path: 'problem-detail',
+    path: 'problem-detail/:id',
     component: ProblemDetailComponent
   },
   {

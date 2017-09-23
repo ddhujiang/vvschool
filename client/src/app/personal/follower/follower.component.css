@@ -1,0 +1,9 @@
+.btn-det{
+  border-radius: 5px;
+  border: 1px solid #f1f1f1;
+  font-size: 17px;
+  padding: 10px 18px;
+  color: #898989;
+  text-align: center;
+  cursor: pointer;
+}
