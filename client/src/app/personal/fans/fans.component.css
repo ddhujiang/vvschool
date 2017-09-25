@@ -7,3 +7,30 @@
   text-align: center;
   cursor: pointer;
 }
+.fans-icon{
+ width:  60px;
+  height: 60px;
+  float:left;
+  margin-top:11px;
+  border-radius: 4px;
+}
+.fans-info{
+  float: left;margin-left: 20px;margin-top: 10px
+}
+.fan-username{
+  font-size:1.3em;color: #474747
+}
+.fans-prof{
+  font-size:1em;
+  color: #636363;
+  margin-left: 10px;
+}
+.fans-userinfo{
+  font-size:0.8em;
+  color: #8b8b8b;
+  margin-top: 10px
+}
+.btn-att{
+  float: right;
+  margin-top: 20px
+}

@@ -3,6 +3,7 @@
   height: 296px;
   position: relative;
   background-color: white;
+  border-radius: 4px;
 }
 .user_icon img{
   width: 100%;
@@ -57,7 +58,7 @@ border: solid 1px rgba(255, 255, 255, 0);
 }
 .interact:hover{
   cursor: pointer;
-  color: #ff0c1b;
+  color:#8b8b8b;
 }
 .middle{
   border-left: solid 1px darkgrey;
@@ -71,8 +72,8 @@ border: solid 1px rgba(255, 255, 255, 0);
   border-top: solid 1px darkgrey;
   border-top: solid 1px darkgrey;
 }
-
-
-
+.daily_content_img{
+  border-radius: 4px;
+}
 
 
