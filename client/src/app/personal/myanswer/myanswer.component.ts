@@ -33,7 +33,6 @@ export class MyanswerComponent implements OnInit {
         console.log("逻辑错误")
       }
     })
-
   }
 
   toSee(){

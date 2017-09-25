@@ -6,11 +6,18 @@
 
     <h3>{{detail.question.title}}</h3>
     <p> {{detail.question.link}}</p>
-    <button type="button" class="btn-det" >
+    <button type="button" class="btn-det" (click)="toWrite()">
       写回答
     </button>
   </div>
 </div>
+
+  <div class="col-sm-12" *ngIf="isWrite">
+    <div class="col-sm-8 col-sm-offset-2 main-ans">
+      文本框显示的地方
+    </div>
+  </div>
+
 
 <div class="col-sm-12" >
   <div class="col-sm-8 col-sm-offset-2 main-ans">
@@ -19,7 +26,8 @@
       <!--<span style="font-size: 1.2em">{{detail.answerer.name}}</span>-->
     <!--</p>-->
 
-    <img src="http://localhost:3000/{{detail.answerer.icon}}" alt="用户头像" class="user_icon"  style="float: left">
+    <img src="http://localhost:3000/{{detail.answerer.icon}}" alt="用户头像" class="user_icon"
+         style="float: left" >
     <div style="float: left;margin-left: 15px">
       <span style="font-size: 1.2em">{{detail.answerer.name}}</span>
       <span>{{detail.answerer.profession}}</span>

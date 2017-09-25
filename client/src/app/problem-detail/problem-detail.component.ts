@@ -18,6 +18,7 @@ export class ProblemDetailComponent implements OnInit {
   noTrue:boolean=false;
   more:any;
   noMore:string;
+  isWrite:boolean=false;
   constructor(private userSer:UserService,
               private detailSer:DetailService,
               private ar:ActivatedRoute
@@ -58,5 +59,12 @@ export class ProblemDetailComponent implements OnInit {
       console.log(result);
     })
   }
+//  写回答调用的事件
+  toWrite(){
+   this.isWrite=true;
+  }
+
+
+
 
 }

@@ -1,0 +1,16 @@
+.invite_wrapper{
+  height: 26px;
+  width: 100%;
+  position: relative;
+  margin-top: 36px;
+  border-bottom: solid 1px lightgrey;
+}
+.zg-right{
+  float: right;
+}
+.invite_empty{
+  height: 60px;
+  width: 100%;
+  text-align: center;
+  line-height: 60px;
+}

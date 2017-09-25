@@ -8,26 +8,43 @@
     发布于：<span style="color: #7b7b7b">{{_detail.answer.time}}  </span>
   </div>
   <div class="btm" >
-    <button type="button" class="btn">
+    <button type="button" class="btn" (click)="like()">
       <i class="fa fa-heart" aria-hidden="true">{{_detail.quantity.praise}}</i>
-
     </button>
+
     <button type="button" class="btn" (click)="toSee()">
       <i class="fa fa-comment-o" aria-hidden="true">{{_detail.quantity.comment}}条评论</i>
-
     </button>
-    <button type="button" class="btn ">
+
+    <button type="button" class="btn " data-toggle="modal" data-target="#moreModal">
       <i class="fa fa-star-half-o" aria-hidden="true">收藏{{_detail.quantity.collect}}</i>
-
     </button>
-    <button type="button" class="btn">
-      <i class="fa fa-reply-all" aria-hidden="true">转发{{_detail.quantity.transpond}}</i>
 
-    </button>
+    <!--<button type="button" class="btn">-->
+      <!--<i class="fa fa-reply-all" aria-hidden="true">转发{{_detail.quantity.transpond}}</i>-->
+    <!--</button>-->
   </div>
 
 </div>
 
 <div *ngIf="isTrue">
   1111
+</div>
+
+<!--收藏-->
+
+<div class="modal fade" id="moreModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">添加收藏</h4>
+      </div>
+      <div class="modal-body">
+        可在个人中心看到收藏的数据
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">确认收藏</button>
+      </div>
+    </div>
+  </div>
 </div>
