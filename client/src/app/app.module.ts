@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';    //要用表单必须导入这个模块
 import {HttpClientModule} from '@angular/common/http';
-
+//导入编辑器
+import {QuillEditorModule} from'./quill-editor/quill-editor.module';
 //导入组件
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
@@ -112,7 +113,8 @@ import { ProblemComponent } from './personal/problem/problem.component';
     TapersonalRoutingModule,
     SearchRoutingModule,
     PersonalRoutingModule,
-    AppRoutingModule
+    AppRoutingModule,
+    QuillEditorModule
   ],
   providers: [LocalStorageService],
   bootstrap: [AppComponent]
