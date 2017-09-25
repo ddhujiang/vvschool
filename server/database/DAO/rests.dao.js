@@ -8,8 +8,8 @@ var inquire = require("./../inquire/rests.inquire").query;
 
 
 var restsDAO = {
-  hasFollower:function (id,cb) {
-    sqlclient.queries(inquire.hasFollower,[[id],[id]],function (err,results) {
+  hasFollower: function (id, cb) {
+    sqlclient.queries(inquire.hasFollower, [[id], [id]], function (err, results) {
       if (!!err) {
         console.error("addFollower: " + err.message);
         cb("err501");
@@ -35,7 +35,7 @@ var restsDAO = {
     });
   },
   addFollower: function (req, cb) {
-    sqlclient.queries(inquire.addFollower, [[req.ID, req.body.id],[req.ID, req.body.id]], {
+    sqlclient.queries(inquire.addFollower, [[req.ID, req.body.id], [req.ID, req.body.id]], {
       skip: function (i, arg, results) {
         var skip = false;
         switch (i) {
@@ -57,7 +57,7 @@ var restsDAO = {
     });
   },
   deleteFollower: function (req, cb) {
-    sqlclient.queries(inquire.deleteFollower, [[req.ID, req.body.id],[req.ID, req.body.id]], {
+    sqlclient.queries(inquire.deleteFollower, [[req.ID, req.body.id], [req.ID, req.body.id]], {
       skip: function (i, arg, results) {
         var skip = false;
         switch (i) {
@@ -79,8 +79,96 @@ var restsDAO = {
 
     });
   },
+  getFollower: function (id, cb) {
+    pool.getConnection(function (err, client) {
+      if (err) {
+        console.error("getFollower: " + err.message);
+        cb("err501");
+        return;
+      }
+      client.query(inquire.getFollower, [id], function (err, result) {
+        if (!!err) {
+          cb("err501");
+          console.error("getFollower: " + err.message);
+        } else {cb(result);}
+        client.release();
+      });
+    });
+  },
+  getFans: function (id, cb) {
+    pool.getConnection(function (err, client) {
+      if (err) {
+        console.error("getFans: " + err.message);
+        cb("err501");
+        return;
+      }
+      client.query(inquire.getFans, [id], function (err, result) {
+        if (!!err) {
+          cb("err501");
+          console.error("getFans: " + err.message);
+        } else {cb(result);}
+        client.release();
+      });
+    });
+  },
 
-  getCollect:function (id,cb) {
+  isCollect: function (req, cb) {
+    pool.getConnection(function (err, client) {
+      if (err) {
+        console.error("isCollect: " + err.message);
+        cb("err501");
+        return;
+      }
+      client.query(inquire.isCollect, [req.ID, req.body.id], function (err, result) {
+        if (!!err) {
+          cb("err501");
+          console.error("isCollect: " + err.message);
+        } else {cb(result);}
+        client.release();
+      });
+    });
+  },
+  addCollect: function (req, cb) {
+    sqlclient.queries(inquire.addCollect, [[req.ID, req.body.id], [req.ID, req.body.id]], {
+      skip: function (i, arg, results) {
+        var skip = false;
+        switch (i) {
+          case 1:
+            skip = results[0].length !== 0;
+            break;
+        }
+        return skip;
+      }
+    }, function (err, results) {
+      if (!!err) {
+        console.error("addCollect: " + err.message);
+        cb("err501");
+      } else {
+        cb(results);
+      }
+    });
+  },
+  deleteCollect: function (req, cb) {
+    sqlclient.queries(inquire.deleteCollect, [[req.ID, req.body.id], [req.ID, req.body.id]], {
+      skip: function (i, arg, results) {
+        var skip = false;
+        switch (i) {
+          case 1:
+            skip = results[0].length === 0;
+            break;
+        }
+        return skip;
+      }
+    }, function (err, results) {
+      if (!!err) {
+        console.error("deleteCollect: " + err.message);
+        cb("err501");
+      } else {
+        cb(results);
+      }
+    });
+  },
+  getCollect: function (id, cb) {
     pool.getConnection(function (err, client) {
       if (err) {
         console.error("getCollect: " + err.message);
