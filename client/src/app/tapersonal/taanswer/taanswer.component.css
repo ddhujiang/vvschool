@@ -1,0 +1,60 @@
+.comment{
+  background-color: white;
+  margin-top: 10px;
+}
+
+a{
+  text-decoration: none;
+  color: #2f2f2f;
+}
+
+a:hover{
+  color: #51d2b7;
+}
+.read{
+  color: #7a7a7a;
+}
+.read:hover{
+  cursor: pointer;
+  background-color:#51d2b7 ;
+}
+
+.top{
+  margin-top: 10px;
+}
+.til{
+  /*background-color: red;*/
+  margin-left: 5px;
+  font-size: 1.5em;
+}
+.btn_span{
+  margin-left: 10px;
+  font-size: 15px;
+}
+.btm{
+  margin-top: 20px;
+  /*margin-bottom: 20px;*/
+  clear: both;
+  margin-left: 10px;
+  color: #757575;
+}
+
+.btn_com:hover{
+  color: #51d2b7;
+  cursor: pointer;
+}
+
+
+.con{
+  line-height: 1.67;
+  font-size:1.1em;
+  margin-left: 5px;
+}
+
+.main_right{
+  margin-left: 50px;
+}
+
+i:hover{
+  color: #51d2b7;
+}
