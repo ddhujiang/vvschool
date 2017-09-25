@@ -17,33 +17,33 @@ const routes: Routes = [
     component: PersonalComponent,
     children: [
       {
-        path: 'myanswer',
+        path: 'myanswer/:id',
         component: MyanswerComponent
       },
       {
-        path: 'say-card',
+        path: '',
         component:SayCardComponent
       },
       {
-        path: 'follower',
+        path: 'say-card/:id',
+        component:SayCardComponent
+      },
+      {
+        path: 'follower/:id',
         component:FollowerComponent
       },
       {
-        path: 'fans',
+        path: 'fans/:id',
         component:FansComponent
       },{
-        path: 'transpond',
+        path: 'transpond/:id',
         component:TranspondComponent
       },
       {
-        path: 'collect',
+        path: 'collect/:id',
         component:CollectComponent
       },
 
-      {
-        path: '',
-        component:MyanswerComponent
-      }
     ]
   }
 

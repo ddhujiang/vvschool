@@ -2,33 +2,31 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../services/user.service';  //导入服务
 @Component({
-  selector: 'app-collect',
-  templateUrl: './collect.component.html',
-  styleUrls: ['./collect.component.css'],
+  selector: 'app-shpeople',
+  templateUrl: './shpeople.component.html',
+  styleUrls: ['./shpeople.component.css'],
   providers:[UserService]
 })
-export class CollectComponent implements OnInit {
-  user_id:any;
-  userValue:any;
+export class ShpeopleComponent implements OnInit {
+  value:string;
+  serValue:any;
   isAns:boolean=false;
   noAns:boolean=false;
-
-  constructor(private ar:ActivatedRoute,private userSer:UserService) { }
-
+  constructor(private ar:ActivatedRoute,
+              private userSer:UserService,) { }
   ngOnInit() {
     let that=this;
-    that.user_id=that.ar.snapshot.params['id'];
-    that.userSer.getsMyanswer(that.user_id,function (result) {
+    that.value=that.ar.snapshot.params['id'];
+    that.userSer.getsPeople(that.value,function (result) {
       if(result.code=="u200"){
-        that.userValue=result.data;
+        that.serValue=result.data;
         that.isAns=true;
-      }else if(result.code=="u303"){
+      }else if(result.code=="u302"){
         that.noAns=true;
       }else if(result.code=="err601"){
         console.log("逻辑错误")
       }
     })
-
   }
 
 }

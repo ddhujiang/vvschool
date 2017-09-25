@@ -12,9 +12,10 @@ import {IndexService} from '../services/index.service';
 })
 export class IndexComponent implements OnInit {
   user_name:any;
-  // user:any;
+  _profession:any;
+  _title:any;
+  _link:any;
   qus:any;
-  // index:any;
   constructor(
     private router: Router,
     private userSer:UserService,
@@ -45,9 +46,14 @@ export class IndexComponent implements OnInit {
     })
 
   }
-
- toAnswer(){
+   toAnswer(){
    this.router.navigate(['answer']);
  }
+  toQus(_title,_link,_professio){
+     let that=this;
+     that.indexSer.getQus(_title,_link,_professio,function (result) {
+       alert(result);
+     })
+  }
 
 }

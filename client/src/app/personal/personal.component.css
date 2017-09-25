@@ -4,9 +4,14 @@
 .u-img{
   margin-left: 50px;
   float: left;
-  height:100px;
-  width:100px;
-  border-radius:10px;
+  height:168px;
+  width:168px;
+  border:4px solid #fff;
+  border-radius: 8px;
+  top:-74px;
+  color: white;
+  z-index: 5;
+  position: absolute;
 }
 
 /*.left{*/
@@ -20,7 +25,8 @@
   font-size: 1.5em;
   display: inline-block;
   margin-top: 20px;
-  margin-left: 5px;
+  margin-left: 240px;
+  font-weight: 700;
   /*background-color: red;*/
 }
 /*.span-profession{*/
@@ -56,5 +62,35 @@ a{
   top:0;
   left:18px;
 }
-
-
+/*头像上部分 */
+.icon{
+  margin-top:0px;
+  height: 245px;
+}
+.img-icon{
+  height: 160px;
+  width: 160px;
+  border-radius: 4px;
+}
+.icon-photo{
+  height: 132px;
+  background-color: #96A1A9;
+  border-radius: 4px 4px 0 0;
+}
+.icon-photo-bottom{
+  height: 113px;
+  background-color:white;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(0,0,0,.1);
+  border-radius: 0 0 4px 4px;
+}
+/*个人中心头像下半部分*/
+.per-bottom{
+  margin-top: 10px;
+}
+.span-info{
+  margin-left: 240px;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #8590a6;
+}

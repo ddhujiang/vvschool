@@ -1,5 +1,23 @@
-
 <app-nav></app-nav>
-<div *ngFor="let serValue of serValue">
-  {{serValue.question.id}}
+<div class="all" >
+<div style="margin-top: 65px;background-color: white" >
+<div class="col-sm-8 col-sm-offset-1">
+  <ul class="nav nav-tabs" >
+    <li role="presentation" class="active"><a [routerLink]="['./shanswer',value]" routerLinkActive="active">
+      ........相关的问题.......</a></li>
+    <li role="presentation"><a [routerLink]="['./shpeople',value]" routerLinkActive="active">相关用户</a></li>
+    <li role="presentation"><a [routerLink]="['./shdaily',value]" routerLinkActive="active">相关的日常</a></li>
+
+  </ul>
+</div>
+</div>
+<div class="col-sm-8 col-sm-offset-1">
+  <router-outlet>
+  </router-outlet>
+</div>
+
+<!--<div *ngFor="let serValue of serValue" >-->
+  <!--{{serValue.question.id}}-->
+<!--</div>-->
+
 </div>

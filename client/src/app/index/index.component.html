@@ -10,6 +10,7 @@
           <img src="http://localhost:3000/{{_qus.answerer.icon}}" appHover alt="用户头像" class="user_icon">
           <span style="margin-left: 10px;font-size: 1.2em"> {{_qus.answerer.name}}</span>
           <span style="margin-left: 5px;color: #797979"> {{_qus.answerer.describe}}</span>
+
         </p>
 
         <div class="user_profile" apphoverProfile>
@@ -61,7 +62,7 @@
     <!--</button>-->
 
 
-  <!-- Modal -->
+   Modal
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -72,25 +73,86 @@
           <span style="display: block;text-align: center">描述精确的问题更易得到解答</span>
         </div>
 
-        <form class="form-horizontal" #registForm="ngForm">
-          <div class="modal-body">
-            <textarea rows="5" cols="7" style="width:560px;height:50px;" placeholder="请写下问题标题" required></textarea>
+        <!--<form class="form-horizontal" #qusForm="ngForm">-->
+          <!--<div class="modal-body">-->
 
+            <!--<textarea rows="5" cols="7" style="width:560px;height:50px;" placeholder="请写下问题标题" required-->
+                      <!--name="title" [(ngModel)]="_title"     ></textarea>-->
+            <!--<p>请选择专业：</p>-->
+
+            <!--<select class="form-control col-sm-6" name="profession" [(ngModel)]="_profession" >-->
+              <!--<option value="1" selected="selected">管理学</option>-->
+              <!--<option value="2">计算机</option>-->
+              <!--<option value="3">电子工程</option>-->
+              <!--<option value="4">土木工程</option>-->
+              <!--<option value="5">生物学</option>-->
+              <!--<option value="6">原子能</option>-->
+              <!--<option value="7">建筑</option>-->
+              <!--<option value="8">考古学</option>-->
+              <!--<option value="9">环境工程</option>-->
+              <!--<option value="10">食品科学</option>-->
+              <!--<option value="11">英语</option>-->
+              <!--<option value="13">化学工程</option>-->
+              <!--<option value="14">金融学</option>-->
+              <!--<option value="15">数学系</option>-->
+              <!--<option value="16">机械工程</option>-->
+              <!--<option value="17">医学</option>-->
+              <!--<option value="18">地质学</option>-->
+            <!--</select>-->
+
+            <!--<p style="margin-top: 5px">问题描述（可选）：</p>-->
+
+            <!--<textarea rows="5" cols="7" style="width:560px;height:200px;" placeholder="请写下问题内容" required-->
+                      <!--name="link" [(ngModel)]="_link"></textarea>-->
+          <!--</div>-->
+
+          <!--<div class="modal-footer">-->
+            <!--<button type="button" (click)="toQus(registForm)" class="btn btn-success" style="text-align: center">-->
+              <!--提交</button>-->
+          <!--</div>-->
+
+        <!--</form>-->
+
+        <form class="form-horizontal" >
+          <div class="modal-body">
+
+            <textarea rows="5" cols="7" style="width:560px;height:50px;" placeholder="请写下问题标题" required
+                      name="title" [(ngModel)]="_title" ></textarea>
             <p>请选择专业：</p>
-            <select class="form-control">
-              <option value="1" selected="selected">管理系</option>
+
+            <select class="form-control col-sm-6" name="profession" [(ngModel)]="_profession" >
+              <option value="1" selected="selected">管理学</option>
               <option value="2">计算机</option>
+              <option value="3">电子工程</option>
+              <option value="4">土木工程</option>
+              <option value="5">生物学</option>
+              <option value="6">原子能</option>
+              <option value="7">建筑</option>
+              <option value="8">考古学</option>
+              <option value="9">环境工程</option>
+              <option value="10">食品科学</option>
+              <option value="11">英语</option>
+              <option value="13">化学工程</option>
+              <option value="14">金融学</option>
+              <option value="15">数学系</option>
+              <option value="16">机械工程</option>
+              <option value="17">医学</option>
+              <option value="18">地质学</option>
             </select>
 
             <p style="margin-top: 5px">问题描述（可选）：</p>
 
-            <textarea rows="5" cols="7" style="width:560px;height:200px;" placeholder="请写下问题内容" required></textarea>
+            <textarea rows="5" cols="7" style="width:560px;height:200px;" placeholder="请写下问题内容" required
+                      name="link" [(ngModel)]="_link"></textarea>
           </div>
+
           <div class="modal-footer">
-            <button type="button" class="btn btn-success" style="text-align: center">提交</button>
+            <button type="button" (click)="toQus( _title,_link,_profession)" class="btn btn-success" style="text-align: center">
+              提交</button>
           </div>
 
         </form>
+
       </div>
     </div>
   </div>

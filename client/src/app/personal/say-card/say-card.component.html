@@ -1,6 +1,6 @@
 <div class="say_card_component">
   <div class="single_card">
-    <div class="user_icon"><img src="../../../assets/images/user_icon001.jpg"/></div>
+    <div class="user_icon"><img src="../../../assets/images/user_icon001.jpg" style="height: 50px;width: 50px;margin-top:20px;margin-left:10px"></div>
       <div class="othersId">哔哩哔哩智能姬</div>
       <div class="when_where">
         <span>9月12日 22:59 </span>
@@ -12,12 +12,12 @@
         你们有啥快速入睡的好办法咩(ฅ´ω`ฅ) ​​​​
       </div>
       <div class="img_div">
-        <img src="../../../assets/images/post_pic01.jpg"/>
+        <img src="../../../assets/images/post_pic01.jpg" class="daily_content_img">
       </div>
       <div class="interact_part">
-          <div class="interact" id="repost"><i class="fa fa-reply-all" aria-hidden="true"></i> 88</div>
-          <div class="interact middle" id="comment" (click)="comments()"><i class="fa fa-commenting-o" aria-hidden="true"></i> 88</div>
-          <div class="interact" id="like" appLike (click)="like()"><i class="fa fa-thumbs-up" aria-hidden="true"></i>{{like_count}}</div>
+          <div class="interact" id="repost"><i class="fa fa-reply-all" aria-hidden="true"></i>   88次转发</div>
+          <div class="interact middle" id="comment" (click)="comments()"><i class="fa fa-commenting-o" aria-hidden="true"></i>   88次评论</div>
+          <div class="interact" id="like" appLike (click)="like()"><i class="fa fa-thumbs-up" aria-hidden="true"></i>     {{like_count}}</div>
       </div>
   </div>
   <div class="publish_comments" *ngIf="_comment">
