@@ -36,8 +36,25 @@
 
 </div>
 
-<div *ngIf="isTrue">
-  没有评论
+<div *ngIf="isTrue" class="no-comm">
+  <div class="no-comm-top">
+      <h4>评论</h4>
+  </div>
+  <div class="all-comm">
+    <div class="new-comm">
+      <div>
+      <img src="https://pic1.zhimg.com/da8e974dc_s.jpg" alt="" class="comm-img">
+        <span class="comm-username">季安</span>
+        <span class="comm-time">23小时前</span>
+      </div>
+      <div class="comm-content">
+        一直很好
+      </div>
+    </div>
+  </div>
+  <div style="height: 50px">
+  <input type="text" class="comm-input" placeholder="写下你的评论"><input type="button" class="btn-comm" value="评论">
+  </div>
   <!--<app-publish-comments></app-publish-comments>-->
   <div  *ngIf="isComment">
 
