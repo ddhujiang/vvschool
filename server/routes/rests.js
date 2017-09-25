@@ -10,66 +10,142 @@ var db = require("./../database/DAO/rests.dao").restsDAO;
 var _token = require("./../tool/token");
 
 /*关注*/
-router.post("/hasFollower",function (req, res, next) {
-  if(req.body.id){
-    db.hasFollower(req.body.id,function (result) {
+router.post("/hasFollower", function (req, res, next) {
+  if (req.body.id) {
+    db.hasFollower(req.body.id, function (result) {
       if (result === "err501") {res.json({"code": result});}
       else {
-        res.json({"follower":result[0][0]["att"],"fans":result[1][0]["by_att"]});
+        res.json({"follower": result[0][0]["att"], "fans": result[1][0]["by_att"]});
       }
-    })
+    });
   } else {res.json({"code": "err601"});}
 });
-router.post("/isFollower",_token.power,function (req, res, next) {
-  if(req.body.id){
-    db.isFollower(req,function (result) {
+router.post("/isFollower", _token.power, function (req, res, next) {
+  if (req.body.id) {
+    db.isFollower(req, function (result) {
       if (result === "err501") {res.json({"code": result});}
       else {
-        res.json({"code":result.length?"r901":"r904"});
+        res.json({"code": result.length ? "r901" : "r904"});
       }
-    })
+    });
   } else {res.json({"code": "err601"});}
 });
-router.post("/addFollower",_token.power,function (req, res, next) {
-  if(req.body.id){
-    db.addFollower(req,function (result) {
+router.post("/addFollower", _token.power, function (req, res, next) {
+  if (req.body.id) {
+    db.addFollower(req, function (result) {
       if (result === "err501") {res.json({"code": result});}
       else {
-        if(!result[0].length){
-          res.json({"code":result[1].affectedRows===1? "r200":"r404"});
-        }else {
+        if (!result[0].length) {
+          res.json({"code": result[1].affectedRows === 1 ? "r200" : "r404"});
+        } else {
           res.json({"code": "r901"});
         }
       }
-    })
+    });
   } else {res.json({"code": "err601"});}
 });
-router.post("/deleteFollower",_token.power,function (req, res, next) {
-  if(req.body.id){
-    db.deleteFollower(req,function (result) {
+router.post("/deleteFollower", _token.power, function (req, res, next) {
+  if (req.body.id) {
+    db.deleteFollower(req, function (result) {
       if (result === "err501") {res.json({"code": result});}
       else {
-        if(result[0].length){
-          res.json({"code":result[1].affectedRows===1? "r200":"r404"});
-        }else {
+        if (result[0].length) {
+          res.json({"code": result[1].affectedRows === 1 ? "r200" : "r404"});
+        } else {
           res.json({"code": "r904"});
         }
       }
-    })
+    });
   } else {res.json({"code": "err601"});}
+});
+router.post("/getFollower", _token.power, function (req, res, next) {
+  db.getFollower(req.ID, function (result) {
+    if (result === "err501") {res.json({"code": result});}
+    else {
+      if (!result.length) {res.json({"code": "r904"}); }
+      else {
+        var arr = [];
+        for (var i in result) {
+          arr.push({
+            "id": result[i].user_id,
+            "name": result[i].user_nickname,
+            "describe": result[i].user_self,
+            "profession": result[i].profession_name,
+            "icon": result[i].user_icon_path ? "static/" + result[i].user_icon_path : "static/icon.default.png"
+          });
+        }
+        res.json({"code":"r200","data":arr});
+      }
+    }
+  });
+});
+router.post("/getFans", _token.power, function (req, res, next) {
+  db.getFans(req.ID, function (result) {
+    if (result === "err501") {res.json({"code": result});}
+    else {
+      if (!result.length) {res.json({"code": "r904"}); }
+      else {
+        var arr = [];
+        for (var i in result) {
+          arr.push({
+            "id": result[i].user_id,
+            "name": result[i].user_nickname,
+            "describe": result[i].user_self,
+            "profession": result[i].profession_name,
+            "icon": result[i].user_icon_path ? "static/" + result[i].user_icon_path : "static/icon.default.png"
+          });
+        }
+        res.json({"code":"r200","data":arr});
+      }
+    }
+  });
 });
 
 /*收藏*/
-router.post("/isCollect",function (req,res,next) {
-
+router.post("/isCollect", _token.power, function (req, res, next) {
+  if (req.body.id) {
+    db.isCollect(req, function (result) {
+      if (result === "err501") {res.json({"code": result});}
+      else {
+        res.json({"code": result.length ? "r901" : "r904"});
+      }
+    });
+  } else {res.json({"code": "err601"});}
 });
-
-router.post("/getCollect",_token.power,function (req, res, next) {
-  db.getCollect(req.ID,function (result) {
+router.post("/addCollect", _token.power, function (req, res, next) {
+  if (req.body.id) {
+    db.addCollect(req, function (result) {
+      if (result === "err501") {res.json({"code": result});}
+      else {
+        if (!result[0].length) {
+          res.json({"code": result[1].affectedRows === 1 ? "r200" : "r404"});
+        } else {
+          res.json({"code": "r901"});
+        }
+      }
+    });
+  } else {res.json({"code": "err601"});}
+});
+router.post("/deleteCollect", _token.power, function (req, res, next) {
+  if (req.body.id) {
+    db.deleteCollect(req, function (result) {
+      if (result === "err501") {res.json({"code": result});}
+      else {
+        if (result[0].length) {
+          res.json({"code": result[1].affectedRows === 1 ? "r200" : "r404"});
+        } else {
+          res.json({"code": "r904"});
+        }
+      }
+    });
+  } else {res.json({"code": "err601"});}
+});
+router.post("/getCollect", _token.power, function (req, res, next) {
+  db.getCollect(req.ID, function (result) {
     console.log(result);
     if (result === "err501") {res.json({"code": result});}
     else {
-      if (!result.length) {res.json({"code": "q302"}); }
+      if (!result.length) {res.json({"code": "r303"}); }
       else {
         var arr = [];
         for (var i in result) {
@@ -79,13 +155,13 @@ router.post("/getCollect",_token.power,function (req, res, next) {
               "name": result[i].user_nickname,
               "describe": result[i].user_self,
               "profession": result[i].profession_name,
-              "icon":  "static/" + (result[i].user_icon_path ?result[i].user_icon_path : "icon.default.png")
+              "icon": "static/" + (result[i].user_icon_path ? result[i].user_icon_path : "icon.default.png")
             },
             "question": {
               "id": result[i].prob_id,
               "title": result[i].prob_title,
               "link": result[i].prob_content,
-              "time":moment() - moment(result[i].prob_time, moment.ISO_8601) > 259200000
+              "time": moment() - moment(result[i].prob_time, moment.ISO_8601) > 259200000
                 ? moment(result[i].prob_time).format("YYYY年MMMDo,dddd,h:mm:ss")
                 : moment(result[i].prob_time, moment.ISO_8601).fromNow()
             },
@@ -104,11 +180,51 @@ router.post("/getCollect",_token.power,function (req, res, next) {
             }
           });
         }
-        res.json({"code": "q200", "data": arr});
+        res.json({"code": "r200", "data": arr});
       }
     }
-  })
+  });
 });
+
+/*转发*/
+/*router.post("/isTranspond", _token.power, function (req, res, next) {
+  if (req.body.id) {
+    db.isTranspond(req, function (result) {
+      if (result === "err501") {res.json({"code": result});}
+      else {
+        res.json({"code": result.length ? "r901" : "r904"});
+      }
+    });
+  } else {res.json({"code": "err601"});}
+});
+router.post("/addTranspond", _token.power, function (req, res, next) {
+  if (req.body.id) {
+    db.addCollect(req, function (result) {
+      if (result === "err501") {res.json({"code": result});}
+      else {
+        if (!result[0].length) {
+          res.json({"code": result[1].affectedRows === 1 ? "r200" : "r404"});
+        } else {
+          res.json({"code": "r901"});
+        }
+      }
+    });
+  } else {res.json({"code": "err601"});}
+});
+router.post("/deleteTranspond", _token.power, function (req, res, next) {
+  if (req.body.id) {
+    db.deleteCollect(req, function (result) {
+      if (result === "err501") {res.json({"code": result});}
+      else {
+        if (result[0].length) {
+          res.json({"code": result[1].affectedRows === 1 ? "r200" : "r404"});
+        } else {
+          res.json({"code": "r904"});
+        }
+      }
+    });
+  } else {res.json({"code": "err601"});}
+});*/
 
 module.exports = router;
 

@@ -12,7 +12,39 @@ exports.query = {
     "select att_id from attention where attention.att_peo=? and attention.att_by_peo=?",
     "delete from attention where att_peo=? and att_by_peo=?"
   ],
+  getFollower:"select ic.user_id,ic.user_icon_path,pro.profession_name,info.user_nickname,info.user_self\n" +
+  "from view_icon ic \n" +
+  "join user_info info \n" +
+  "join attention att \n" +
+  "join user u\n" +
+  "join profession pro\n" +
+  "on att.att_by_peo=info.user_id\n" +
+  "and u.profession_id=pro.profession_id\n" +
+  "and u.user_id=att.att_by_peo\n" +
+  "and att.att_by_peo=ic.user_id\n" +
+  "and  att.att_peo=?",
+  getFans:"select ic.user_id,ic.user_icon_path,info.user_nickname,info.user_self,pro.profession_name\n" +
+  "from view_icon ic \n" +
+  "join user_info info \n" +
+  "join attention att \n" +
+  "join user u\n" +
+  "join profession pro\n" +
+  "on att.att_peo=info.user_id\n" +
+  "and u.profession_id=pro.profession_id\n" +
+  "and u.user_id=att.att_by_peo\n" +
+  "and att.att_peo=ic.user_id\n" +
+  "and  att.att_by_peo=?",
 
+  isCollect:"select coll.collect_id from collect coll join answer a on coll.user_col_id=? and coll.answer_id=?\n" +
+  "GROUP BY coll.collect_id",
+  addCollect:[
+    "select coll.collect_id from collect coll join answer a on coll.user_col_id=? and coll.answer_id=? GROUP BY coll.collect_id",
+    "INSERT into collect(user_col_id,answer_id,col_time) VALUES(?,?,NOW())"
+  ],
+  deleteCollect:[
+    "select coll.collect_id from collect coll join answer a on coll.user_col_id=? and coll.answer_id=? GROUP BY coll.collect_id",
+    "delete from collect where user_col_id=? and answer_id=?"
+  ],
   getCollect:"select p.prob_id,p.prob_content,p.prob_time,a.answer_id,a.ans_time,a.user_ans_id,icon.user_icon_path,max(icon.user_icon_id) ic_id,prof.profession_name,info.user_nickname,info.user_self,p.prob_title,a.ans_content,comm.sumcm,a.like_num,sumt,sumc \n" +
   "from profession prof \n" +
   "join user u\n" +
