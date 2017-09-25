@@ -224,7 +224,62 @@ router.post("/like",_token.power,function (req, res, next) {
   } else {res.json({"code": "err601"});}
 });
 
+/*回答*/
+router.post("/reply",_token.power,function (req, res, next) {
+  if(req.body.link){
+    db.addReply(req, function (result) {
+      if (result === "err501") {res.json({"code": result});}
+      else {
+        res.json({"code": result});
+      }
+    });
+  } else {res.json({"code": "err601"});}
+});
 
+/*评论*/
+router.post("/comment",function (req, res, next) {
+  if(req.body.id){
+    db.getCommentByAnsId(req, function (result) {
+      if (result === "err501") {res.json({"code": result});}
+      else {
+        if (!result.length) {res.json({"code": "q302"}); }
+        else {
+          var arr = [];
+          for (var i in result) {
+            arr.push({
+              "commenter": {
+                "id": result[i].user_id,
+                "name": result[i].user_nickname,
+                "describe": result[i].user_self,
+                "icon": result[i].user_icon_path ? "static/" + result[i].user_icon_path : "static/icon.default.png"
+              },
+              "comment": {
+                "id": result[i].comm_id,
+                "link": result[i].comm_content,
+                "time": moment() - moment(result[i].comm_time, moment.ISO_8601) > 259200000
+                  ? moment(result[i].comm_time).format("YYYY年MMMDo,dddd,h:mm:ss")
+                  : moment(result[i].comm_time, moment.ISO_8601).fromNow()
+              }
+            });
+          }
+          res.json({"code": "q207", "data": arr});
+        }
+      }
+    });
+  } else {res.json({"code": "err601"});}
+});
+
+/*评论回答*/
+router.post("/setComment",_token.power,function (req, res, next) {
+  if(req.body.link&&req.body.id){
+    db.addComment(req, function (result) {
+      if (result === "err501") {res.json({"code": result});}
+      else {
+        res.json({"code": result});
+      }
+    });
+  } else {res.json({"code": "err601"});}
+});
 
 module.exports = router;
 

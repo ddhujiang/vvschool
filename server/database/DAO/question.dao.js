@@ -81,44 +81,106 @@ var questionDAO = {
       });
     });
   },
-  setQuestion:function (req,cb) {
+  setQuestion: function (req, cb) {
     pool.getConnection(function (err, client) {
       if (err) {
         console.error("setQuestion: " + err.message);
         cb("err501");
         return;
       }
-      client.query(inquire.setQuestion, [req.ID,req.body.title,req.body.profession,req.body.link], function (err, result) {
+      client.query(inquire.setQuestion, [req.ID, req.body.title, req.body.profession, req.body.link], function (err, result) {
         if (err) {
           cb("err501");
           console.error("setQuestion: " + err.message);
           return;
         }
-        if(result.affectedRows===1){
+        if (result.affectedRows === 1) {
           cb("q200");
-        }else {
+        } else {
           cb("q404");
         }
         client.release();
       });
     });
   },
-  addLikeNum:function (req,cb) {
+  addLikeNum: function (req, cb) {
     pool.getConnection(function (err, client) {
       if (err) {
         console.error("addLikeNum: " + err.message);
         cb("err501");
         return;
       }
-      client.query(inquire.addLikeNum, [req.body.value<0?-1:1,req.body.id], function (err, result) {
+      client.query(inquire.addLikeNum, [req.body.value < 0 ? -1 : 1, req.body.id], function (err, result) {
         if (err) {
           cb("err501");
           console.error("addLikeNum: " + err.message);
           return;
         }
-        if(result.affectedRows===1){
+        if (result.affectedRows === 1) {
           cb("q201");
-        }else {
+        } else {
+          cb("q404");
+        }
+        client.release();
+      });
+    });
+  },
+  addReply: function (req, cb) {
+    pool.getConnection(function (err, client) {
+      if (err) {
+        console.error("addReply: " + err.message);
+        cb("err501");
+        return;
+      }
+      client.query(inquire.addReply, [req.ID, req.body.id, req.body.link], function (err, result) {
+        if (err) {
+          cb("err501");
+          console.error("addReply: " + err.message);
+          return;
+        }
+        if (result.affectedRows === 1) {
+          cb("q208");
+        } else {
+          cb("q404");
+        }
+        client.release();
+      });
+    });
+  },
+  getCommentByAnsId: function (req, cb) {
+    pool.getConnection(function (err, client) {
+      if (err) {
+        console.error("addReply: " + err.message);
+        cb("err501");
+        return;
+      }
+      client.query(inquire.getCommentByAnsId, [req.body.id, req.body.link], function (err, results) {
+        if (err) {
+          cb("err501");
+          console.error("getCommentByAnsId: " + err.message);
+          return;
+        }
+        cb(results);
+        client.release();
+      });
+    });
+  },
+  addComment:function (req, cb) {
+    pool.getConnection(function (err, client) {
+      if (err) {
+        console.error("addComment: " + err.message);
+        cb("err501");
+        return;
+      }
+      client.query(inquire.addComment, [req.ID, req.body.id, req.body.link], function (err, result) {
+        if (err) {
+          cb("err501");
+          console.error("addComment: " + err.message);
+          return;
+        }
+        if (result.affectedRows === 1) {
+          cb("q207");
+        } else {
           cb("q404");
         }
         client.release();

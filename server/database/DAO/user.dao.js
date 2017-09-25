@@ -31,7 +31,6 @@ var userDAO = {
       if (result !== "err501" && !result.length) {
         // icon.default.png
         sqlclient.queries(inquire.addUser, [[info.user_id, info.user_tel, info.user_pwd, info.school_id, info.profession_id], [info.user_id, "icon.default.png"]], function (err, results) {
-          console.log(results);
           if (!!err) {
             console.error("addUser: " + err.message);
             cb({"code": "err501"});
@@ -135,7 +134,6 @@ var userDAO = {
           console.error("getAnswerByUId: " + err.message);
           return;
         }
-        console.log(result);
         cb(result);
         client.release();
       });

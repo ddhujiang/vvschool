@@ -12,6 +12,7 @@ var users = require("./routes/users");
 var api = require("./routes/api");
 var question = require("./routes/question");
 var everyday = require("./routes/everyday");
+var rests = require("./routes/rests");
 
 
 var app = express();
@@ -43,6 +44,7 @@ app.use("/users", users);
 app.use("/api", api);
 app.use("/question", question);
 app.use("/everyday", everyday);
+app.use("/rests", rests);
 // app.use('/register',register);
 
 

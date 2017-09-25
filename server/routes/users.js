@@ -87,7 +87,7 @@ router.get("/data", _token.power, function (req, res, next) {
             "code": "u200", "data": extendParameters({
               "id": req.ID,
               "name": result[0].user_nickname,
-              "icon": "static/" + result[0].user_icon_path ? result[0].user_icon_path : "icon.default.png"
+              "icon": "static/" + (result[0].user_icon_path ? result[0].user_icon_path : "icon.default.png")
             }, defaults)
           });
         }
@@ -121,7 +121,7 @@ router.post("/info", function (req, res, next) {
         data = extendParameters({
           "name": results[0][0]["user_nickname"],
           "describe": results[0][0]["user_self"],
-          "icon": "static/" + results[0][0]["user_icon_path"] ? results[0][0]["user_icon_path"] : "icon.default.png"
+          "icon": "static/" + (results[0][0]["user_icon_path"] ? results[0][0]["user_icon_path"] : "icon.default.png")
         }, defaults);
       } else {
         data = extendParameters({}, defaults);
@@ -153,7 +153,7 @@ router.post("/search", function (req, res, next) {
                 "name": result[i].user_nickname,
                 "describe": result[i].user_self,
                 "profession": result[i].profession_name,
-                "icon": result[i].user_icon_path ? "static/" + result[i].user_icon_path : "static/icon.default.png"
+                "icon": "static/"+(result[i].user_icon_path ?  + result[i].user_icon_path : "icon.default.png")
               }
             });
           }

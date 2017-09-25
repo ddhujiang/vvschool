@@ -92,8 +92,26 @@ exports.query = {
 
   addLikeNum:"update answer a\n" +
   " set a.like_num=a.like_num+(?)\n" +
-  " where a.answer_id=?"
+  " where a.answer_id=?",
 
+  addReply:"INSERT INTO answer (user_ans_id,prob_id,ans_content,ans_time,like_num) values(?,?,?,now(),'0')",
+
+  getCommentByAnsId:"select icon.user_icon_path,info.user_nickname,u.user_id,info.user_self,comm.comm_content,comm.comm_time,comm.comm_id\n" +
+  "from view_icon icon \n" +
+  "join user_info info\n" +
+  "join user u\n" +
+  "join comment comm\n" +
+  "join answer a\n" +
+  "join profession prof\n" +
+  "where a.answer_id=comm.answer_id\n" +
+  "and comm.user_comm_id=u.user_id\n" +
+  "and u.profession_id=prof.profession_id\n" +
+  "and icon.user_id=comm.user_comm_id\n" +
+  "and info.user_id=comm.user_comm_id\n" +
+  "and a.answer_id=? \n" +
+  "order by comm.comm_time desc",
+
+  addComment:"INSERT INTO comment (user_comm_id,answer_id,comm_content,comm_time) values(?,?,?,now())",
 };
 
 

@@ -27,7 +27,7 @@ var token = {
 };
 /*测试数据*/
 console.log(token.jwtEn({
-  iss:"10002",
+  iss:"kkkk",
   exp:moment().add(1,"y").valueOf()
 }));
 module.exports = token;
