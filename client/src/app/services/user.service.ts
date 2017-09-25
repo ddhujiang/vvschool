@@ -56,6 +56,20 @@ export class UserService {
     )
   }
 
+  getTainfo(ID,callback) {
+    this.http.post(this.url + '/info', {"ID":ID}).subscribe(
+      function (result) {
+        callback(result);
+      }, function (error) {
+        console.log(error.message);
+      }
+    )
+  }
+
+
+
+
+
   getsPeople(keyword,callback) {
     this.http.post(this.url + '/search', {"keyword": keyword}).subscribe(function (result) {
         console.log(result);

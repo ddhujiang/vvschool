@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';               //导入路由模块
 import {UserService} from '../services/user.service';  //导入服务
 import {IndexService} from '../services/index.service';
-// import {LocalStorageService} from '../services/local-storage.service'
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
@@ -20,7 +19,6 @@ export class IndexComponent implements OnInit {
     private router: Router,
     private userSer:UserService,
     private indexSer:IndexService
-    // private localstorage:LocalStorageService
   ) {}
 
 
@@ -49,10 +47,9 @@ export class IndexComponent implements OnInit {
    toAnswer(){
    this.router.navigate(['answer']);
  }
-  toQus(_title,_link,_professio){
+  toQus(_title,_link,_profession){
      let that=this;
-     that.indexSer.getQus(_title,_link,_professio,function (result) {
-       alert(result);
+     that.indexSer.getQus(_title,_link,_profession,function (result) {
      })
   }
 

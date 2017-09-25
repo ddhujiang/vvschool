@@ -114,3 +114,7 @@
   color: white;
 }
 
+.totaper:hover{
+  color:#51d2b7 ;
+  cursor: pointer;
+}

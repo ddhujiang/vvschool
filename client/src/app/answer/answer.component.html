@@ -1,3 +1,26 @@
-<p>
-  answer works!
-</p>
+<div class="setcss">
+  <div class="row">
+    <app-nav></app-nav>
+  </div>
+  <div class="row col-md-7 col-md-offset-2 col-lg-6  main_set">
+    <nav class="nav">
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="active"  appAnswerNavClick>
+          <a routerLink="./recommend" routerLinkActive="active">为你推荐</a>
+        </li>
+        <li role="presentation" appAnswerNavClick>
+          <a routerLink="./hot" routerLinkActive="active">全校热门</a>
+        </li>
+        <li role="presentation" appAnswerNavClick>
+          <a routerLink="./invite" routerLinkActive="active">邀请回答</a>
+        </li>
+      </ul>
+    </nav>
+    <router-outlet>
+
+    </router-outlet>
+  </div>
+  <div class="fullwhite">
+
+  </div>
+</div>

@@ -27,4 +27,14 @@ export class IndexService {
       })
   }
 
+  getComment(id,callback){
+    this.http.post(this.url + '/comment',{"id":id}).subscribe(function (result) {
+        console.log(result);
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      })
+  }
+
 }

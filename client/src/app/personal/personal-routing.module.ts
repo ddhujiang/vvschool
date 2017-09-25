@@ -9,6 +9,7 @@ import { FollowerComponent } from './follower/follower.component';
 import { FansComponent } from './fans/fans.component';
 import { TranspondComponent } from './transpond/transpond.component';
 import { CollectComponent } from './collect/collect.component';
+import { ProblemComponent } from './problem/problem.component';
 
 const routes: Routes = [
 
@@ -21,8 +22,12 @@ const routes: Routes = [
         component: MyanswerComponent
       },
       {
+        path: 'problem/:id',
+        component: ProblemComponent
+      },
+      {
         path: '',
-        component:SayCardComponent
+        component:MyanswerComponent
       },
       {
         path: 'say-card/:id',
