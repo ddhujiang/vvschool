@@ -25,7 +25,7 @@ var upload = multer({
 var fileUpload = {
   upload: multer({storage: storage}),
   icon: upload.single("icon"),
-  photo: upload.array("photo", 9),
+  photo: upload.array("image", 9),
   files: upload.array("file")
 };
 

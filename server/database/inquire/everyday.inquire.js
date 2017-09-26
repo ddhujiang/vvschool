@@ -17,7 +17,11 @@ exports.query = {
   "GROUP BY dy.dynamic_id\n" +
   "order by dy.dy_time desc",
   setEDay:"insert into dynamic(user_id,dy_content,dy_time,like_num) VALUES(?,?,NOW(),0)",
-
+  deleteEDay:[
+    "delete from dcomment where dynamic_id=?",
+    "delete from dtranspond where dynamic_id=?",
+    "delete from dynamic where dynamic_id=? and user_id=?"
+  ],
   getCommentById:"select dcom.user_comm_id,ic.user_icon_path,info.user_nickname,info.user_self,dcom.comm_content,dcom.comm_time ,dcom.comm_id\n" +
   "from view_icon ic \n" +
   "join user_info info \n" +
@@ -29,7 +33,8 @@ exports.query = {
   "and dy.dynamic_id=?\n" +
   "order by dcom.comm_time desc",
 
-  setComment:"insert into dcomment(user_comm_id,dynamic_id,comm_content,comm_time) VALUES(?,?,?,NOW())"
-
+  setComment:"insert into dcomment(user_comm_id,dynamic_id,comm_content,comm_time) VALUES(?,?,?,NOW())",
+  deleteComBySelf:"delete from dcomment where comm_id=? and user_comm_id=?",
+  deleteComById:"delete from dcomment where comm_id=?"
 }
 

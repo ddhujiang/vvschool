@@ -1,3 +1,5 @@
+var fs = require("fs");
+var path = require("path");
 var fileUp = require("./../configs/fileUpload.config");
 /*express*/
 var express = require("express");
@@ -35,7 +37,7 @@ router.post("/iconUpload", _token.power, function (req, res) {
       db.iconUpload(req, function (result) {
         if (result === "err501") {res.json({"code": result});}
         else {
-          res.json({"code": "f200", "src": "/static/"+req.file.filename});
+          res.json({"code": "f200", "src": "/static/" + req.file.filename});
           console.log(result);
         }
       });
@@ -71,7 +73,6 @@ router.post("/photoUpload", function (req, res) {
       res.json({"code": "f200", "src": src});
       // res.json({"code": req.files});
     }
-    console.log(req.files);
   });
 });
 
@@ -107,4 +108,10 @@ router.post("/files", function (req, res) {
   });
 });
 
+/*删除上传图片*/
+router.post("/deleteFile", function (req, res) {
+  fs.unlink(path.join(__dirname, "../public/uploads", req.body.name.substring(7)), function () {
+    res.json({"code": 200});
+  });
+});
 module.exports = router;
