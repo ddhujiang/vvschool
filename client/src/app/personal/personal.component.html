@@ -1,6 +1,5 @@
 <div class="contain">
   <app-nav [_user]="user_name"></app-nav>
-
   <div class="row icon">
       <div class="col-sm-10 col-sm-offset-1 icon">
         <div class="icon-photo">
@@ -15,13 +14,23 @@
           <div class="span-info">{{info.describe}}</div>
           </div>
         </div>
-
       </div>
+
+
   </div>
 
   <div class="row per-bottom"   >
     <div class=" col-sm-3 col-sm-offset-1">
       <ul class="list-group ">
+
+        <a [routerLink]="['./collect']" routerLinkActive="active">
+          <li class="list-group-item">
+            <i class="fa fa-fire" aria-hidden="true"></i>
+            <span class="badge">20</span>
+            我的收藏
+          </li>
+        </a>
+
         <a [routerLink]="['./myanswer',user_id]" routerLinkActive="active">
           <li class="list-group-item">
             <i class="fa fa-adjust" aria-hidden="true"></i>
@@ -44,24 +53,18 @@
           我的提问
         </li>
         </a>
-        <a [routerLink]="['./collect',user_id]" routerLinkActive="active">
-        <li class="list-group-item">
-          <i class="fa fa-fire" aria-hidden="true"></i>
-          <span class="badge">20</span>
-          我的收藏
-        </li>
-        </a>
-        <a [routerLink]="['./follower',user_id]" routerLinkActive="active">
+
+        <a [routerLink]="['./follower']" routerLinkActive="active">
         <li class="list-group-item" >
           <i class="fa fa-asterisk" aria-hidden="true"></i>
-          <span class="badge">||</span>
+          <span class="badge">{{number.follower}}</span>
           我的关注
         </li>
         </a>
-        <a [routerLink]="['./fans',user_id]" routerLinkActive="active">
+        <a [routerLink]="['./fans']" routerLinkActive="active">
         <li class="list-group-item" >
           <i class="fa fa-asterisk" aria-hidden="true"></i>
-          <span class="badge">||</span>
+          <span class="badge">{{number.fans}}</span>
           我的粉丝
         </li>
         </a>

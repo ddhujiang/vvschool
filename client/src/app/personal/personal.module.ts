@@ -8,7 +8,6 @@ import {SayCardComponent} from './say-card/say-card.component';
 import { MyanswerComponent } from './myanswer/myanswer.component';
 import { FollowerComponent } from './follower/follower.component';
 import { FansComponent } from './fans/fans.component';
-import { TranspondComponent } from './transpond/transpond.component';
 import { CollectComponent } from './collect/collect.component';
 import { ProblemComponent } from './problem/problem.component';
 
@@ -25,7 +24,6 @@ import {PersonalRoutingModule} from './personal-routing.module';
     MyanswerComponent,
     FollowerComponent,
     FansComponent,
-    TranspondComponent,
     CollectComponent,
     ProblemComponent
   ],

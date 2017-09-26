@@ -7,7 +7,6 @@ import {SayCardComponent} from './say-card/say-card.component';
 import { MyanswerComponent } from './myanswer/myanswer.component';
 import { FollowerComponent } from './follower/follower.component';
 import { FansComponent } from './fans/fans.component';
-import { TranspondComponent } from './transpond/transpond.component';
 import { CollectComponent } from './collect/collect.component';
 import { ProblemComponent } from './problem/problem.component';
 
@@ -27,25 +26,22 @@ const routes: Routes = [
       },
       {
         path: '',
-        component:MyanswerComponent
+        component:CollectComponent
       },
       {
         path: 'say-card/:id',
         component:SayCardComponent
       },
       {
-        path: 'follower/:id',
+        path: 'follower',
         component:FollowerComponent
       },
       {
-        path: 'fans/:id',
+        path: 'fans',
         component:FansComponent
-      },{
-        path: 'transpond/:id',
-        component:TranspondComponent
       },
       {
-        path: 'collect/:id',
+        path: 'collect',
         component:CollectComponent
       },
 
