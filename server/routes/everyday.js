@@ -58,6 +58,13 @@ router.post("/setEDay", _token.power, function (req, res, next) {
     });
   } else {res.json({"code": "err601"});}
 });
+router.post("/deleteEDay",_token.power,function (req, res, next) {
+  if (req.body.id) {
+    db.deleteEDay(req, function (result) {
+      res.json({"code": result});
+    });
+  } else {res.json({"code": "err601"});}
+});
 router.post("/getCommentById", function (req, res, next) {
   if (req.body.id) {
     db.getCommentById(req.body.id, function (result) {
@@ -92,6 +99,20 @@ router.post("/getCommentById", function (req, res, next) {
 router.post("/setComment", _token.power, function (req, res, next) {
   if (req.body.link) {
     db.setComment(req, function (result) {
+      res.json({"code": result});
+    });
+  } else {res.json({"code": "err601"});}
+});
+router.post("/deleteComBySelf", _token.power, function (req, res, next) {
+  if (req.body.id) {
+    db.deleteComBySelf(req, function (result) {
+      res.json({"code": result});
+    });
+  } else {res.json({"code": "err601"});}
+});
+router.post("/deleteComById", function (req, res, next) {
+  if (req.body.id) {
+    db.deleteComById(req.body.id, function (result) {
       res.json({"code": result});
     });
   } else {res.json({"code": "err601"});}

@@ -58,8 +58,8 @@ router.post("/deleteFollower", _token.power, function (req, res, next) {
     });
   } else {res.json({"code": "err601"});}
 });
-router.post("/getFollower", _token.power, function (req, res, next) {
-  db.getFollower(req.ID, function (result) {
+router.post("/getFollower",  function (req, res, next) {
+  db.getFollower(req.body.id, function (result) {
     if (result === "err501") {res.json({"code": result});}
     else {
       if (!result.length) {res.json({"code": "r904"}); }
@@ -79,8 +79,8 @@ router.post("/getFollower", _token.power, function (req, res, next) {
     }
   });
 });
-router.post("/getFans", _token.power, function (req, res, next) {
-  db.getFans(req.ID, function (result) {
+router.post("/getFans", function (req, res, next) {
+  db.getFans(req.body.id, function (result) {
     if (result === "err501") {res.json({"code": result});}
     else {
       if (!result.length) {res.json({"code": "r904"}); }
@@ -142,7 +142,6 @@ router.post("/deleteCollect", _token.power, function (req, res, next) {
 });
 router.post("/getCollect", _token.power, function (req, res, next) {
   db.getCollect(req.ID, function (result) {
-    console.log(result);
     if (result === "err501") {res.json({"code": result});}
     else {
       if (!result.length) {res.json({"code": "r303"}); }
