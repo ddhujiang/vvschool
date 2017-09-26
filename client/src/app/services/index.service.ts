@@ -16,9 +16,14 @@ export class IndexService {
         console.log(error.message);
       })
   }
-  getQus(title,link,profession,callback){
+
+  getQus(title,link,profession,callback) {
     let _head = new HttpHeaders({token: this.ls.get('token')});
-    this.http.post(this.url + '/put',{"title":title,"link":link,"profession":profession},{headers: _head}).subscribe(function (result) {
+    this.http.post(this.url + '/put', {
+      "title": title,
+      "link": link,
+      "profession": profession
+    }, {headers: _head}).subscribe(function (result) {
         console.log(result);
         callback(result);
       },
@@ -29,6 +34,27 @@ export class IndexService {
 
   getComment(id,callback){
     this.http.post(this.url + '/comment',{"id":id}).subscribe(function (result) {
+        console.log(result);
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      })
+  }
+  putComment(id,link,callback){
+    let _head = new HttpHeaders({token: this.ls.get('token')});
+    this.http.post(this.url + '/reply',{"id":id,"link":link},{headers: _head}).subscribe(function (result) {
+        console.log(result);
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      })
+  }
+
+  putCom(id,link,callback){
+    let _head = new HttpHeaders({token: this.ls.get('token')});
+    this.http.post(this.url + '/setComment',{"id":id,"link":link},{headers: _head}).subscribe(function (result) {
         console.log(result);
         callback(result);
       },

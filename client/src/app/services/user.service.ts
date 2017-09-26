@@ -34,8 +34,6 @@ export class UserService {
 
   getAllUser(callback) {
     let _head = new HttpHeaders({token: this.ls.get('token')});
-    // let param=new HttpParams().set('id','001');
-    // console.log(this.ls.get('token'));
     this.http.get(this.url + '/data',{headers: _head} ).subscribe(
       function (result) {
         console.log(result);
@@ -81,6 +79,8 @@ export class UserService {
       })
   }
 
+
+
   getsMyanswer(id,callback) {
     this.http.post(this.url + '/answer', {"id": id}).subscribe(function (result) {
         console.log(result);
@@ -92,5 +92,17 @@ export class UserService {
       })
   }
 
+
+
+
+  getsMyqus(id,callback) {
+    this.http.post(this.url + '/question', {"id": id}).subscribe(function (result) {
+        console.log(result);
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      })
+  }
 
 }
