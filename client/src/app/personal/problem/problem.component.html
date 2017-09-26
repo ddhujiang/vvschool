@@ -1,3 +1,20 @@
-<p>
-  problem works!
-</p>
+<div *ngIf="noAns">
+  <p class="noMore">
+    ...........没有提问............
+  </p>
+</div>
+
+<div *ngIf="isAns">
+  <div *ngFor="let _qus of userValue" >
+    <div class="comment" style="padding:10px" >
+      <p class="til" (click)="toqus()">
+        <a [routerLink]="['/problem-detail']" routerLinkActive="active" >
+          {{_qus.question.title}}
+        </a>
+      </p>
+      时间：{{_qus.question.time}}
+      回答数：{{_qus.question.ansNum}}
+    </div>
+  </div>
+</div>
+

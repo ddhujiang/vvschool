@@ -67,11 +67,11 @@
         <form class="form-horizontal" >
           <div class="modal-body">
 
-            <textarea rows="5" cols="7" style="width:560px;height:50px;" placeholder="请写下问题标题" required
+            <textarea rows="5" cols="7" class="pro-comment"  placeholder="请写下问题标题" required
                       name="title" [(ngModel)]="_title" ></textarea>
             <p>请选择专业：</p>
 
-            <select class="form-control col-sm-6" name="profession" [(ngModel)]="_profession" >
+            <select class="form-control col-sm-6 prof-name" name="profession" [(ngModel)]="_profession" >
               <option value="1" selected="selected">管理学</option>
               <option value="2">计算机</option>
               <option value="3">电子工程</option>
@@ -93,12 +93,12 @@
 
             <p style="margin-top: 5px">问题描述（可选）：</p>
 
-            <textarea rows="5" cols="7" style="width:560px;height:200px;" placeholder="请写下问题内容" required
+            <textarea rows="5" cols="7" class="pro-self"  placeholder="请写下问题内容" required
                       name="link" [(ngModel)]="_link"></textarea>
           </div>
 
           <div class="modal-footer">
-            <button type="button" (click)="toQus( _title,_link,_profession)" class="btn btn-success" data-dismiss="modal" style="text-align: center">
+            <button type="button" (click)="toQus( _title,_link,_profession)" class="btn btn-success" data-dismiss="modal" style="text-align: center;background-color:#51d2b7;width: 150px; ">
               提交</button>
           </div>
 

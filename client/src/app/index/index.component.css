@@ -2,6 +2,9 @@
 .main_contain{
   background-color: white;
   margin-top: 25px;
+  border: solid 1px white;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.1)
 }
 .top{
   margin-top: 10px;
@@ -117,4 +120,26 @@
 .totaper:hover{
   color:#51d2b7 ;
   cursor: pointer;
+}
+
+
+/*修改问学长样式*/
+.prof-name{
+  width: 560px;
+}
+.pro-comment{
+  padding: 6px 12px;
+  width:560px;
+  height:50px;
+  border: 1px solid #ccc;
+  border-radius:4px;
+  font-size: 14px;
+}
+.pro-self{
+  padding: 6px 12px;
+  width:560px;
+  height:200px;
+  border: 1px solid #ccc;
+  border-radius:4px;
+  font-size: 14px;
 }
