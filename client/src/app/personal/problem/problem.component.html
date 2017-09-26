@@ -6,14 +6,14 @@
 
 <div *ngIf="isAns">
   <div *ngFor="let _qus of userValue" >
-    <div class="comment" style="padding:10px" >
-      <p class="til" (click)="toqus()">
+    <div class="comment prob-module" >
+      <p class="til" (click)="toqus()" class="pro-content">
         <a [routerLink]="['/problem-detail']" routerLinkActive="active" >
           {{_qus.question.title}}
         </a>
       </p>
-      时间：{{_qus.question.time}}
-      回答数：{{_qus.question.ansNum}}
+      <span class="pro-time">时间：{{_qus.question.time}}</span>
+      <span class="pro-ans">回答数：{{_qus.question.ansNum}}</span>
     </div>
   </div>
 </div>
