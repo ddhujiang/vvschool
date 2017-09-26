@@ -40,6 +40,40 @@ var everydayDAO = {
       });
     });
   },
+  getEDayBySelf: function (id, cb) {
+    pool.getConnection(function (err, client) {
+      if (err) {
+        console.error("getEDayBySelf: " + err.message);
+        cb("err501");
+        return;
+      }
+      client.query(inquire.getEDayBySelf, [id], function (err, result) {
+        if (!!err) {
+          cb("err501");
+          console.error("getEDayBySelf: " + err.message);
+        } else {cb(result);}
+        client.release();
+      });
+    });
+  },
+  /*未实现------------------------------------------start*/
+  getEDayByRelay: function (id, cb) {
+    pool.getConnection(function (err, client) {
+      if (err) {
+        console.error("getEDayByRelay: " + err.message);
+        cb("err501");
+        return;
+      }
+      client.query(inquire.getEDayByRelay, [id, id], function (err, result) {
+        if (!!err) {
+          cb("err501");
+          console.error("getEDayByRelay: " + err.message);
+        } else {cb(result);}
+        client.release();
+      });
+    });
+  },
+  /*未实现------------------------------------------end*/
   setEDay: function (req, cb) {
     pool.getConnection(function (err, client) {
       if (err) {
@@ -47,7 +81,7 @@ var everydayDAO = {
         cb("err501");
         return;
       }
-      client.query(inquire.setEDay, [req.ID, req.body.link], function (err, result) {
+      client.query(inquire.setEDay, [req.ID, req.body.link,req.body.img], function (err, result) {
         if (!!err) {
           cb("err501");
           console.error("setEDay: " + err.message);

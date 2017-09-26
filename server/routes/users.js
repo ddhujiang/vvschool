@@ -9,6 +9,8 @@ var db = require("./../database/DAO/user.dao").userDAO;
 /*令牌*/
 var _token = require("./../tool/token");
 
+var bCfg = require("./../configs/basic.config");
+
 /*登录*/
 router.post("/login", function (req, res, next) {
   var userInfo = req.body;
@@ -145,19 +147,24 @@ router.post("/search", function (req, res, next) {
       else {
         if (!result.length) {res.json({"code": "u302"}); }
         else {
+          var start = req.body.start || bCfg.getStart, length = req.body.length || bCfg.getDataLength;
+          var end = ~~start + ~~length, count = 0;
           var arr = [];
           for (var i in result) {
+            count++;
+            if (count < (~~start)) {continue;}
+            if (count >= end) {break;}
             arr.push({
               "user": {
                 "id": result[i].id,
                 "name": result[i].user_nickname,
                 "describe": result[i].user_self,
                 "profession": result[i].profession_name,
-                "icon": "static/"+(result[i].user_icon_path ?  + result[i].user_icon_path : "icon.default.png")
+                "icon": "static/" + (result[i].user_icon_path ? +result[i].user_icon_path : "icon.default.png")
               }
             });
           }
-          res.json({"code": "u200", "data": arr});
+          res.json({"code": "u200", "data": arr, "next": (end > result.length) ? -1 : count});
         }
       }
     });
@@ -172,8 +179,13 @@ router.post("/question", function (req, res, next) {
       else {
         if (!result.length) {res.json({"code": "u302"}); }
         else {
+          var start = req.body.start || bCfg.getStart, length = req.body.length || bCfg.getDataLength;
+          var end = ~~start + ~~length, count = 0;
           var arr = [];
           for (var i in result) {
+            count++;
+            if (count < (~~start)) {continue;}
+            if (count >= end) {break;}
             arr.push({
               "question": {
                 "id": result[i].prob_id,
@@ -186,7 +198,7 @@ router.post("/question", function (req, res, next) {
               }
             });
           }
-          res.json({"code": "u200", "data": arr});
+          res.json({"code": "u200", "data": arr, "next": (end > result.length) ? -1 : count});
         }
       }
     });
@@ -201,8 +213,13 @@ router.post("/answer", function (req, res, next) {
       else {
         if (!result.length) {res.json({"code": "u302"}); }
         else {
+          var start = req.body.start || bCfg.getStart, length = req.body.length || bCfg.getDataLength;
+          var end = ~~start + ~~length, count = 0;
           var arr = [];
           for (var i in result) {
+            count++;
+            if (count < (~~start)) {continue;}
+            if (count >= end) {break;}
             arr.push({
               "answer": {
                 "id": result[i].answer_id,
@@ -227,7 +244,7 @@ router.post("/answer", function (req, res, next) {
               }
             });
           }
-          res.json({"code": "u200", "data": arr});
+          res.json({"code": "u200", "data": arr, "next": (end > result.length) ? -1 : count});
         }
       }
     });

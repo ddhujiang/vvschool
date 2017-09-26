@@ -8,6 +8,7 @@ var router = express.Router();
 var db = require("./../database/DAO/rests.dao").restsDAO;
 /*令牌*/
 var _token = require("./../tool/token");
+var bCfg = require("./../configs/basic.config");
 
 /*关注*/
 router.post("/hasFollower", function (req, res, next) {
@@ -58,14 +59,19 @@ router.post("/deleteFollower", _token.power, function (req, res, next) {
     });
   } else {res.json({"code": "err601"});}
 });
-router.post("/getFollower",  function (req, res, next) {
+router.post("/getFollower", function (req, res, next) {
   db.getFollower(req.body.id, function (result) {
     if (result === "err501") {res.json({"code": result});}
     else {
       if (!result.length) {res.json({"code": "r904"}); }
       else {
+        var start = req.body.start || bCfg.getStart, length = req.body.length || bCfg.getDataLength;
+        var end = ~~start + ~~length, count = 0;
         var arr = [];
         for (var i in result) {
+          count++;
+          if (count < (~~start)) {continue;}
+          if (count >= end) {break;}
           arr.push({
             "id": result[i].user_id,
             "name": result[i].user_nickname,
@@ -74,7 +80,7 @@ router.post("/getFollower",  function (req, res, next) {
             "icon": result[i].user_icon_path ? "static/" + result[i].user_icon_path : "static/icon.default.png"
           });
         }
-        res.json({"code":"r200","data":arr});
+        res.json({"code": "r200", "data": arr, "next": (end > result.length) ? -1 : count});
       }
     }
   });
@@ -85,8 +91,13 @@ router.post("/getFans", function (req, res, next) {
     else {
       if (!result.length) {res.json({"code": "r904"}); }
       else {
+        var start = req.body.start || bCfg.getStart, length = req.body.length || bCfg.getDataLength;
+        var end = ~~start + ~~length, count = 0;
         var arr = [];
         for (var i in result) {
+          count++;
+          if (count < (~~start)) {continue;}
+          if (count >= end) {break;}
           arr.push({
             "id": result[i].user_id,
             "name": result[i].user_nickname,
@@ -95,7 +106,7 @@ router.post("/getFans", function (req, res, next) {
             "icon": result[i].user_icon_path ? "static/" + result[i].user_icon_path : "static/icon.default.png"
           });
         }
-        res.json({"code":"r200","data":arr});
+        res.json({"code": "r200", "data": arr, "next": (end > result.length) ? -1 : count});
       }
     }
   });
@@ -140,14 +151,19 @@ router.post("/deleteCollect", _token.power, function (req, res, next) {
     });
   } else {res.json({"code": "err601"});}
 });
-router.post("/getCollect", _token.power, function (req, res, next) {
-  db.getCollect(req.ID, function (result) {
+router.post("/getCollect", function (req, res, next) {
+  db.getCollect(req.body.id, function (result) {
     if (result === "err501") {res.json({"code": result});}
     else {
       if (!result.length) {res.json({"code": "r303"}); }
       else {
+        var start = req.body.start || bCfg.getStart, length = req.body.length || bCfg.getDataLength;
+        var end = ~~start + ~~length, count = 0;
         var arr = [];
         for (var i in result) {
+          count++;
+          if (count < (~~start)) {continue;}
+          if (count >= end) {break;}
           arr.push({
             "answerer": {
               "id": result[i].user_ans_id,
@@ -179,7 +195,7 @@ router.post("/getCollect", _token.power, function (req, res, next) {
             }
           });
         }
-        res.json({"code": "r200", "data": arr});
+        res.json({"code": "r200",  "data": arr, "next": (end>result.length)? - 1:count});
       }
     }
   });
