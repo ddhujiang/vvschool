@@ -24,6 +24,17 @@ export class DetailService {
         console.log(error.message);
       })
   }
+  getmyQus(queId,callback){
+    this.http.post(this.url + '/more', {"queId":queId}).subscribe(function (result) {
+        console.log(result);
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      })
+  }
+
+
 
   getSearch(keyword,callback){
     this.http.post(this.url + '/search',{"keyword":keyword}).subscribe(function (result) {
