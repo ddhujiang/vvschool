@@ -241,6 +241,8 @@ router.post("/deleteTranspond", _token.power, function (req, res, next) {
   } else {res.json({"code": "err601"});}
 });*/
 
+
+
 module.exports = router;
 
 function extendParameters (options, defaults) {

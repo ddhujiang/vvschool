@@ -186,7 +186,44 @@ var questionDAO = {
         client.release();
       });
     });
-  }
+  },
+
+  getMajorQ: function (req, cb) {
+    pool.getConnection(function (err, client) {
+      if (err) {
+        console.error("getMajorQ: " + err.message);
+        cb("err501");
+        return;
+      }
+      client.query(inquire.getMajorQ, [req.ID,req.body.sort?"sumdan":"prob.prob_time"], function (err, result) {
+        if (err) {
+          cb("err501");
+          console.error("getSearchByKey: " + err.message);
+          return;
+        }
+        cb(result);
+        client.release();
+      });
+    });
+  },
+  getHotQ: function (sort, cb) {
+    pool.getConnection(function (err, client) {
+      if (err) {
+        console.error("getHotQ: " + err.message);
+        cb("err501");
+        return;
+      }
+      client.query(inquire.getHotQ, [sort?"prob_time":"sumdan"], function (err, result) {
+        if (err) {
+          cb("err501");
+          console.error("getHotQ: " + err.message);
+          return;
+        }
+        cb(result);
+        client.release();
+      });
+    });
+  },
 };
 
 exports.questionDAO = questionDAO;

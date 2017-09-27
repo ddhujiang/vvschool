@@ -113,6 +113,24 @@ var everydayDAO = {
       } else {cb(results[2].affectedRows === 1 ? "e200" : "e404");}
     });
   },
+  searchEDay: function (req, cb) {
+    pool.getConnection(function (err, client) {
+      if (err) {
+        console.error("searchEDay: " + err.message);
+        cb("err501");
+        return;
+      }
+      client.query(inquire.searchEDay, [req.body.keyword, req.body.sort ? "like_num" : "dy_time"], function (err, result) {
+        if (err) {
+          cb("err501");
+          console.error("searchEDay: " + err.message);
+          return;
+        }
+        cb(result);
+        client.release();
+      });
+    });
+  },
   getCommentById: function (id, cb) {
     pool.getConnection(function (err, client) {
       if (err) {
@@ -178,7 +196,29 @@ var everydayDAO = {
         client.release();
       });
     });
-  }
+  },
+  addLikeNum: function (req, cb) {
+    pool.getConnection(function (err, client) {
+      if (err) {
+        console.error("addLikeNum: " + err.message);
+        cb("err501");
+        return;
+      }
+      client.query(inquire.addLikeNum, [req.body.value < 0 ? -1 : 1, req.body.id], function (err, result) {
+        if (err) {
+          cb("err501");
+          console.error("addLikeNum: " + err.message);
+          return;
+        }
+        if (result.affectedRows === 1) {
+          cb("e201");
+        } else {
+          cb("e404");
+        }
+        client.release();
+      });
+    });
+  },
 };
 
 exports.everydayDAO = everydayDAO;

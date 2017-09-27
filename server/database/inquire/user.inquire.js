@@ -3,7 +3,11 @@ exports.query = {
   getPasswordByTel: "select user_pwd ,user_id from user where user_tel=?",
   getIdByTel: "select user_id  from user where user_tel=?",
   // hasTel:'select user_  from user where user_tel=?',
-  addUser: ["insert into user(user_id,user_tel,user_pwd,school_id,profession_id) values(?,?,?,?,?)","insert into user_icon(user_id,user_icon_path) values(?,?)"],
+  addUser: [
+    "insert into user(user_id,user_tel,user_pwd,school_id,profession_id) values(?,?,?,?,?)",
+    "insert into user_icon(user_id,user_icon_path) values(?,?)",
+    "insert into user_info(user_id,user_nickname,regdate) VALUES(?,?,NOW())\n"
+  ],
 
   getDataById: "select u.profession_id,icon.user_icon_path,user_nickname from user u join user_icon icon join user_info info  where u.user_id=? and u.user_id=info.user_id and u.user_id=icon.user_id and icon.user_icon_id=(select max(user_icon_id) from user_icon where user_id=?)",
   getInfoById:["select icon.user_icon_id,prof.profession_name,icon.user_icon_path,info.user_self,info.user_nickname\n" +
@@ -50,5 +54,10 @@ exports.query = {
   "and a.answer_id=comm.answer_id\n" +
   "and a.answer_id=coll.answer_id\n" +
   "and a.answer_id=tran.answer_id\n" +
-  "ORDER BY ?? desc"
+  "ORDER BY ?? desc",
+
+  queryIcon:"SELECT icon.user_icon_path from user_icon icon where icon.user_id=? order by icon.user_icon_id desc",
+  addIcon:"insert into user_icon(user_id,user_icon_path)value(?,?)",
+  addName:"update user_info info set info.user_nickname=? where info.user_id=?",
+  addDescribe:"update user_info info set info.user_self=? where info.user_id=?"
 };

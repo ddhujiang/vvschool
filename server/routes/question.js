@@ -282,7 +282,7 @@ router.post("/comment", function (req, res, next) {
               }
             });
           }
-          res.json({"code": "q200", "data": arr, "next": (end>result.length)? - 1:count});
+          res.json({"code": "q200", "data": arr, "next": (end > result.length) ? -1 : count});
         }
       }
     });
@@ -300,6 +300,75 @@ router.post("/setComment", _token.power, function (req, res, next) {
     });
   } else {res.json({"code": "err601"});}
 });
+
+/*专业问题*/
+router.post("/getMajorQ", _token.power, function (req, res, next) {
+  db.getMajorQ(req, function (result) {
+    if (result === "err501") {res.json({"code": result});}
+    else {
+      if (!result.length) {res.json({"code": "q302"}); }
+      else {
+        var start = req.body.start || bCfg.getStart, length = req.body.length || bCfg.getDataLength;
+        var end = ~~start + ~~length, count = 0;
+        var arr = [];
+        for (var i in result) {
+          count++;
+          if (count < (~~start)) {continue;}
+          if (count >= end) {break;}
+          arr.push({
+            "question": {
+              "id": result[i].prob_id,
+              "title": result[i].prob_title,
+              "link": result[i].prob_content,
+              "type":result[i].profession_name,
+              "time": moment() - moment(result[i].prob_time, moment.ISO_8601) > 259200000
+                ? moment(result[i].prob_time).format("YYYY年MMMDo,dddd,h:mm:ss")
+                : moment(result[i].prob_time, moment.ISO_8601).fromNow()
+            },
+            "answer":result[i].sumdan
+          });
+        }
+        res.json({"code": "q200", "data": arr, "next": (end > result.length) ? -1 : count});
+      }
+    }
+  });
+
+});
+/*热门问题*/
+router.post("/getHotQ",  function (req, res, next) {
+  db.getHotQ(req.body.sort,function (result) {
+    if (result === "err501") {res.json({"code": result});}
+    else {
+      if (!result.length) {res.json({"code": "q302"}); }
+      else {
+        var start = req.body.start || bCfg.getStart, length = req.body.length || bCfg.getDataLength;
+        var end = ~~start + ~~length, count = 0;
+        var arr = [];
+        for (var i in result) {
+          count++;
+          if (count < (~~start)) {continue;}
+          if (count >= end) {break;}
+          arr.push({
+            "question": {
+              "id": result[i].prob_id,
+              "title": result[i].prob_title,
+              "link": result[i].prob_content,
+              "time": moment() - moment(result[i].prob_time, moment.ISO_8601) > 259200000
+                ? moment(result[i].prob_time).format("YYYY年MMMDo,dddd,h:mm:ss")
+                : moment(result[i].prob_time, moment.ISO_8601).fromNow()
+            },
+            "answer":result[i].sumdan
+          });
+        }
+        res.json({"code": "q200", "data": arr, "next": (end > result.length) ? -1 : count});
+      }
+    }
+  });
+
+});
+
+
+
 
 module.exports = router;
 

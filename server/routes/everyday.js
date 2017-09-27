@@ -155,6 +155,46 @@ router.post("/deleteEDay", _token.power, function (req, res, next) {
     });
   } else {res.json({"code": "err601"});}
 });
+router.post("/searchEDay", function (req, res, next) {
+  db.searchEDay(req, function (result) {
+    if (result === "err501") {res.json({"code": result});}
+    else {
+      if (!result.length) {res.json({"code": "e301"}); }
+      else {
+        var start = req.body.start || bCfg.getStart, length = req.body.length || bCfg.getDataLength;
+        var end = ~~start + ~~length, count = 0;
+        var arr = [];
+        for (var i in result) {
+          count++;
+          if (count < (~~start)) {continue;}
+          if (count >= end) {break;}
+          arr.push({
+            "user": {
+              "id": result[i].user_id,
+              "name": result[i].user_nickname,
+              "describe": result[i].user_self,
+              "icon": result[i].user_icon_path ? "static/" + result[i].user_icon_path : "static/icon.default.png"
+            },
+            "everyday": {
+              "id": result[i].dynamic_id,
+              "link": result[i].dy_content,
+              "time": moment() - moment(result[i].dy_time, moment.ISO_8601) > 259200000
+                ? moment(result[i].dy_time).format("YYYY年MMMDo,dddd,h:mm:ss")
+                : moment(result[i].dy_time, moment.ISO_8601).fromNow()
+            },
+            "quantity": {
+              "praise": result[i].like_num ? result[i].like_num : "0",
+              "comment": result[i].sumdcm,
+              "transpond": result[i].sumdt
+            },
+            "img": result[i].img ? result[i].img.split(",") : []
+          });
+        }
+        res.json({"code": "e200", "data": arr, "next": (end > result.length) ? -1 : count});
+      }
+    }
+  });
+});
 router.post("/getCommentById", function (req, res, next) {
   if (req.body.id) {
     db.getCommentById(req.body.id, function (result) {
@@ -209,5 +249,14 @@ router.post("/deleteComById", function (req, res, next) {
     });
   } else {res.json({"code": "err601"});}
 });
-
+router.post("/like", _token.power, function (req, res, next) {
+  if (req.body.id) {
+    db.addLikeNum(req, function (result) {
+      if (result === "err501") {res.json({"code": result});}
+      else {
+        res.json({"code": result});
+      }
+    });
+  } else {res.json({"code": "err601"});}
+});
 module.exports = router;

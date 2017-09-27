@@ -16,7 +16,7 @@ var apiDAO = {
           console.error("iconUpload: " + err.message);
           return;
         }
-        cb(result);
+        cb(result.affectedRows===1?"f200":"f301");
         client.release();
       });
     });

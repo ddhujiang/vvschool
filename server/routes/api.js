@@ -37,14 +37,14 @@ router.post("/iconUpload", _token.power, function (req, res) {
       db.iconUpload(req, function (result) {
         if (result === "err501") {res.json({"code": result});}
         else {
-          res.json({"code": "f200", "src": "/static/" + req.file.filename});
-          console.log(result);
+          res.json({"code": result, "src": "static/" + req.file.filename});
         }
       });
       // res.json({"code": "f200", "src": "/static/"+req.file.filename});
     }
   });
 });
+
 
 router.post("/photoUpload", function (req, res) {
   fileUp.photo(req, res, function (err) {
@@ -67,7 +67,7 @@ router.post("/photoUpload", function (req, res) {
       var src = [];
       var length = req.files.length;
       for (var i = 0; i < length; i++) {
-        src.push("/static/" + req.files[i].filename);
+        src.push("static/" + req.files[i].filename);
       }
       // 连接数据库
       res.json({"code": "f200", "src": src});

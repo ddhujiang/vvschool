@@ -40,6 +40,24 @@ exports.query = {
     "delete from dtranspond where dynamic_id=?",
     "delete from dynamic where dynamic_id=? and user_id=?"
   ],
+  searchEDay:"select dy.dynamic_id,ic.user_icon_path,info.user_nickname,info.user_self,info.user_id,dy.dy_time,dy.dy_content,dy.img,dy.like_num,dcomm.sumdcm,dtran.sumdt\n" +
+  "from view_icon ic\n" +
+  "join user_icon icon\n" +
+  "join user_info info\n" +
+  "join dynamic dy \n" +
+  "join view_dcomm dcomm \n" +
+  "join view_dtran dtran\n" +
+  "join attention att\n" +
+  "join user u\n" +
+  "on dy.user_id=info.user_id\n" +
+  "and dy.user_id=icon.user_id\n" +
+  "and icon.user_id=ic.user_id\n" +
+  "and dcomm.dynamic_id=dy.dynamic_id\n" +
+  "and dtran.dynamic_id=dy.dynamic_id\n" +
+  "and ((att.att_by_peo=dy.user_id and att.att_peo='kkkk') or dy.user_id='kkkk')\n" +
+  "and dy.dy_content regexp ?\n" +
+  "GROUP BY dy.dynamic_id\n" +
+  "order by ?? desc",
   getCommentById:"select dcom.user_comm_id,ic.user_icon_path,info.user_nickname,info.user_self,dcom.comm_content,dcom.comm_time ,dcom.comm_id\n" +
   "from view_icon ic \n" +
   "join user_info info \n" +
@@ -53,6 +71,10 @@ exports.query = {
 
   setComment:"insert into dcomment(user_comm_id,dynamic_id,comm_content,comm_time) VALUES(?,?,?,NOW())",
   deleteComBySelf:"delete from dcomment where comm_id=? and user_comm_id=?",
-  deleteComById:"delete from dcomment where comm_id=?"
+  deleteComById:"delete from dcomment where comm_id=?",
+
+  addLikeNum:"update dynamic dy\n" +
+  " set dy.like_num=dy.like_num+(?)\n" +
+  " where dy.dynamic_id=?"
 }
 

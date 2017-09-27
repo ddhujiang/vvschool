@@ -251,11 +251,61 @@ router.post("/answer", function (req, res, next) {
   } else {res.json({"code": "err601"});}
 });
 
-/*测试接口*/
-/*router.post("/test",_token.power ,function (req, res, next) {
-  res.json({"已验证ID":req.ID});
-});*/
-
+/*设置*/
+// 查询头像
+router.post("/queryIcon",_token.power,function (req, res, next) {
+  db.queryIcon(req.ID, function (result) {
+    if (result === "err501") {res.json({"code": result});}
+    else {
+      if (!result.length) {res.json({"code": "u302"}); }
+      else {
+        var start = req.body.start || bCfg.getStart, length = req.body.length || bCfg.getDataLength;
+        var end = ~~start + ~~length, count = 0;
+        var arr = [];
+        for (var i in result) {
+          count++;
+          if (count < (~~start)) {continue;}
+          if (count >= end) {break;}
+          arr.push("static/"+result[i].user_icon_path);
+        }
+        res.json({"code": "u200", "data": arr, "next": (end > result.length) ? -1 : count});
+      }
+    }
+  });
+});
+// 添加头像(旧的)
+router.post("/addIcon",_token.power,function (req, res, next) {
+  if (req.body.src) {
+    db.addIcon(req,function (result) {
+      if (result === "err501") {res.json({"code": result});}
+      else {
+        res.json({"code": result, "src": req.body.src});
+      }
+    })
+  }else {res.json({"code": "err601"});}
+});
+// 更改昵称
+router.post("/addName",_token.power,function (req, res, next) {
+  if (req.body.name) {
+    db.addName(req,function (result) {
+      if (result === "err501") {res.json({"code": result});}
+      else {
+        res.json({"code": result});
+      }
+    })
+  }else {res.json({"code": "err601"});}
+});
+// 更改描述
+router.post("/addDescribe",_token.power,function (req, res, next) {
+  if (req.body.describe) {
+    db.addDescribe(req,function (result) {
+      if (result === "err501") {res.json({"code": result});}
+      else {
+        res.json({"code": result});
+      }
+    })
+  }else {res.json({"code": "err601"});}
+});
 
 module.exports = router;
 
