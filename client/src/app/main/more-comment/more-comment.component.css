@@ -33,3 +33,80 @@
 i:hover{
   color: #51d2b7;
 }
+
+
+
+/*评论样式*/
+.no-comm{
+  box-shadow: 0 1px 3px 0 rgba(0,33,77,.05);
+  background: #fff;
+  margin-top: 12px;
+  overflow: visible;
+  border-radius: 4px;
+  width: 714px;
+  border: #e7eaf2 1px solid;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+.no-comm-top{
+  align-items: center;
+  height: 50px;
+  padding: 0 20px;
+  border:1px solid #fff;
+  border-bottom-color:#e7eaf2 ;
+  box-shadow: 0 1px 3px 0 rgba(0,33,77,.05);
+}
+.comm-input{
+  line-height:24px;
+  font-size: 15px;
+  width: 600px;
+  height: 34px;
+  border: 1px solid #e7eaf1;
+  margin-top: 7px;
+  margin-left: 25px;
+  box-shadow: 0 1px 3px 0 rgba(0,33,77,.05);
+  border-radius: 3px;
+}
+.btn-comm{
+  width: 62px;
+  height: 32px;
+  border: 1px solid #e7eaf1;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px 0 rgba(0,33,77,.05);
+  color: #51d2b7;
+  margin-left: 16px;
+}
+.all-comm{
+  width: 714px;
+  height: 109px;
+}
+.new-comm{
+  width: 680px;
+  height: 109px;
+  margin-left: 17px;
+  border: 1px solid white;
+  border-bottom-color:#e7eaf1 ;
+}
+.comm-img{
+  width: 26px;
+  height: 26px;
+  margin-left: 15px;
+  margin-top: 12px;
+}
+.comm-username{
+  font-size: 15px;
+  margin-left: 6px;
+  top: 8px;
+  position: relative;
+}
+.comm-content{
+  margin-top: 20px;
+  margin-left: 15px;
+}
+.comm-time{
+  margin-left: 350px;
+  color: #51d2b7;
+  font-weight: 200;
+  top: 8px;
+  position: relative;
+}

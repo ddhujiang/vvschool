@@ -1,60 +1,70 @@
 <div class="contain">
   <div>
-    <app-nav [_user]="user_name"></app-nav>
+    <app-nav></app-nav>
   </div>
 
-  <div class="container-fluid" >
+  <div class="container-fluid">
     <div class="col-sm-7 col-sm-offset-1  main_contain" *ngFor="let _qus of qus">
       <div>
         <p class="top">
-          <img src="http://localhost:3000/{{_qus.answerer.icon}}" appHover alt="用户头像"
-               [routerLink]="['./tapersonal',_qus.answerer.id]" routerLinkActive="active"    class="user_icon">
-          <span style="margin-left: 10px;font-size: 1.2em" class="totaper" [routerLink]="['./tapersonal',_qus.answerer.id]" routerLinkActive="active">
+          <img src="http://localhost:3000/{{_qus.answerer.icon}}" (mouseover)="toinfo(_qus.answerer.id)"  appHover alt="用户头像"
+               [routerLink]="['./tapersonal',_qus.answerer.id]" routerLinkActive="active" class="user_icon">
+          <span style="margin-left: 10px;font-size: 1.2em" class="totaper"
+                [routerLink]="['./tapersonal',_qus.answerer.id]" routerLinkActive="active">
             {{_qus.answerer.name}}</span>
           <span style="margin-left: 5px;color: #797979"> {{_qus.answerer.describe}}</span>
         </p>
 
-        <div class="user_profile" apphoverProfile>
-          <div class="top_part">
-            <div class="user_profile_icon"><img src="http://localhost:3000/{{_qus.answerer.icon}}" alt="用户头像"></div>
+        <div class="user_profile"   *ngIf="isShow"   apphoverProfile>
+          <div class="top_part"  >
+            <div class="user_profile_icon"><img src="http://localhost:3000/{{info.icon}}" alt="用户头像"></div>
             <div class="user_profile_top_right">
-              <span>{{_qus.answerer.name}}</span>
-              <span>{{_qus.answerer.describe}}</span>
+              <span>{{info.name}}</span>
+              <span>{{info.profession}}</span>
             </div>
           </div>
           <div class="middle_part">
             <div>
               <p>回答</p>
-              <p>88</p>
+              <p>{{info.answer}}</p>
             </div>
             <div>
-              <p>文章</p>
-              <p>88</p>
+              <p>粉丝</p>
+              <p>{{info.fans}}</p>
             </div>
             <div>
               <p>关注着</p>
-              <p>88</p>
+              <p>{{info.follower}}</p>
             </div>
           </div>
-          <div class="bottom_part">
-            <div><i class="fa fa-plus" aria-hidden="true"></i> 关注他</div>
-            <div><i class="fa fa-comments-o" aria-hidden="true"></i>发私信</div>
-          </div>
+          <!--<div class="bottom_part">-->
+            <!--<div><i class="fa fa-plus" aria-hidden="true" (click)="add()"></i>-->
+              <!--<span *ngIf="noFans">关注Ta</span>-->
+              <!--<span *ngIf="isFans">已关注</span>-->
+            <!--</div>-->
+          <!--</div>-->
         </div>
+
       </div>
       <app-comment [_qus]="_qus"></app-comment>
     </div>
 
-  <div class="col-sm-3  main_right">
+    <div class="col-sm-7 col-sm-offset-1 main-more" *ngIf="next!=-1">
+      <div class="moretxt" (click)="toMore()">
+        <span>查看更多回答</span>
+      </div>
+    </div>
+
+    <div class="col-sm-3  main_right">
       <span class="span_left" data-toggle="modal" data-target="#myModal">
         <i class="fa fa-camera-retro fa-1x "></i>问学长</span>
-    <span class="span_left" (click)="toAnswer()">
+      <span class="span_left" (click)="toAnswer()">
         <i class="fa fa-refresh fa-spin fa-1x fa-fw"></i>解疑惑</span>
-  </div>
+    </div>
 
-</div>
-<!--==========================================================================================================-->
-    <!--问学长-->
+  </div>
+  <!--==========================================================================================================-->
+  <!--问学长-->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -64,14 +74,12 @@
           <h2 class="modal-title" id="myModalLabel" style="text-align: center">写下你的问题</h2>
           <span style="display: block;text-align: center">描述精确的问题更易得到解答</span>
         </div>
-        <form class="form-horizontal" >
+        <form class="form-horizontal">
           <div class="modal-body">
-
-            <textarea rows="5" cols="7" class="pro-comment"  placeholder="请写下问题标题" required
-                      name="title" [(ngModel)]="_title" ></textarea>
+            <textarea rows="5" cols="7" class="pro-comment" placeholder="请写下问题标题" required
+                      name="title" [(ngModel)]="_title"></textarea>
             <p>请选择专业：</p>
-
-            <select class="form-control col-sm-6 prof-name" name="profession" [(ngModel)]="_profession" >
+            <select class="form-control col-sm-6 prof-name" name="profession" [(ngModel)]="_profession">
               <option value="1" selected="selected">管理学</option>
               <option value="2">计算机</option>
               <option value="3">电子工程</option>
@@ -93,13 +101,15 @@
 
             <p style="margin-top: 5px">问题描述（可选）：</p>
 
-            <textarea rows="5" cols="7" class="pro-self"  placeholder="请写下问题内容" required
+            <textarea rows="5" cols="7" class="pro-self" placeholder="请写下问题内容" required
                       name="link" [(ngModel)]="_link"></textarea>
           </div>
 
           <div class="modal-footer">
-            <button type="button" (click)="toQus( _title,_link,_profession)" class="btn btn-success" data-dismiss="modal" style="text-align: center;background-color:#51d2b7;width: 150px; ">
-              提交</button>
+            <button type="button" (click)="toQus( _title,_link,_profession)" class="btn btn-success"
+                    data-dismiss="modal" style="text-align: center;background-color:#51d2b7;width: 150px; ">
+              提交
+            </button>
           </div>
 
         </form>

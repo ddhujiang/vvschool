@@ -6,9 +6,11 @@ export class IndexService {
   url: string = 'http://127.0.0.1:3000/question';
   constructor(private  http: HttpClient,
               private  ls: LocalStorageService) {}
+
+
   getAnswerer(callback){
     let _head = new HttpHeaders({token: this.ls.get('token')});
-    this.http.get(this.url + '/index',{headers: _head}).subscribe(function (result) {
+    this.http.post(this.url + '/index',{},{headers: _head}).subscribe(function (result) {
 
         callback(result);
       },
@@ -16,6 +18,24 @@ export class IndexService {
         console.log(error.message);
       })
   }
+
+  getMoreAnswerer(next,callback){
+    let _head = new HttpHeaders({token: this.ls.get('token')});
+    this.http.post(this.url + '/index',{"start":next},{headers: _head}).subscribe(function (result) {
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      })
+  }
+
+
+
+
+
+
+
+
 
   getQus(title,link,profession,callback) {
     let _head = new HttpHeaders({token: this.ls.get('token')});
@@ -41,6 +61,18 @@ export class IndexService {
         console.log(error.message);
       })
   }
+
+  getMoreComment(id,value,callback){
+    this.http.post(this.url + '/comment',{"id":id,"start":value}).subscribe(function (result) {
+        console.log(result);
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      })
+  }
+
+
   putComment(id,link,callback){
     let _head = new HttpHeaders({token: this.ls.get('token')});
     this.http.post(this.url + '/reply',{"id":id,"link":link},{headers: _head}).subscribe(function (result) {
@@ -62,5 +94,29 @@ export class IndexService {
         console.log(error.message);
       })
   }
+
+  addLink(id,callback){
+    let _head = new HttpHeaders({token: this.ls.get('token')});
+    this.http.post(this.url + '/like',{"id":id,"value":'1'},{headers: _head}).subscribe(function (result) {
+        console.log(result);
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      })
+  }
+
+  delLink(id,callback){
+    let _head = new HttpHeaders({token: this.ls.get('token')});
+    this.http.post(this.url + '/like',{"id":id,"value":'-1'},{headers: _head}).subscribe(function (result) {
+        console.log(result);
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      })
+
+  }
+
 
 }

@@ -1,11 +1,12 @@
 import { Component, OnInit,Input  } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../services/user.service';  //导入服务
+import {IndexService} from '../../services/index.service';  //导入服务
 @Component({
   selector: 'app-myanswer',
   templateUrl: './myanswer.component.html',
   styleUrls: ['./myanswer.component.css'],
-  providers:[UserService]
+  providers:[UserService,IndexService]
 })
 export class MyanswerComponent implements OnInit {
   isTrue:boolean=false;
@@ -16,8 +17,8 @@ export class MyanswerComponent implements OnInit {
   userValue:any;
   isAns:boolean=false;
   noAns:boolean=false;
-
-  constructor(private ar:ActivatedRoute,private userSer:UserService) { }
+  comment:any;
+  constructor(private ar:ActivatedRoute,private userSer:UserService,private indexSer:IndexService) { }
 
   ngOnInit() {
     let that=this;
@@ -36,8 +37,13 @@ export class MyanswerComponent implements OnInit {
   }
 
   toSee(){
-    this.isTrue=!this.isTrue;
+    let that=this;
+    that.isTrue=!that.isTrue;
+    that.indexSer.getComment(that.userValue.answer.id,function (result) {
+      that.comment=result.data;
+    })
   }
+
   toRead(){
     this.isCut=!this.isCut;
     this.noCut=!this.noCut;

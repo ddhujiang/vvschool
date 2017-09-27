@@ -28,10 +28,6 @@ export class UserService {
       })
   }
 
-  editUser() {
-
-  }
-
   getAllUser(callback) {
     let _head = new HttpHeaders({token: this.ls.get('token')});
     this.http.get(this.url + '/data',{headers: _head} ).subscribe(
@@ -43,6 +39,7 @@ export class UserService {
       }
     )
   }
+
   getInfo(callback) {
      const body={"ID":this.ls.get('id')};
     this.http.post(this.url + '/info', body).subscribe(
@@ -53,6 +50,23 @@ export class UserService {
       }
     )
   }
+
+
+  getTaInfo(id,callback) {
+    const body={"ID":id};
+    this.http.post(this.url + '/info', body).subscribe(
+      function (result) {
+        callback(result);
+      }, function (error) {
+        console.log(error.message);
+      }
+    )
+  }
+
+
+
+
+
 
   getTainfo(ID,callback) {
     this.http.post(this.url + '/info', {"ID":ID}).subscribe(

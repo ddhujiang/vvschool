@@ -7,11 +7,8 @@ import {LocalStorageService} from './local-storage.service';
   url: string = 'http://127.0.0.1:3000/rests';
   constructor(private  http: HttpClient,
               private  ls: LocalStorageService) { }
-
-
   getnumber(callback) {
-    let id = new HttpHeaders({id: this.ls.get('id')});
-    this.http.post(this.url + '/hasFollower', {"id": id}).subscribe(function (result) {
+    this.http.post(this.url + '/hasFollower', {"id": this.ls.get('id')}).subscribe(function (result) {
         console.log(result);
         callback(result);
       },
@@ -21,8 +18,7 @@ import {LocalStorageService} from './local-storage.service';
   }
 
   showfoll(callback) {
-  let _head = new HttpHeaders({token: this.ls.get('token')});
-  this.http.post(this.url + '/getFollower',{},{headers: _head}).subscribe(function (result) {
+  this.http.post(this.url + '/getFollower',{"id":this.ls.get('id')}).subscribe(function (result) {
       console.log(result);
       callback(result);
     },
@@ -31,9 +27,8 @@ import {LocalStorageService} from './local-storage.service';
     })
 }
 
-  showfans(callback) {
-    let _head = new HttpHeaders({token: this.ls.get('token')});
-    this.http.post(this.url + '/getFans',{},{headers: _head}).subscribe(function (result) {
+  showTafoll(id,callback) {
+    this.http.post(this.url + '/getFollower',{"id":id}).subscribe(function (result) {
         console.log(result);
         callback(result);
       },
@@ -41,6 +36,31 @@ import {LocalStorageService} from './local-storage.service';
         console.log(error.message);
       })
   }
+
+
+
+  showfans(callback) {
+    this.http.post(this.url + '/getFans',{"id":this.ls.get('id')}).subscribe(function (result) {
+        console.log(result);
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      })
+  }
+
+  showTafans(id,callback) {
+    this.http.post(this.url + '/getFans',{"id":id}).subscribe(function (result) {
+        console.log(result);
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      })
+  }
+
+
+
 
   add(id,callback) {
     let _head = new HttpHeaders({token: this.ls.get('token')});
@@ -91,8 +111,7 @@ import {LocalStorageService} from './local-storage.service';
 
 
   showCollect(callback){
-  let _head = new HttpHeaders({token: this.ls.get('token')});
-  this.http.post(this.url + '/getCollect',{},{headers: _head}).subscribe(function (result) {
+  this.http.post(this.url + '/getCollect',{"id":this.ls.get('id')}).subscribe(function (result) {
     console.log(result);
     callback(result);
   },
@@ -100,6 +119,19 @@ import {LocalStorageService} from './local-storage.service';
     console.log(error.message);
   })
 }
+
+showTacollect(id,callback){
+  this.http.post(this.url + '/getCollect',{"id":id}).subscribe(function (result) {
+      console.log(result);
+      callback(result);
+    },
+    function (error) {
+      console.log(error.message);
+    })
+}
+
+
+
 
   addColl(id,callback) {
     let _head = new HttpHeaders({token: this.ls.get('token')});

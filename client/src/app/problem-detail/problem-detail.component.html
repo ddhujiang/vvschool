@@ -1,5 +1,5 @@
 <div class="main">
-<app-nav [_user]="user_name"></app-nav>
+<app-nav ></app-nav>
 
 <div class="col-sm-12  main-det">
   <div class="col-sm-offset-2 col-sm-8">
@@ -11,20 +11,30 @@
     </button>
   </div>
 </div>
-
-  <div class="col-sm-12" *ngIf="isWrite">
-    <div class="col-sm-8 col-sm-offset-2 main-ans">
-      文本框显示的地方
+  <div  *ngIf="isWrite">
+     <div class="col-sm-12">
+     <div class="col-sm-8 col-sm-offset-2 main-ans">
+      <quill-editor [(ngModel)]="editorContent"
+                    [options]="{placeholder:'写下你的回答'}"
+                    (blur)="onEditorBlured($event)"
+                    (focus)="onEditorFocused($event)"
+                    (ready)="onEditorCreated($event)"
+                    (change)="onContentChanged($event)">
+      </quill-editor>
+     </div>
+     </div>
+     <div class="col-sm-12">
+      <div class="col-sm-8 col-sm-offset-2 main-ans">
+      <button type="button" class="btn-det" (click)="toGet()">
+        提交
+      </button>
+      </div>
     </div>
   </div>
-
 
 <div class="col-sm-12" >
   <div class="col-sm-8 col-sm-offset-2 main-ans">
   <div style="padding: 10px">
-    <!--<p class="top"><img src="http://localhost:3000/{{detail.answerer.icon}}" alt="用户头像">-->
-      <!--<span style="font-size: 1.2em">{{detail.answerer.name}}</span>-->
-    <!--</p>-->
 
     <img src="http://localhost:3000/{{detail.answerer.icon}}" alt="用户头像" class="user_icon"
          style="float: left" >
@@ -33,7 +43,6 @@
       <span>{{detail.answerer.profession}}</span>
       <div>{{detail.answerer.describe}}</div>
     </div>
-
   </div>
   <app-more-comment [_detail]="detail"></app-more-comment>
    </div>
@@ -66,7 +75,6 @@
 
   <div class="col-sm-8 col-sm-offset-2 noMore" *ngIf="noTrue" >
     <span>.........{{noMore}}.........</span>
-
   </div>
 
 

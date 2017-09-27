@@ -1,20 +1,44 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../services/user.service';  //导入服务
-
+import {UpdataService} from '../../services/updata.service';  //导入服务
 @Component({
   selector: 'app-follower',
   templateUrl: './follower.component.html',
   styleUrls: ['./follower.component.css'],
-  providers:[UserService]
+  providers:[UserService,UpdataService]
 })
 export class FollowerComponent implements OnInit {
   user_id:any;
-  constructor(private ar:ActivatedRoute,private userSer:UserService) { }
+  showfoll:any;
+  delfoll:any;
+  constructor(private userSer:UserService,private upser:UpdataService) { }
 
   ngOnInit() {
     let that=this;
-    that.user_id=that.ar.snapshot.params['id'];
+    that.upser.showfoll(function (result) {
+      that.showfoll=result.data;
+      console.log(result);
+      // alert(result);
+    })
   }
+
+  del(id){
+    let that=this;
+    that.upser.del( id,function (result) {
+      that.delfoll=result.data;
+      console.log(result);
+      // alert(result);
+    });
+  }
+
+  toque(){
+    let that=this;
+    that.upser.showfoll(function (result) {
+      that.showfoll=result.data;
+      console.log(result);
+      // alert(result);
+    })
+  }
+
 
 }

@@ -3,16 +3,15 @@
     ...........没有回答............
   </p>
 </div>
+
 <div *ngIf="isAns">
 <div *ngFor="let _qus of userValue" >
    <div class="comment" style="padding:10px" >
-
     <p class="til">
     <a [routerLink]="['/problem-detail',_qus.answer.id]" routerLinkActive="active" >
       {{_qus.question.title}}
     </a>
     </p>
-
     <div class="con">
        <img src="../../assets/首页.jpg" alt="" style="height: 105px;width: 190px;float: left;margin-right: 5px">
        <span *ngIf="isCut">
@@ -36,22 +35,36 @@
       <!--收藏-->
       收藏数 {{_qus.quantity.collect}}
     </span>
-    <span class="btn_span">
-      <i class="fa fa-reply-all" aria-hidden="true"></i>
-      <!--转发123-->
-      转发数 {{_qus.quantity.transpond}}
-    </span>
 
     <span  class="btn_span btn_com" (click)="toSee()">
       <i class="fa fa-comment-o" aria-hidden="true"></i>
       {{_qus.quantity.comment}}条评论
     </span>
     </div>
+     <div *ngIf="isTrue">
+       <div *ngIf="isTrue" class="no-comm">
+         <div class="no-comm-top">
+           <h4>评论</h4>
+         </div>
+         <div class="all-comm" *ngFor="let _comment of comment">
+           <div class="new-comm">
+             <div>
+               <img src="http://localhost:3000/{{_comment.commenter.icon}}" alt="" class="comm-img">
+               <span class="comm-username">{{_comment.commenter.name}}</span>
+               <span class="comm-time">{{_comment.comment.time}}</span>
+             </div>
+             <div class="comm-content">
+               {{_comment.comment.link}}
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+
+   </div>
+
+
+
 </div>
-</div>
-</div>
-<div *ngIf="isTrue">
-  <app-publish-comments></app-publish-comments>
-  <!--<app-others-comments></app-others-comments>-->
 </div>
 

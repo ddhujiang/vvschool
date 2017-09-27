@@ -15,6 +15,12 @@
           <span class="span-profession"style="margin-left: 16px;font-size: 1.1em">专业<span style="color:#212121;margin-left: 5px">,{{info.profession}}</span></span>
           <div class="span-info">{{info.describe}}</div>
         </div>
+        <button type="button" class="btn btn-info" style="float: right;margin-top: 50px;margin-right: 30px"
+        (click)="add()">
+          <span *ngIf="noFans">关注他</span>
+          <span *ngIf="isFans">已关注</span>
+        </button>
+
       </div>
 
     </div>
