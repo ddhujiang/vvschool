@@ -1,3 +1,17 @@
-<p>
-  tafollower works!
-</p>
+
+<ul class="list-group ">
+  <li class="list-group-item" style="height: 70px" *ngFor="let _showfoll of showfoll">
+    <div>
+      <img src="http://localhost:3000/{{_showfoll.icon}}" alt="" style="width: 50px;height: 50px;float: left">
+      <div style="float: left;margin-left: 20px;">
+        <span style="font-size:1.3em;color: #474747">{{_showfoll.name}}</span>
+        <span  style="font-size:1em;color: #636363;margin-left: 10px">,{{_showfoll.profession}}</span>
+        <div style="font-size:0.8em;color: #8b8b8b">
+          {{_showfoll.describe}}
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>
+
+

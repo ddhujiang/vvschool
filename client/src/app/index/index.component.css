@@ -21,8 +21,22 @@
 }
 
 
+.moretxt{
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  font-size: 1.3em;
+}
 
+.main-more:hover{
+  cursor: pointer;
+}
 
+.main-more{
+  background-color: white;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  }
 
 /*!*right==============================================*!*/
 .span_left{

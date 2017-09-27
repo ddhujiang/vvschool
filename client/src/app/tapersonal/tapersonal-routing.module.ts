@@ -7,7 +7,6 @@ import {TadailyComponent} from './tadaily/tadaily.component';
 import { TaanswerComponent } from './taanswer/taanswer.component';
 import { TafollowerComponent } from './tafollower/tafollower.component';
 import { TafansComponent } from './tafans/tafans.component';
-import { TatranspondComponent } from './tatranspond/tatranspond.component';
 import { TacollectComponent } from './tacollect/tacollect.component';
 import { TaproblemComponent } from './taproblem/taproblem.component';
 
@@ -43,9 +42,6 @@ const routes: Routes = [
       {
         path: 'tafans/:id',
         component:TafansComponent
-      },{
-        path: 'tatranspond/:id',
-        component:TatranspondComponent
       },
       {
         path: 'tacollect/:id',

@@ -3,6 +3,8 @@ import {Router} from '@angular/router';               //导入路由模块
 import {UserService} from '../services/user.service';  //导入服务
 import {UpdataService} from '../services/updata.service';  //导入服务
 
+
+
 @Component({
   selector: 'app-personal',
   templateUrl: './personal.component.html',
@@ -10,6 +12,13 @@ import {UpdataService} from '../services/updata.service';  //导入服务
   providers:[UserService,UpdataService]
 })
 export class PersonalComponent implements OnInit {
+
+
+
+
+
+
+
   user_name:any;
   user_id:any;
   info:any;
@@ -35,6 +44,12 @@ export class PersonalComponent implements OnInit {
       that.number=result;
       console.log(result);
     })
+
+
+
+
+
+
 
   }
 

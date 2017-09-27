@@ -1,12 +1,84 @@
-
-<div *ngIf="noAns">
+<div *ngIf="noColl">
   <p class="noMore">
-    ...........没有回答............
+    ...........没有收藏............
   </p>
 </div>
 
 
-<div *ngIf="isAns">
+<div *ngIf="isColl">
 
+  <div *ngFor="let _qus of showCollect">
+
+    <div class="comment" style="padding:10px">
+
+      <p class="top">
+        <img src="http://localhost:3000/{{_qus.answerer.icon}}"  alt="用户头像" class="user_icon">
+        <span style="margin-left: 10px;font-size: 1.2em" class="totaper">
+            {{_qus.answerer.name}}</span>
+        <span style="margin-left: 5px;color: #797979"> {{_qus.answerer.describe}}</span>
+      </p>
+
+      <p class="til">
+        <a [routerLink]="['/problem-detail',_qus.answer.id]" routerLinkActive="active">
+          {{_qus.question.title}}
+        </a>
+      </p>
+      <div class="con">
+        <img src="../../assets/首页.jpg" alt="" style="height: 105px;width: 190px;float: left;margin-right: 5px">
+        <span *ngIf="isCut">
+        {{_qus.answer.link|cut:120}}
+       </span>
+        <span *ngIf="noCut">
+        {{_qus.answer.link}}
+       </span>
+        <span class="read " (click)="toRead()">阅读全文 <i class="fa fa-chevron-down" aria-hidden="true"></i>
+         </span>
+      </div>
+      <div class="btm">
+
+       <span class="btn_span">
+       <i class="fa fa-heart" aria-hidden="true"></i>
+        点赞数 {{_qus.quantity.praise}}
+      </span>
+        <span class="btn_span">
+      <i class="fa fa-star-half-o" aria-hidden="true"></i>
+          <!--收藏-->
+      收藏数 {{_qus.quantity.collect}}
+    </span>
+        <span class="btn_span btn_com" (click)="toSee()">
+      <i class="fa fa-comment-o" aria-hidden="true"></i>
+      {{_qus.quantity.comment}}条评论
+
+        </span>
+
+      </div>
+
+
+      <!--<div *ngIf="isTrue">-->
+        <!--<div *ngIf="isTrue" class="no-comm">-->
+          <!--<div class="no-comm-top">-->
+            <!--<h4>评论</h4>-->
+          <!--</div>-->
+          <!--<div class="all-comm" *ngFor="let _comment of comment">-->
+            <!--<div class="new-comm">-->
+              <!--<div>-->
+                <!--<img src="http://localhost:3000/{{_comment.commenter.icon}}" alt="" class="comm-img">-->
+                <!--<span class="comm-username">{{_comment.commenter.name}}</span>-->
+                <!--<span class="comm-time">{{_comment.comment.time}}</span>-->
+              <!--</div>-->
+              <!--<div class="comm-content">-->
+                <!--{{_comment.comment.link}}-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+
+    </div>
+  </div>
 
 </div>
+
+
+
+

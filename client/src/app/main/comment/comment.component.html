@@ -3,15 +3,20 @@
     <a [routerLink]="['/problem-detail',_qus.answer.id]" routerLinkActive="active"  >
           {{_qus.question.title}}
     </a>
-
   </h2>
 
   <div class="con">
     <img src="../../assets/首页.jpg" alt="" style="height: 105px;width: 190px;float: left;margin-right: 5px">
       <span *ngIf="isCut">
+        <!--<quill-editor [(ngModel)]="_qus.answer.link|cut:120"-->
+                      <!--[options]="{readOnly:true,theme:'bubble'}">-->
+         <!--</quill-editor>-->
         {{_qus.answer.link|cut:120}}
       </span>
        <span *ngIf="noCut">
+          <!--<quill-editor [(ngModel)]="_qus.answer.link"-->
+                        <!--[options]="{readOnly:true,theme:'bubble'}">-->
+         <!--</quill-editor>-->
         {{_qus.answer.link}}
       </span>
      <span class="read " (click)="toRead()">阅读全文 <i class="fa fa-chevron-down" aria-hidden="true"></i>
@@ -27,56 +32,64 @@
       <i class="fa fa-comment-o" aria-hidden="true"></i>
       {{_qus.quantity.comment}}条评论
     </button>
-    <button type="button" class="btn " data-toggle="modal" data-target="#Modal">
+    <button type="button" class="btn "  (click)="toColl(_qus.answer.id)">
       <i class="fa fa-star-half-o" aria-hidden="true"></i>
       收藏{{_qus.quantity.collect}}
     </button>
-
   </div>
 
 </div>
+
+
 
 <div *ngIf="isTrue" class="no-comm">
   <div class="no-comm-top">
       <h4>评论</h4>
   </div>
-  <div class="all-comm">
+
+  <div style="height: 50px">
+    <input type="text" class="comm-input" placeholder="写下你的评论" name="comment" [(ngModel)]="_com" #_con="ngModel">
+    <input type="button" class="btn-comm" value="评论" (click)="toCom(_com)">
+  </div>
+
+  <div class="all-comm" *ngIf="toget">
     <div class="new-comm">
       <div>
-      <img src="https://pic1.zhimg.com/da8e974dc_s.jpg" alt="" class="comm-img">
-        <span class="comm-username">季安</span>
-        <span class="comm-time">23小时前</span>
+        <img src="http://localhost:3000/{{user.icon}}" alt="" class="comm-img">
+        <span class="comm-username">{{user.name}}</span>
+        <span class="comm-time">刚刚</span>
       </div>
       <div class="comm-content">
-        一直很好
+        {{_con.value}}
       </div>
     </div>
   </div>
-  <div style="height: 50px">
-  <input type="text" class="comm-input" placeholder="写下你的评论"><input type="button" class="btn-comm" value="评论">
-  </div>
-  <!--<app-publish-comments></app-publish-comments>-->
-  <div  *ngIf="isComment">
 
-  {{comment.commenter.name}}
-  </div>
-</div>
-<!--收藏模态框-->
+  <div class="all-comm" *ngFor="let _comment of comment">
+    <div class="new-comm">
+      <div>
+        <img src="http://localhost:3000/{{_comment.commenter.icon}}" alt="" class="comm-img">
+        <span class="comm-username">{{_comment.commenter.name}}</span>
+        <span class="comm-time">{{_comment.comment.time}}</span>
+      </div>
+      <div class="comm-content">
+        {{_comment.comment.link}}
+      </div>
 
-<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">添加收藏</h4>
-      </div>
-      <div class="modal-body">
-       可在个人中心看到收藏的数据
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">确认收藏</button>
-      </div>
+
+
+    </div>
+  </div>
+
+  <div class="col-sm-7 col-sm-offset-1 main-more"  *ngIf="next!=-1">
+    <div class="moretxt" (click)="toMorecom()">
+      <span>查看更多评论</span>
     </div>
   </div>
 </div>
 
-<!--转发模态框-->
+
+
+
+
+

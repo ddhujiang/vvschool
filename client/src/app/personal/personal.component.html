@@ -6,7 +6,8 @@
         </div>
         <div class="icon-photo-bottom">
           <div class="u-img">
-          <img src="http://localhost:3000/{{info.icon}}" alt="" class="img-icon">
+            <input type="file" class="file" >
+            <img src="http://localhost:3000/{{info.icon}}" alt="" class="img-icon">
           </div>
             <div style="margin-left: 20px;float: left">
           <span class="span-name" >{{info.name}}</span>
@@ -20,7 +21,10 @@
   </div>
 
   <div class="row per-bottom"   >
-    <div class=" col-sm-3 col-sm-offset-1">
+
+
+
+    <div class=" col-sm-3 col-sm-offset-1" scroll>
       <ul class="list-group ">
 
         <a [routerLink]="['./collect']" routerLinkActive="active">
@@ -72,9 +76,17 @@
         </li>
       </ul>
     </div>
+
+
+
     <div class="col-sm-7" >
       <router-outlet>
       </router-outlet>
     </div>
   </div>
+
+
+
+
+
 </div>

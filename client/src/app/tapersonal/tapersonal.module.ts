@@ -8,7 +8,6 @@ import {TadailyComponent} from './tadaily/tadaily.component';
 import { TaanswerComponent } from './taanswer/taanswer.component';
 import { TafollowerComponent } from './tafollower/tafollower.component';
 import { TafansComponent } from './tafans/tafans.component';
-import { TatranspondComponent } from './tatranspond/tatranspond.component';
 import { TacollectComponent } from './tacollect/tacollect.component';
 import { TaproblemComponent } from './taproblem/taproblem.component';
 
@@ -23,7 +22,6 @@ import {TapersonalRoutingModule} from './tapersonal-routing.module';
     TaanswerComponent ,
     TafollowerComponent ,
     TafansComponent,
-    TatranspondComponent,
     TacollectComponent,
     TaproblemComponent
   ],

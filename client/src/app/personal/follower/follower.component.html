@@ -1,35 +1,38 @@
 
   <ul class="list-group ">
-    <li class="list-group-item" style="height: 70px">
+    <li class="list-group-item" style="height: 70px" *ngFor="let _showfoll of showfoll">
       <div>
-          <img src="../../assets/胡江.jpg" alt="" style="width: 50px;height: 50px;float: left">
+          <img src="http://localhost:3000/{{_showfoll.icon}}" alt="" style="width: 50px;height: 50px;float: left">
           <div style="float: left;margin-left: 20px;">
-            <span style="font-size:1.3em;color: #474747">用户名</span>
-            <span  style="font-size:1em;color: #636363;margin-left: 10px">,专业</span>
+            <span style="font-size:1.3em;color: #474747">{{_showfoll.name}}</span>
+            <span  style="font-size:1em;color: #636363;margin-left: 10px">,{{_showfoll.profession}}</span>
             <div style="font-size:0.8em;color: #8b8b8b">
-              用户描述为呵呵尽快结婚就
+              {{_showfoll.describe}}
             </div>
           </div>
-        <button type="button" class="btn-det" style="float: right">
+        <button type="button" class="btn-det" style="float: right"  data-toggle="modal" data-target="#myModal">
           取消关注
         </button>
 
-      </div>
-    </li>
-    <li class="list-group-item" style="height: 70px">
-      <div>
-        <img src="../../assets/胡江.jpg" alt="" style="width: 50px;height: 50px;float: left">
-        <div style="float: left;margin-left: 20px;">
-          <span style="font-size:1.3em;color: #474747">用户名</span>
-          <span  style="font-size:1em;color: #636363;margin-left: 10px">,专业</span>
-          <div style="font-size:0.8em;color: #8b8b8b">
-            用户描述为呵呵尽快结婚就
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">取消关注</h4>
+              </div>
+              <div class="modal-footer">
+                <button type="button"  class="btn btn-default" data-dismiss="modal"  (click)="del(_showfoll.id)">确认取消关注</button>
+              </div>
+            </div>
           </div>
         </div>
-        <button type="button" class="btn-det" style="float: right">
-          取消关注
-        </button>
 
       </div>
     </li>
+
   </ul>
+
+
+
+
+

@@ -1,7 +1,12 @@
 <div class="comment" style="clear: both;padding: 10px">
 
   <div class="con">
-    <p>{{_detail.answer.link}}</p>
+    <!--<p>{{_detail.answer.link}}</p>-->
+    <!--编辑器-->
+    <quill-editor [(ngModel)]="_detail.answer.link"
+                  [options]="{readOnly:true,theme:'bubble'}">
+    </quill-editor>
+
     <img src="../../assets/首页.jpg" alt="" >
   </div>
   <div style="margin-top: 10px;font-size: 18px;">
@@ -11,39 +16,48 @@
     <button type="button" class="btn" (click)="like()">
       <i class="fa fa-heart" aria-hidden="true">{{_detail.quantity.praise}}</i>
     </button>
-
     <button type="button" class="btn" (click)="toSee()">
       <i class="fa fa-comment-o" aria-hidden="true">{{_detail.quantity.comment}}条评论</i>
     </button>
 
-    <button type="button" class="btn " data-toggle="modal" data-target="#moreModal">
+    <button type="button" class="btn " (click)="toColl(_detail.answer.id)">
       <i class="fa fa-star-half-o" aria-hidden="true">收藏{{_detail.quantity.collect}}</i>
     </button>
-
-    <!--<button type="button" class="btn">-->
-      <!--<i class="fa fa-reply-all" aria-hidden="true">转发{{_detail.quantity.transpond}}</i>-->
-    <!--</button>-->
-  </div>
-
 </div>
+  <!--评论-->
+  <div *ngIf="isTrue" class="no-comm">
+    <div class="no-comm-top">
+      <h4>评论</h4>
+    </div>
 
-<div *ngIf="isTrue">
-  1111
-</div>
+    <div style="height: 50px">
+      <input type="text" class="comm-input" placeholder="写下你的评论" name="comment" [(ngModel)]="_com" #_con="ngModel">
+      <input type="button" class="btn-comm" value="评论" (click)="toCom(_com)">
+    </div>
 
-<!--收藏-->
-
-<div class="modal fade" id="moreModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">添加收藏</h4>
+    <div class="all-comm" *ngIf="toget">
+      <div class="new-comm">
+        <div>
+          <img src="http://localhost:3000/{{user.icon}}" alt="" class="comm-img">
+          <span class="comm-username">{{user.name}}</span>
+          <span class="comm-time">刚刚</span>
+        </div>
+        <div class="comm-content">
+          {{_con.value}}
+        </div>
       </div>
-      <div class="modal-body">
-        可在个人中心看到收藏的数据
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">确认收藏</button>
+    </div>
+
+    <div class="all-comm" *ngFor="let _comment of comment">
+      <div class="new-comm">
+        <div>
+          <img src="http://localhost:3000/{{_comment.commenter.icon}}" alt="" class="comm-img">
+          <span class="comm-username">{{_comment.commenter.name}}</span>
+          <span class="comm-time">{{_comment.comment.time}}</span>
+        </div>
+        <div class="comm-content">
+          {{_comment.comment.link}}
+        </div>
       </div>
     </div>
   </div>
