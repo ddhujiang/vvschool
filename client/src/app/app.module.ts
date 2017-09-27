@@ -27,7 +27,6 @@ import { MoreCommentComponent } from './main/more-comment/more-comment.component
 import { SetComponent } from './set/set.component';
 import { FollowerComponent } from './personal/follower/follower.component';
 import { FansComponent } from './personal/fans/fans.component';
-import { TranspondComponent } from './personal/transpond/transpond.component';
 import { CollectComponent } from './personal/collect/collect.component';
 import { MyanswerComponent } from './personal/myanswer/myanswer.component';
 import { SearchComponent } from './search/search.component';
@@ -57,10 +56,6 @@ import { HoverProfileDirective } from './directives/hoverProfile';
 import { HoverDirective } from './directives/hover.directive';
 import { CloseDirective } from './directives/close.directive';
 import { ModifyNickNameDirective } from './directives/modify-nick-name.directive';
-
-
-
-
 import { ShanswerComponent } from './search/shanswer/shanswer.component';
 import { ShpeopleComponent } from './search/shpeople/shpeople.component';
 import { ShdailyComponent } from './search/shdaily/shdaily.component';
@@ -70,10 +65,10 @@ import { TacollectComponent } from './tapersonal/tacollect/tacollect.component';
 import { TafansComponent } from './tapersonal/tafans/tafans.component';
 import { TaanswerComponent } from './tapersonal/taanswer/taanswer.component';
 import { TadailyComponent } from './tapersonal/tadaily/tadaily.component';
-import { TatranspondComponent } from './tapersonal/tatranspond/tatranspond.component';
 import { TafollowerComponent } from './tapersonal/tafollower/tafollower.component';
 import { TaproblemComponent } from './tapersonal/taproblem/taproblem.component';
 import { ProblemComponent } from './personal/problem/problem.component';
+import { AnswerProblemComponent } from './answer-problem/answer-problem.component';
 
 @NgModule({
   declarations: [
@@ -103,7 +98,7 @@ import { ProblemComponent } from './personal/problem/problem.component';
     HotComponent,
     CloseDirective,
     ModifyNickNameDirective,
-    SearchComponent,LikeDirective,SetNavClickDirective,AnswerNavClickDirective,HoverProfileDirective,HoverDirective, FollowerComponent, FansComponent, TranspondComponent, CollectComponent, ShanswerComponent, ShpeopleComponent, ShdailyComponent, TapersonalComponent, TacollectComponent, TafansComponent, TaanswerComponent, TadailyComponent, TatranspondComponent, TafollowerComponent, TaproblemComponent, ProblemComponent
+    SearchComponent,LikeDirective,SetNavClickDirective,AnswerNavClickDirective,HoverProfileDirective,HoverDirective, FollowerComponent, FansComponent, CollectComponent, ShanswerComponent, ShpeopleComponent, ShdailyComponent, TapersonalComponent, TacollectComponent, TafansComponent, TaanswerComponent, TadailyComponent,  TafollowerComponent, TaproblemComponent, ProblemComponent, AnswerProblemComponent
   ],
   imports: [
     BrowserModule,

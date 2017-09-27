@@ -1,1 +1,25 @@
-<h3>huhu</h3>
+
+<app-nav></app-nav>
+<div class="col-sm-8 col-sm-offset-2 main">
+<li class="myId">
+  <span>昵称</span>
+  <span class="nickname">{{info.name}}</span>
+  <span appModifyNickName class="fa fa-pencil" aria-hidden="true">修改</span>
+  <input type="text">
+</li>
+<li>
+  <span>ICON</span>
+  <div class="myIcon">
+    <img src="../../../assets/images/user_icon007.png" />
+    <span class="fa fa-pencil" aria-hidden="true"><span>修改</span></span>
+    <input type="file">
+  </div>
+</li>
+<li>
+  <span>自我介绍</span>
+  <form action="#">
+    <textarea name="" id="" cols="80" rows="6"></textarea>
+  </form>
+  <div class="main_fix">修改</div>
+</li>
+</div>
