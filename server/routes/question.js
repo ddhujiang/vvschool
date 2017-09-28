@@ -49,6 +49,8 @@ router.post("/index", _token.power, function (req, res, next) {
               "answer": {
                 "id": result[i].answer_id,
                 "link": result[i].ans_content,
+                "text": result[i].ans_content.replace(/<[^>]+>/ig,""),
+                "img":result[i].ans_content.match(/<img src=(\'|\")(.*?)(\'|\")>/ig),
                 "time": moment() - moment(result[i].ans_time, moment.ISO_8601) > 259200000
                   ? moment(result[i].ans_time).format("YYYY年MMMDo,dddd,h:mm:ss")
                   : moment(result[i].ans_time, moment.ISO_8601).fromNow()
@@ -91,6 +93,8 @@ router.post("/info", function (req, res, next) {
               }, "answer": {
                 "id": result[0].answer_id,
                 "link": result[0].ans_content,
+                "text": result[i].ans_content.replace(/<[^>]+>/ig,""),
+                "img":result[i].ans_content.match(/<img src=(\'|\")(.*?)(\'|\")>/ig),
                 "time": moment() - moment(result[0].ans_time, moment.ISO_8601) > 259200000
                   ? moment(result[0].ans_time).format("YYYY年MMMDo,dddd,h:mm:ss")
                   : moment(result[0].ans_time, moment.ISO_8601).fromNow()
@@ -115,7 +119,7 @@ router.post("/more", function (req, res, next) {
     db.getMoreByQueId(req, function (result) {
       if (result === "err501") {res.json({"code": result});}
       else {
-        if (!result[0].length) {
+        if (!result[0].length&&result[1].length) {
           res.json({
               "code": "q303",
               "question": {
@@ -128,7 +132,7 @@ router.post("/more", function (req, res, next) {
               }
             }
           );
-        } else {
+        } else if(result[0].length) {
           var start = req.body.start || bCfg.getStart, length = req.body.length || bCfg.getDataLength;
           var end = ~~start + ~~length, count = 0;
           var arr = [];
@@ -155,6 +159,8 @@ router.post("/more", function (req, res, next) {
               "answer": {
                 "id": result[0][i].answer_id,
                 "link": result[0][i].ans_content,
+                "text": result[i].ans_content.replace(/<[^>]+>/ig,""),
+                "img":result[i].ans_content.match(/<img src=(\'|\")(.*?)(\'|\")>/ig),
                 "time": moment() - moment(result[0][i].ans_time, moment.ISO_8601) > 259200000
                   ? moment(result[0][i].ans_time).format("YYYY年MMMDo,dddd,h:mm:ss")
                   : moment(result[0][i].ans_time, moment.ISO_8601).fromNow()
@@ -168,7 +174,7 @@ router.post("/more", function (req, res, next) {
             });
           }
           res.json({"code": "q200", "data": arr, "next": (end > result.length) ? -1 : count});
-        }
+        }else {res.json({"code": "err601"});}
       }
     });
   } else {res.json({"code": "err601"});}
@@ -208,6 +214,8 @@ router.post("/search", function (req, res, next) {
               "answer": {
                 "id": result[i].answer_id,
                 "link": result[i].ans_content,
+                "text": result[i].ans_content.replace(/<[^>]+>/ig,""),
+                "img":result[i].ans_content.match(/<img src=(\'|\")(.*?)(\'|\")>/ig),
                 "time": moment() - moment(result[i].ans_time, moment.ISO_8601) > 259200000
                   ? moment(result[i].ans_time).format("YYYY年MMMDo,dddd,h:mm:ss")
                   : moment(result[i].ans_time, moment.ISO_8601).fromNow()
@@ -376,7 +384,6 @@ router.post("/getHotQ", function (req, res, next) {
       }
     }
   });
-
 });
 
 

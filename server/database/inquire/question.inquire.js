@@ -19,7 +19,7 @@ exports.query = {
   "  and p.profession_id=(select profession_id from user where user.user_id=? ) \n" +
   "  and prof.profession_id=p.profession_id \n" +
   "  group by a.answer_id\n" +
-  "  order by p.prob_id  desc,a.like_num desc",
+  "  order by (a.like_num*0.4+sumcm*0.6) desc",
 
   getInfoByAsnId: "select p.prob_id,p.prob_time,a.answer_id,a.user_ans_id,a.ans_time,icon.user_icon_path,p.prob_content,prof.profession_name,info.user_nickname,info.user_self,p.prob_title,a.ans_content,comm.sumcm,a.like_num,sumt,sumc \n" +
   "from profession prof \n" +
@@ -127,12 +127,13 @@ exports.query = {
   "and an.prob_id=prob.prob_id\n" +
   "and u.user_id=?\n" +
   "ORDER BY ?? desc",
-  getHotQ:"select prob.prob_id,prob.iss_id,prob.profession_id,prof.profession_name,prob.prob_content,prob.prob_time,prob.prob_title,an.sumdan\n" +
+  getHotQ: "select prob.prob_id,prob.iss_id,prob.profession_id,prof.profession_name,prob.prob_content,prob.prob_time,prob.prob_title,an.sumdan\n" +
   "from problem prob\n" +
   "join view_answ an\n" +
   "join profession prof \n" +
   "on an.prob_id=prob.prob_id\n" +
-  " order by ?? desc"
+  "group by prob.prob_id" +
+  "order by ?? desc"
 };
 
 

@@ -94,7 +94,6 @@ var userDAO = {
   },
   getInfoById: function (id, cb) {
     sqlclient.queries(inquire.getInfoById, [[id, id], [id], [id], [id], [id]], function (err, results) {
-      console.log(results);
       if (!!err) {
         console.log("getInfoById:" + err.message);
         cb({"code": "err501"});

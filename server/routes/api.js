@@ -8,11 +8,6 @@ var router = express.Router();
 var db = require("./../database/DAO/api.dao").apiDAO;
 /*令牌*/
 var _token = require("./../tool/token");
-// router.post("/singleFile", fileUp.upload.single("icon"), function (req, res, next) {
-//   console.log("qqq");
-//   console.log(req.file);
-//   res.end();
-// });
 
 router.post("/iconUpload", _token.power, function (req, res) {
   fileUp.icon(req, res, function (err) {
@@ -32,15 +27,7 @@ router.post("/iconUpload", _token.power, function (req, res) {
     }
     if (!req.file) {res.json({"code": "f303"});}
     else {
-      // 连接数据库
-      // var filePath = req.file.filename;
-      db.iconUpload(req, function (result) {
-        if (result === "err501") {res.json({"code": result});}
-        else {
-          res.json({"code": result, "src": "static/" + req.file.filename});
-        }
-      });
-      // res.json({"code": "f200", "src": "/static/"+req.file.filename});
+      res.json({"code": "f200", "src": req.file.filename});
     }
   });
 });
@@ -104,7 +91,6 @@ router.post("/files", function (req, res) {
       res.json({"code": "f200", "src": src});
       // res.json({"code": req.files});
     }
-    console.log(req.files);
   });
 });
 

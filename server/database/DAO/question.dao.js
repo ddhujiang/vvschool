@@ -38,7 +38,6 @@ var questionDAO = {
           console.error("getInfoByAsnId: " + err.message);
           return;
         }
-        console.log(result);
         cb(result);
         client.release();
       });
@@ -64,7 +63,6 @@ var questionDAO = {
         console.error("getMoreByQueId: " + err.message);
         return;
       }
-      console.log(results);
       cb(results);
     });
   },

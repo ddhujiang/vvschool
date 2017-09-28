@@ -14,7 +14,6 @@ router.post("/hasEDay", _token.power, function (req, res, next) {
   db.hasEDay(req.ID, function (result) {
     if (result === "err501") {res.json({"code": result});}
     else {
-      console.log(result);
       res.json({"everyday": result[0].num});
     }
   });

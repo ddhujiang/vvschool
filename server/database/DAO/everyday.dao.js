@@ -204,7 +204,7 @@ var everydayDAO = {
         cb("err501");
         return;
       }
-      client.query(inquire.addLikeNum, [req.body.value < 0 ? -1 : 1, req.body.id], function (err, result) {
+      client.query(inquire.addLikeNum, [req.body.val < 0 ? -1 : 1, req.body.id], function (err, result) {
         if (err) {
           cb("err501");
           console.error("addLikeNum: " + err.message);
@@ -218,7 +218,7 @@ var everydayDAO = {
         client.release();
       });
     });
-  },
+  }
 };
 
 exports.everydayDAO = everydayDAO;

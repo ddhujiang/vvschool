@@ -118,7 +118,6 @@ router.post("/info", function (req, res, next) {
         "question": 0,
         "answer": 0
       };
-      console.log(results[0].length);
       if (results[0].length) {
         data = extendParameters({
           "name": results[0][0]["user_nickname"],
@@ -224,6 +223,8 @@ router.post("/answer", function (req, res, next) {
               "answer": {
                 "id": result[i].answer_id,
                 "link": result[i].ans_content,
+                "text": result[i].ans_content.replace(/<[^>]+>/ig,""),
+                "img":result[i].ans_content.match(/<img src=(\'|\")(.*?)(\'|\")>/ig),
                 "time": moment() - moment(result[i].ans_time, moment.ISO_8601) > 259200000
                   ? moment(result[i].ans_time).format("YYYY年MMMDo,dddd,h:mm:ss")
                   : moment(result[i].ans_time, moment.ISO_8601).fromNow()
