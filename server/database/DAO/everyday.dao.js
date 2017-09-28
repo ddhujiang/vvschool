@@ -81,7 +81,7 @@ var everydayDAO = {
         cb("err501");
         return;
       }
-      client.query(inquire.setEDay, [req.ID, req.body.link,req.body.img], function (err, result) {
+      client.query(inquire.setEDay, [req.ID, req.body.link,req.body.img?req.body.img:""], function (err, result) {
         if (!!err) {
           cb("err501");
           console.error("setEDay: " + err.message);

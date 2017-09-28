@@ -9,7 +9,7 @@ var db = require("./../database/DAO/api.dao").apiDAO;
 /*令牌*/
 var _token = require("./../tool/token");
 
-router.post("/iconUpload", _token.power, function (req, res) {
+router.post("/iconUpload", function (req, res) {
   fileUp.icon(req, res, function (err) {
     if (err) {
       switch (err.message) {
