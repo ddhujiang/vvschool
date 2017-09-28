@@ -45,22 +45,27 @@ var questionDAO = {
     });
   },
   getMoreByQueId: function (req, cb) {
-    pool.getConnection(function (err, client) {
-      if (err) {
-        console.error("getMoreByQueId: " + err.message);
+    sqlclient.queries(inquire.getMoreByQueId,[
+      [req.body.queId, req.body.ansId ? req.body.ansId : 0, req.body.sort ? "a.ans_time" : "a.like_num"],
+      [req.body.queId]
+    ],{
+      skip:function(i, arg, results) {
+        var skip = false;
+        switch(i) {
+          case 1:
+            skip = results[0].length!==0;
+            break;
+        }
+        return skip;
+      }
+    },function (err,results) {
+      if (!!err) {
         cb("err501");
+        console.error("getMoreByQueId: " + err.message);
         return;
       }
-      client.query(inquire.getMoreByQueId, [req.body.queId, req.body.ansId ? req.body.ansId : 0, req.body.sort ? "a.ans_time" : "a.like_num"], function (err, result) {
-        if (err) {
-          cb("err501");
-          console.error("getMoreByQueId: " + err.message);
-          return;
-        }
-        console.log(result);
-        cb(result);
-        client.release();
-      });
+      console.log(results);
+      cb(results);
     });
   },
   getSearchByKey: function (req, cb) {

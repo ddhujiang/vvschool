@@ -16,7 +16,7 @@ exports.query = {
   "and ((att.att_by_peo=dy.user_id and att.att_peo=?) or dy.user_id=?)\n" +
   "GROUP BY dy.dynamic_id\n" +
   "order by dy.dy_time desc",
-  getEDayBySelf:"select dy.dynamic_id,ic.user_icon_path,info.user_nickname,info.user_self,info.user_id,dy.dy_time,dy.dy_content,dy.like_num,dcomm.sumdcm,dtran.sumdt\n" +
+  getEDayBySelf:"select dy.dynamic_id,dy.img,ic.user_icon_path,info.user_nickname,info.user_self,info.user_id,dy.dy_time,dy.dy_content,dy.like_num,dcomm.sumdcm,dtran.sumdt\n" +
   "from view_icon ic\n" +
   "join user_icon icon\n" +
   "join user_info info\n" +

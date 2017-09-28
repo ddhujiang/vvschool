@@ -115,8 +115,20 @@ router.post("/more", function (req, res, next) {
     db.getMoreByQueId(req, function (result) {
       if (result === "err501") {res.json({"code": result});}
       else {
-        if (!result.length) {res.json({"code": "q303"}); }
-        else {
+        if (!result[0].length) {
+          res.json({
+              "code": "q303",
+              "question": {
+                "id": result[1][0].prob_id,
+                "title": result[1][0].prob_title,
+                "link": result[1][0].prob_content,
+                "time": moment() - moment(result[1][0].prob_time, moment.ISO_8601) > 259200000
+                  ? moment(result[1][0].prob_time).format("YYYY年MMMDo,dddd,h:mm:ss")
+                  : moment(result[1][0].prob_time, moment.ISO_8601).fromNow()
+              }
+            }
+          );
+        } else {
           var start = req.body.start || bCfg.getStart, length = req.body.length || bCfg.getDataLength;
           var end = ~~start + ~~length, count = 0;
           var arr = [];
@@ -126,32 +138,32 @@ router.post("/more", function (req, res, next) {
             if (count >= end) {break;}
             arr.push({
               "answerer": {
-                "id": result[i].user_ans_id,
-                "name": result[i].user_nickname,
-                "describe": result[i].user_self,
-                "profession": result[i].profession_name,
-                "icon": result[i].user_icon_path ? "static/" + result[i].user_icon_path : "static/icon.default.png"
+                "id": result[0][i].user_ans_id,
+                "name": result[0][i].user_nickname,
+                "describe": result[0][i].user_self,
+                "profession": result[0][i].profession_name,
+                "icon": result[0][i].user_icon_path ? "static/" + result[0][i].user_icon_path : "static/icon.default.png"
               },
               "question": {
-                "id": result[i].prob_id,
-                "title": result[i].prob_title,
-                "link": result[i].prob_content,
-                "time": moment() - moment(result[i].prob_time, moment.ISO_8601) > 259200000
-                  ? moment(result[i].prob_time).format("YYYY年MMMDo,dddd,h:mm:ss")
-                  : moment(result[i].prob_time, moment.ISO_8601).fromNow()
+                "id": result[0][i].prob_id,
+                "title": result[0][i].prob_title,
+                "link": result[0][i].prob_content,
+                "time": moment() - moment(result[0][i].prob_time, moment.ISO_8601) > 259200000
+                  ? moment(result[0][i].prob_time).format("YYYY年MMMDo,dddd,h:mm:ss")
+                  : moment(result[0][i].prob_time, moment.ISO_8601).fromNow()
               },
               "answer": {
-                "id": result[i].answer_id,
-                "link": result[i].ans_content,
-                "time": moment() - moment(result[i].ans_time, moment.ISO_8601) > 259200000
-                  ? moment(result[i].ans_time).format("YYYY年MMMDo,dddd,h:mm:ss")
-                  : moment(result[i].ans_time, moment.ISO_8601).fromNow()
+                "id": result[0][i].answer_id,
+                "link": result[0][i].ans_content,
+                "time": moment() - moment(result[0][i].ans_time, moment.ISO_8601) > 259200000
+                  ? moment(result[0][i].ans_time).format("YYYY年MMMDo,dddd,h:mm:ss")
+                  : moment(result[0][i].ans_time, moment.ISO_8601).fromNow()
               },
               "quantity": {
-                "praise": result[i].like_num ? result[i].like_num : "0",
-                "comment": result[i].sumcm,
-                "transpond": result[i].sumt,
-                "collect": result[i].sumc
+                "praise": result[0][i].like_num ? result[0][i].like_num : "0",
+                "comment": result[0][i].sumcm,
+                "transpond": result[0][i].sumt,
+                "collect": result[0][i].sumc
               }
             });
           }
@@ -320,12 +332,12 @@ router.post("/getMajorQ", _token.power, function (req, res, next) {
               "id": result[i].prob_id,
               "title": result[i].prob_title,
               "link": result[i].prob_content,
-              "type":result[i].profession_name,
+              "type": result[i].profession_name,
               "time": moment() - moment(result[i].prob_time, moment.ISO_8601) > 259200000
                 ? moment(result[i].prob_time).format("YYYY年MMMDo,dddd,h:mm:ss")
                 : moment(result[i].prob_time, moment.ISO_8601).fromNow()
             },
-            "answer":result[i].sumdan
+            "answer": result[i].sumdan
           });
         }
         res.json({"code": "q200", "data": arr, "next": (end > result.length) ? -1 : count});
@@ -335,8 +347,8 @@ router.post("/getMajorQ", _token.power, function (req, res, next) {
 
 });
 /*热门问题*/
-router.post("/getHotQ",  function (req, res, next) {
-  db.getHotQ(req.body.sort,function (result) {
+router.post("/getHotQ", function (req, res, next) {
+  db.getHotQ(req.body.sort, function (result) {
     if (result === "err501") {res.json({"code": result});}
     else {
       if (!result.length) {res.json({"code": "q302"}); }
@@ -357,7 +369,7 @@ router.post("/getHotQ",  function (req, res, next) {
                 ? moment(result[i].prob_time).format("YYYY年MMMDo,dddd,h:mm:ss")
                 : moment(result[i].prob_time, moment.ISO_8601).fromNow()
             },
-            "answer":result[i].sumdan
+            "answer": result[i].sumdan
           });
         }
         res.json({"code": "q200", "data": arr, "next": (end > result.length) ? -1 : count});
@@ -366,8 +378,6 @@ router.post("/getHotQ",  function (req, res, next) {
   });
 
 });
-
-
 
 
 module.exports = router;
