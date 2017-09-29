@@ -224,7 +224,9 @@ router.post("/answer", function (req, res, next) {
                 "id": result[i].answer_id,
                 "link": result[i].ans_content,
                 "text": result[i].ans_content.replace(/<[^>]+>/ig,""),
-                "img":result[i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig)?result[i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig):[],
+                "img":result[i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig)&&result[i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig).length
+                  ?result[i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig)[0].slice(5,-1)
+                  :"",
                 "time": moment() - moment(result[i].ans_time, moment.ISO_8601) > 259200000
                   ? moment(result[i].ans_time).format("YYYY年MMMDo,dddd,h:mm:ss")
                   : moment(result[i].ans_time, moment.ISO_8601).fromNow()

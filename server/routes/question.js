@@ -50,7 +50,9 @@ router.post("/index", _token.power, function (req, res, next) {
                 "id": result[i].answer_id,
                 "link": result[i].ans_content,
                 "text": result[i].ans_content.replace(/<[^>]+>/ig,""),
-                "img":result[i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig)?result[i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig):[],
+                "img":result[i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig)&&result[i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig).length
+                  ?result[i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig)[0].slice(5,-1)
+                  :"",
                 "time": moment() - moment(result[i].ans_time, moment.ISO_8601) > 259200000
                   ? moment(result[i].ans_time).format("YYYY年MMMDo,dddd,h:mm:ss")
                   : moment(result[i].ans_time, moment.ISO_8601).fromNow()
@@ -93,8 +95,10 @@ router.post("/info", function (req, res, next) {
               }, "answer": {
                 "id": result[0].answer_id,
                 "link": result[0].ans_content,
-                "text": result[i].ans_content.replace(/<[^>]+>/ig,""),
-                "img":result[i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig)?result[i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig):[],
+                "text": result[0].ans_content.replace(/<[^>]+>/ig,""),
+                "img":result[0].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig)&&result[0].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig).length
+                  ?result[0].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig)[0].slice(5,-1)
+                  :"",
                 "time": moment() - moment(result[0].ans_time, moment.ISO_8601) > 259200000
                   ? moment(result[0].ans_time).format("YYYY年MMMDo,dddd,h:mm:ss")
                   : moment(result[0].ans_time, moment.ISO_8601).fromNow()
@@ -159,8 +163,10 @@ router.post("/more", function (req, res, next) {
               "answer": {
                 "id": result[0][i].answer_id,
                 "link": result[0][i].ans_content,
-                "text": result[i].ans_content.replace(/<[^>]+>/ig,""),
-                "img":result[i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig)?result[i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig):[],
+                "text": result[0][i].ans_content.replace(/<[^>]+>/ig,""),
+                "img":result[0][i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig)&&result[0][i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig).length
+                  ?result[0][i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig)[0].slice(5,-1)
+                  :"",
                 "time": moment() - moment(result[0][i].ans_time, moment.ISO_8601) > 259200000
                   ? moment(result[0][i].ans_time).format("YYYY年MMMDo,dddd,h:mm:ss")
                   : moment(result[0][i].ans_time, moment.ISO_8601).fromNow()
@@ -215,7 +221,9 @@ router.post("/search", function (req, res, next) {
                 "id": result[i].answer_id,
                 "link": result[i].ans_content,
                 "text": result[i].ans_content.replace(/<[^>]+>/ig,""),
-                "img":result[i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig)?result[i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig):[],
+                "img":result[i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig)&&result[i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig).length
+                  ?result[i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig)[0].slice(5,-1)
+                  :"",
                 "time": moment() - moment(result[i].ans_time, moment.ISO_8601) > 259200000
                   ? moment(result[i].ans_time).format("YYYY年MMMDo,dddd,h:mm:ss")
                   : moment(result[i].ans_time, moment.ISO_8601).fromNow()

@@ -132,7 +132,7 @@ exports.query = {
   "join view_answ an\n" +
   "join profession prof \n" +
   "on an.prob_id=prob.prob_id\n" +
-  "group by prob.prob_id" +
+  "group by prob.prob_id\n" +
   "order by ?? desc"
 };
 

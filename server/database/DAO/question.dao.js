@@ -216,7 +216,7 @@ var questionDAO = {
         cb("err501");
         return;
       }
-      client.query(inquire.getHotQ, [sort?"prob_time":"sumdan"], function (err, result) {
+      client.query(inquire.getHotQ, [sort?"prob_time":"an.sumdan"], function (err, result) {
         if (err) {
           cb("err501");
           console.error("getHotQ: " + err.message);
