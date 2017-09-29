@@ -1,0 +1,39 @@
+.mail_set{
+  color: darkgrey;
+  margin: 20px;
+}
+
+.preserve:hover{
+  cursor: pointer;
+  background-color: #40d296;
+}
+.mail_set_main{
+  margin-top: 66px;
+  margin-left: 20px;
+}
+.mail_set_main span{
+  font-weight: bolder;
+}
+form div{
+  position: relative;
+  left: 226px;
+  top:-55px;
+  margin:40px;
+}
+.preserve{
+  height: 40px;
+  width: 80px;
+  background-color: #51D2B7;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  border-radius: 4px;
+}
+.preserve:hover{
+  cursor: pointer;
+  background-color: #40d296;
+}
+

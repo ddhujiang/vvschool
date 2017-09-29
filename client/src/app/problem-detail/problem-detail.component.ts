@@ -17,6 +17,7 @@ export class ProblemDetailComponent implements OnInit {
     theme: "snow",
     placeholder: "insert content..."
   };
+
   detail:any;
   id:string;
   user:any;
@@ -32,12 +33,13 @@ export class ProblemDetailComponent implements OnInit {
               ) { }
 
   ngOnInit() {
-    let that=this;
-    that.userSer.getAllUser(function (result) {
-        // that.user_name=result.data.name;
-      that.user=result.data;
-    });
 
+    let that=this;
+
+    // that.userSer.getAllUser(function (result) {
+    //
+    //   that.user=result.data;
+    // });
     that.id=that.ar.snapshot.params['id'];
     console.log(that.id);
     that.detailSer.getDetail(that.id,function (result){
@@ -46,14 +48,24 @@ export class ProblemDetailComponent implements OnInit {
       });
 
   }
+
+  toGet(){
+    let that=this;
+    that.isWrite=false;
+    that.indexSer.putComment(that.detail.question.id,that.editorContent,function (result) {
+      console.log(result);
+      alert(result)
+    });
+  }
+
   toMore() {
     // this.isTrue = !this.isTrue;
     let that = this;
-    // alert(that.detail.question.id);
+    alert(that.detail.question.id);
     // alert(that.detail.answer.id);
-
-    that.detailSer.getMore(that.detail.question.id, that.detail.answer.id, function (result) {
+    that.detailSer.getMore(that.detail.question.id,that.detail.answer.id, function (result) {
       if(result.code=="q200"){
+        console.log(result);
         // alert(result);
         that.more=result.data;
         that.isTrue=true;
@@ -69,17 +81,17 @@ export class ProblemDetailComponent implements OnInit {
     })
   }
 
+
+
+
+
+
 //  写回答调用的事件
   toWrite(){
    this.isWrite=!this.isWrite;
   }
-  toGet(){
-    let that=this;
-    that.isWrite=false;
-    that.indexSer.putComment( that.detail.question.id,that.editorContent,function (result) {
-      alert(result)
-    });
-  }
+
+
 
 
 

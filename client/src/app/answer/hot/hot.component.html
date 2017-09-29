@@ -1,8 +1,18 @@
 <div class="hot_container">
-  <div class="hot_wrapper"  *ngFor="let item of arr">
-    <h5>{{item}}:辽宁乾朗科技怎么样？</h5>
+  <div class="hot_wrapper"  *ngFor="let _hotQus of hotQus">
+    <!--<h5>{{_hotQus.question.title}}</h5>-->
+
+
+    <a [routerLink]="['/answer-problem', _hotQus.question.id]" routerLinkActive="active"  style="font-size:18px;">
+      {{_hotQus.question.title}}
+      <!--{{ _hotQus.question.title}}-->
+    </a>
+
+
     <div>
-      <a href="">9 个回答</a>
+      <span>{{_hotQus.answer}}个回答</span>
+      <span>{{_hotQus.question.time}}</span>
+      <!--<a href=""></a>-->
       <a class="close" appClose><i class="fa fa-times" aria-hidden="true"></i></a>
     </div>
   </div>

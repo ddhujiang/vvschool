@@ -4,10 +4,17 @@
   </div>
 </div>
 <div class="hot_container">
-  <div class="hot_wrapper"  *ngFor="let item of arr">
-    <h5>{{item}}:辽宁乾朗科技怎么样？</h5>
+  <div class="hot_wrapper"  *ngFor="let _recommendQus of recommendQus">
+    <!--<h5> {{_recommendQus.question.title}} </h5>-->
+
+    <a [routerLink]="['/answer-problem',_recommendQus.question.id]" routerLinkActive="active"  style="font-size:18px;">
+      {{_recommendQus.question.title}}
+      <!--{{ _qus.question.title}}-->
+    </a>
+
     <div>
-      <a href="">9 个回答</a>
+        <span>{{_recommendQus.answer}}个回答 </span>
+        <span>....{{_recommendQus.question.time}}</span>
       <a class="close" appClose><i class="fa fa-times" aria-hidden="true"></i></a>
     </div>
   </div>

@@ -1,3 +1,97 @@
-<p>
-  answer-problem works!
-</p>
+
+<div class="main">
+  <app-nav ></app-nav>
+
+  <div *ngIf="isans" >
+  <div class="col-sm-12  main-det">
+    <div class="col-sm-offset-2 col-sm-8">
+      <h3>{{detail[0].question.title}}</h3>
+      <p> {{detail[0].question.link}}</p>
+      <button type="button" class="btn-det" (click)="toWrite()">
+        写回答
+      </button>
+    </div>
+  </div>
+
+  <div  *ngIf="isWrite">
+    <div class="col-sm-12">
+      <div class="col-sm-8 col-sm-offset-2 main-ans">
+        <quill-editor [(ngModel)]="editorContent"
+                      [options]="{placeholder:'写下你的回答'}"
+                      (blur)="onEditorBlured($event)"
+                      (focus)="onEditorFocused($event)"
+                      (ready)="onEditorCreated($event)"
+                      (change)="onContentChanged($event)">
+        </quill-editor>
+      </div>
+    </div>
+
+    <div class="col-sm-12">
+      <div class="col-sm-8 col-sm-offset-2 main-ans">
+        <button type="button" class="btn-det" (click)="toGet()">
+          提交
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-sm-12"  *ngFor="let _detail of detail">
+    <div class="col-sm-8 col-sm-offset-2 main-ans">
+      <div style="padding: 10px">
+
+        <img src="http://localhost:3000/{{_detail?.answerer.icon}}" alt="用户头像" class="user_icon"
+             style="float: left" >
+        <div style="float: left;margin-left: 15px">
+          <span style="font-size: 1.2em">
+            {{_detail?.answerer.name}}
+          </span>
+          <span>
+            {{_detail?.answerer.profession}}
+          </span>
+          <div>
+            {{_detail?.answerer.describe}}
+          </div>
+        </div>
+      </div>
+      <app-more-comment [_detail]="_detail"></app-more-comment>
+    </div>
+  </div>
+
+  <div class="col-sm-12 footer">
+  </div>
+   </div>
+
+  <div *ngIf="noans">
+    <div class="col-sm-12  main-det">
+      <div class="col-sm-offset-2 col-sm-8">
+        <h3>{{detail?.title}}</h3>
+        <p> {{detail?.link}}</p>
+        <button type="button" class="btn-det" (click)="toWrite()">
+          写回答
+        </button>
+      </div>
+    </div>
+    <div  *ngIf="isWrite">
+      <div class="col-sm-12">
+        <div class="col-sm-8 col-sm-offset-2 main-ans">
+          <quill-editor [(ngModel)]="editorContent"
+                        [options]="{placeholder:'写下你的回答'}"
+                        (blur)="onEditorBlured($event)"
+                        (focus)="onEditorFocused($event)"
+                        (ready)="onEditorCreated($event)"
+                        (change)="onContentChanged($event)">
+          </quill-editor>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="col-sm-8 col-sm-offset-2 main-ans">
+          <button type="button" class="btn-det" (click)="toGet()">
+            提交
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

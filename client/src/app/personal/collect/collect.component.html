@@ -16,6 +16,7 @@
         <span style="margin-left: 10px;font-size: 1.2em" class="totaper">
             {{_qus.answerer.name}}</span>
         <span style="margin-left: 5px;color: #797979"> {{_qus.answerer.describe}}</span>
+        <span style="float: right;font-size: 15px;color: #a4a4a4;margin-right: 20px">{{_qus.answer.time}}</span>
       </p>
 
       <p class="til">
@@ -24,18 +25,32 @@
         </a>
       </p>
       <div class="con">
-        <img src="../../assets/首页.jpg" alt="" style="height: 105px;width: 190px;float: left;margin-right: 5px">
+        <!--<img src="../../assets/首页.jpg" alt="" style="height: 105px;width: 190px;float: left;margin-right: 5px">-->
         <span *ngIf="isCut">
-        {{_qus.answer.link|cut:120}}
+            <!--{{_qus.answer.link|cut:120}}-->
+          <!--编辑器-->
+          <div *ngIf="_qus.answer.img.length!=0">
+           <img  [src]="_qus.answer.img" alt="" style="height: 105px;width: 190px;float: left;margin-right: 5px">
+          </div>
+
+
+          {{_qus.answer.text|cut:120}}
+
+            <!--<quill-editor [(ngModel)]="_qus.answer.link"-->
+                  <!--[options]="{readOnly:true,theme:'bubble'}">-->
+           <!--</quill-editor>-->
        </span>
         <span *ngIf="noCut">
-        {{_qus.answer.link}}
+        <!--{{_qus.answer.link}}-->
+          <quill-editor [(ngModel)]="_qus.answer.link"
+                        [options]="{readOnly:true,theme:'bubble'}">
+          </quill-editor>
        </span>
+
         <span class="read " (click)="toRead()">阅读全文 <i class="fa fa-chevron-down" aria-hidden="true"></i>
          </span>
       </div>
       <div class="btm">
-
        <span class="btn_span">
        <i class="fa fa-heart" aria-hidden="true"></i>
         点赞数 {{_qus.quantity.praise}}
@@ -48,31 +63,8 @@
         <span class="btn_span btn_com" (click)="toSee()">
       <i class="fa fa-comment-o" aria-hidden="true"></i>
       {{_qus.quantity.comment}}条评论
-
         </span>
-
       </div>
-
-
-      <!--<div *ngIf="isTrue">-->
-        <!--<div *ngIf="isTrue" class="no-comm">-->
-          <!--<div class="no-comm-top">-->
-            <!--<h4>评论</h4>-->
-          <!--</div>-->
-          <!--<div class="all-comm" *ngFor="let _comment of comment">-->
-            <!--<div class="new-comm">-->
-              <!--<div>-->
-                <!--<img src="http://localhost:3000/{{_comment.commenter.icon}}" alt="" class="comm-img">-->
-                <!--<span class="comm-username">{{_comment.commenter.name}}</span>-->
-                <!--<span class="comm-time">{{_comment.comment.time}}</span>-->
-              <!--</div>-->
-              <!--<div class="comm-content">-->
-                <!--{{_comment.comment.link}}-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
 
     </div>
   </div>

@@ -1,0 +1,142 @@
+.one_complete_card{
+  width:100%;
+  height: auto;
+  margin-top: 20px;
+  border-bottom: solid 1px lightgrey;
+  border-radius: 6px;
+  background-color: white;
+}
+.single_card{
+  width:100%;
+  height: auto;
+  position: relative;
+  padding: 10px;
+  margin-top: 10px;
+}
+.card_top{
+  height: 76px;
+  width: 100%;
+}
+.dropdown{
+  width: 125px;
+  height: auto;
+  position: absolute;
+  top:5px;
+  right: 5px;
+  z-index: 5;
+}
+.dropdown>div:first-child{
+  height: 26px;
+  width: 20%;
+  text-align: center;
+  position: absolute;
+  top:0;
+  right: 0;
+}
+.dropdown>div:first-child:hover{
+  color: red !important;
+  cursor: pointer;
+}
+.box{
+  height: auto;
+  width: 100%;
+  display: none;
+  margin-top: 30px;
+  background-color: white;
+  box-shadow: 0 0 2px lightgrey;
+}
+.delete{
+  height: 30px;
+  width: 100%;
+  text-align: center;
+  line-height: 30px;
+}
+.delete:hover{
+  color: red;
+  cursor: pointer;
+  background-color: rgba(211, 211, 211, 0.57);
+}
+.myhide{
+  height: 30px;
+  width: 100%;
+  text-align: center;
+  line-height: 30px;
+}
+.myhide:hover{
+  color: red;
+  cursor: pointer;
+  background-color: rgba(211, 211, 211, 0.57);
+}
+.user_icon{
+  width: 66px;
+  height: 66px;
+  float: left;
+}
+.user_icon:hover{
+  cursor: pointer;
+}
+.user_icon img{
+  width: 100%;
+  height: 100%;
+  border: solid 1px rgba(255, 255, 255, 0);
+  border-radius: 33px;
+}
+.othersId{
+  height:20px;
+  margin-left: 66px;
+  position: relative;
+  top: 20px;
+}
+.when_where{
+  height:20px;
+  margin-left: 66px;
+  position: relative;
+  top: 20px;
+}
+
+.interact_part{
+  height: 35px;
+  width: 100%;
+  margin-top: 10px;
+  text-align: center;
+}
+.interact{
+  float: left;
+  width: 30%;
+  text-align: center;
+  margin: 1%;
+}
+.interact:hover{
+  cursor: pointer;
+  color: #ff0c1b;
+}
+.middle{
+  border-left: solid 1px darkgrey;
+  border-right: solid 1px darkgrey;
+}
+.publish_comments{
+  width: 100%;
+  height: auto;
+}
+.others_comments{
+  margin-bottom: 10px;
+}
+.showup{
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  background-color: white;
+  border-radius: 6px;
+}
+.showup:hover{
+  color: red;
+  cursor: pointer;
+  background-color: rgba(211, 211, 211, 0.57);
+}
+
+
+
+
+
+

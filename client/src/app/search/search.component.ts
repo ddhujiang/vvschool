@@ -19,7 +19,6 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     let that=this;
     that.value=that.ar.snapshot.params['id'];
-
     // that.detailSer.getSearch(that.value,function (result) {
     //   if(result.code=="q200"){
     //     that.serValue=result.data;

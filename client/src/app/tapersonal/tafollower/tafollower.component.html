@@ -1,5 +1,5 @@
 
-<ul class="list-group ">
+<ul class="list-group " *ngIf="isFollower">
   <li class="list-group-item" style="height: 70px" *ngFor="let _showfoll of showfoll">
     <div>
       <img src="http://localhost:3000/{{_showfoll.icon}}" alt="" style="width: 50px;height: 50px;float: left">
@@ -14,4 +14,9 @@
   </li>
 </ul>
 
+<div *ngIf="noFollower">
+  <p class="noMore">
+    ...........没有关注任何用户............
+  </p>
+</div>
 

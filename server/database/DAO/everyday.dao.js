@@ -173,7 +173,8 @@ var everydayDAO = {
         return;
       }
       client.query(inquire.deleteComBySelf, [req.body.id, req.ID], function (err, result) {
-        if (!!err) {
+          console.log(result);
+          if (!!err) {
           cb("err501");
           console.error("deleteComBySelf: " + err.message);
         } else {cb(result.affectedRows === 1 ? "e200" : "e404");}

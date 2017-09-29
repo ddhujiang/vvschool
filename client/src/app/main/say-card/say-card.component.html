@@ -1,0 +1,62 @@
+
+  <div class="_one_complete_card">
+    <div class="_single_card">
+      <div class="_dropdown">
+        <div appDeleteDaily><i class="fa fa-sort-desc" aria-hidden="true"></i></div>
+        <div class="_box">
+          <div class="_delete" *ngIf="_onesay.user.id==myInfo?.id" (click)="delete()" appDeleteMyDaily>删除</div>
+          <div class="_myhide" appMyhide>隐形</div>
+        </div>
+      </div>
+      <div class="_card_top">
+        <div class="_user_icon" appHover><img alt="images" src="http://localhost:3000/{{_onesay.user.icon}}"/></div>
+        <div class="_othersId">{{_onesay.user.name}}</div>
+        <div class="_when_where">
+          <span>{{_onesay.everyday.time}}</span>
+          <span>来自vvschool</span>
+        </div>
+      </div>
+      <div class="_user_profile" apphoverProfile>
+        <div class="_top_part">
+          <div class="_user_profile_icon"><img alt="images" src="http://localhost:3000/{{_onesay.user.icon}}"/></div>
+          <div class="_user_profile_top_right">
+            <span>{{_onesay.user.name}}</span>
+            <span>{{_onesay.user.describe}}</span>
+          </div>
+        </div>
+        <div class="_middle_part">
+          <div>
+            <p>回答</p>
+            <p>88</p>
+          </div>
+          <div>
+            <p>文章</p>
+            <p>88</p>
+          </div>
+          <div>
+            <p>关注着</p>
+            <p>88</p>
+          </div>
+        </div>
+        <div class="_bottom_part">
+          <div><i class="fa fa-plus" aria-hidden="true"></i> 关注他</div>
+          <div><i class="fa fa-comments-o" aria-hidden="true"></i>发私信</div>
+        </div>
+      </div>
+ <app-daily-main [oneDaily]="_onesay"></app-daily-main>
+      <div class="_interact_part">
+        <div class="_interact" id="repost"><i class="fa fa-reply-all" aria-hidden="true"></i><span>{{_onesay.quantity.transpond}}</span></div>
+        <div class="_interact _middle" id="comment" (click)="comments()"><i class="fa fa-commenting-o" aria-hidden="true"></i><span>{{_onesay.quantity.comment}}</span></div>
+        <div class="_interact" id="like" (click)="ILike()" appLike><i class="fa fa-thumbs-up" aria-hidden="true"></i><span>{{_onesay.quantity.praise}}</span></div>
+      </div>
+    </div>
+
+    <div class="_publish_comments" *ngIf="_comment">
+      <app-publish-comments [_info]="myInfo" [_oneDaily]="_onesay" [com]="_comment"></app-publish-comments>
+    </div>
+
+  </div>
+  <div></div>
+
+
+

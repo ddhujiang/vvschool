@@ -1,25 +1,30 @@
+ <div class="setcss">
+    <div class="row">
+      <app-nav></app-nav>
+    </div>
+    <div class="row main_set">
+      <nav class="nav">
+        <ul class="nav nav-tabs">
+          <li role="presentation" class="active"  appSetNavClick>
+            <a routerLink="./basic-info" routerLinkActive="active">基本资料</a>
+          </li>
+          <li role="presentation" appSetNavClick>
+            <a routerLink="./id-pwd" routerLinkActive="active">账号和密码</a>
+          </li>
+          <li role="presentation" appSetNavClick>
+            <a routerLink="./mail" routerLinkActive="active">消息和邮件</a>
+          </li>
+          <li role="presentation" appSetNavClick>
+            <a routerLink="./shield" routerLinkActive="active">屏蔽</a>
+          </li>
+        </ul>
+      </nav>
+      <router-outlet>
 
-<app-nav></app-nav>
-<div class="col-sm-8 col-sm-offset-2 main">
-<li class="myId">
-  <span>昵称</span>
-  <span class="nickname">{{info.name}}</span>
-  <span appModifyNickName class="fa fa-pencil" aria-hidden="true">修改</span>
-  <input type="text">
-</li>
-<li>
-  <span>ICON</span>
-  <div class="myIcon">
-    <img src="../../../assets/images/user_icon007.png" />
-    <span class="fa fa-pencil" aria-hidden="true"><span>修改</span></span>
-    <input type="file">
-  </div>
-</li>
-<li>
-  <span>自我介绍</span>
-  <form action="#">
-    <textarea name="" id="" cols="80" rows="6"></textarea>
-  </form>
-  <div class="main_fix">修改</div>
-</li>
+      </router-outlet>
+    </div>
+   <div class="fullwhite">
+
+   </div>
 </div>
+

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../services/user.service';  //导入服务
+// import {UpdataService} from '../../services/updata.service';
 @Component({
   selector: 'app-shpeople',
   templateUrl: './shpeople.component.html',
@@ -12,8 +13,12 @@ export class ShpeopleComponent implements OnInit {
   serValue:any;
   isAns:boolean=false;
   noAns:boolean=false;
+  addfans:any;
+  isFans:boolean=false;
+  noFans:boolean=true;
+  // private upser:UpdataService)
   constructor(private ar:ActivatedRoute,
-              private userSer:UserService,) { }
+              private userSer:UserService) { }
   ngOnInit() {
     let that=this;
     that.value=that.ar.snapshot.params['id'];
@@ -28,5 +33,17 @@ export class ShpeopleComponent implements OnInit {
       }
     })
   }
+
+
+  // add(id){
+  //   let that=this;
+  //   that.upser.add( id,function (result) {
+  //     that.addfans=result.data;
+  //     console.log(result);
+  //     that.isFans=true;
+  //     that.noFans=false;
+  //   })
+  // }
+
 
 }

@@ -20,7 +20,7 @@ export class CommentComponent implements OnInit {
   toget:boolean=false;
   coll:any;
   next:any;
-
+  isImg:boolean=false;
   constructor(private indexSer:IndexService,private userSer:UserService,private upser:UpdataService
   ) { }
 
@@ -36,16 +36,18 @@ export class CommentComponent implements OnInit {
     let that=this;
     that.isTrue=!that.isTrue;
     that.indexSer.getComment(that._qus.answer.id,function (result) {
-      that.comment=result.data;
-      that.next=result.next;
-
+      if(result.code=='q200'){
+        console.log(result);
+        that.comment=result.data;
+        that.next=result.next;
+      }
+     else if(result.code=='q302'){
+        that.next='-1';
+      }
     })
   }
-
   toMorecom(){
-
   let that=this;
-
   that.indexSer.getMoreComment(that._qus.answer.id,that.next,function (result){
     console.log(result);
     that.comment=that.comment.concat(result.data)
@@ -111,9 +113,6 @@ export class CommentComponent implements OnInit {
         console.log(result);
       })
     }
-
-
-
   }
 
 }

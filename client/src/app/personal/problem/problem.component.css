@@ -1,9 +1,15 @@
+
+.hujiang{
+  background-color: white;
+}
+
+
 .prob-module{
   width: 774px;
   height: 100px;
   padding:10px;
   border:1px solid #F3F3F3;
-  border-bottom-color: #999;
+  /*border-bottom-color: #999;*/
   box-shadow: 0 0 1px 0 rgba(0,0,.1,0);
 }
 .pro-content{

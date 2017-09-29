@@ -12,15 +12,20 @@ export class TafollowerComponent implements OnInit {
   user_id:any;
   showfoll:any;
   delfoll:any;
+  isFollower:boolean=false;
+  noFollower:boolean=false;
   constructor(private ar:ActivatedRoute,private upser:UpdataService) { }
 
   ngOnInit() {
     let that=this;
     that.user_id=that.ar.snapshot.params['id'];
     that.upser.showTafoll(that.user_id,function (result) {
-      that.showfoll=result.data;
+      if(result.code=="r200")
+      {that.showfoll=result.data;
+      that.isFollower=true;}
+      else if(result.code=="r904"){
+        that.noFollower=true;}
       console.log(result);
-      // alert(result);
     })
 
   }

@@ -96,7 +96,7 @@ export class UserService {
 
 
   getsMyanswer(id,callback) {
-    this.http.post(this.url + '/answer', {"id": id}).subscribe(function (result) {
+    this.http.post(this.url + '/answer', {"id": id,"sort":'time'}).subscribe(function (result) {
         console.log(result);
         // console.log(result);
         callback(result);
@@ -105,8 +105,6 @@ export class UserService {
         console.log(error.message);
       })
   }
-
-
 
 
   getsMyqus(id,callback) {

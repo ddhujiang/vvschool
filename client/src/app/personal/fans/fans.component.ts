@@ -13,25 +13,22 @@ export class FansComponent implements OnInit {
   addfans:any;
   isFans:boolean=false;
   noFans:boolean=true;
+  isFan:boolean=false;
+  noFan:boolean=false;
+
   constructor(private userSer:UserService,private upser:UpdataService) {
   }
 
   ngOnInit() {
     let that=this;
-
-
-
     that.upser.showfans(function (result) {
-      that.showfans=result.data;
-      console.log(result);
-      // alert(result);
+      if(result.code=="r200")
+      { that.showfans=result.data;
+        that.isFan=true;}
+      else if(result.code=="r904"){
+        that.noFan=true;}
     })
   }
-
-
-
-
-
 
   add(id){
     let that=this;

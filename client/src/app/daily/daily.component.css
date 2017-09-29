@@ -1,37 +1,50 @@
-.bgcolor_grey{
-  background-color: #F3F3F3;
+.bg_img{
+  width: 100%;
+  height: 100%;
+  z-index: -100;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 .main{
   float: left;
   width: 55%;
-  height: 1000px;
+  height: auto;
   margin-left: 10%;
+  margin-top: 100px;
 }
 .right_part{
   float: left;
   width: 20%;
   margin-left: 5%;
   height:  740px;
+  margin-top: 100px;
 }
 .user_profile{
   height: 250px;
   width: 100%;
 background-color: white;
   position: relative;
+  border-radius: 6px;
 }
 .bg_pic img{
   width: 100%;
   height: 108px;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
 }
 .user_icon{
   position: absolute;
-  left: 105px;
+  left: 96px;
   top:66px;
+}
+.user_icon:hover{
+  cursor: pointer;
 }
 .user_icon img{
   width: 66px;
   height: 66px;
-  border: solid 1px darkgrey;
+  border: solid 1px #808080;
   border-radius: 33px;
 }
 .userId{
@@ -59,15 +72,16 @@ margin-top: 16px;
 }
 .three_data_count div ul li:first-child:hover{
   cursor: pointer;
-  color: red;
+  color: #ff0817;
 }
 .three_data_count div ul li:last-child{
   color: darkgrey;
 }
 .probable_freinds{
   margin-top: 20px;
-  height: 470px;
+  height: 480px;
   background-color: white;
+  border-radius: 6px;
 }
 .title{
   width: 100%;
@@ -120,7 +134,7 @@ float: left;
   border-radius: 4px;
   margin-top: 18px;
   background-color: white;
-  box-shadow:0px 2px 2px rgba(128, 128, 128, 0.55);
+  box-shadow:0 2px 2px rgba(128, 128, 128, 0.55);
   line-height: 28px;
   text-align: center;
 }
@@ -132,10 +146,9 @@ float: left;
 }
 
 .iconfont {
-  font-size:10px !important;
+  font-size:10px;
   color: rgba(255, 0, 0, 0.55);
 }
-
 
 
 

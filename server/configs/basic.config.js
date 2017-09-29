@@ -1,4 +1,4 @@
 module.exports =  {
-  getDataLength:1,
+  getDataLength:20,
   getStart:1
 };

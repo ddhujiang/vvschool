@@ -5,6 +5,7 @@ import {FormsModule} from '@angular/forms';    //要用表单必须导入这个�
 import {HttpClientModule} from '@angular/common/http';
 //导入编辑器
 import {QuillEditorModule} from'./quill-editor/quill-editor.module';
+import {ImageUploadModule} from 'angular2-image-upload';
 //导入组件
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
@@ -22,7 +23,7 @@ import { CommentComponent } from './main/comment/comment.component';
 import { OthersCommentsComponent } from './main/others-comments/others-comments.component';
 import {PublishCommentsComponent} from './main/publish-comments/publish-comments.component';
 import {SayComponent} from './main/say/say.component';
-import {SayCardComponent} from './personal/say-card/say-card.component';
+import {SayCardComponent} from './main/say-card/say-card.component';
 import { MoreCommentComponent } from './main/more-comment/more-comment.component';
 import { SetComponent } from './set/set.component';
 import { FollowerComponent } from './personal/follower/follower.component';
@@ -42,7 +43,7 @@ import {PersonalRoutingModule} from './personal/personal-routing.module';
 import {SearchRoutingModule} from './search/search-routing.module';
 import {TapersonalRoutingModule} from './tapersonal/tapersonal-routing.module';
 import {AnswerRoutingModule} from './answer/answer-routing.module';
-
+import {SetRoutingModule} from './set/set-routing.module';
 //管道
 import { CutPipe } from './pipes/cut.pipe';
 //导入服务
@@ -56,9 +57,29 @@ import { HoverProfileDirective } from './directives/hoverProfile';
 import { HoverDirective } from './directives/hover.directive';
 import { CloseDirective } from './directives/close.directive';
 import { ModifyNickNameDirective } from './directives/modify-nick-name.directive';
+import { DeleteDailyDirective  } from './directives/delete-daily.directive';
+import { MyhideDirective } from './directives/myhide.directive';
+import { DeleteMyDailyDirective } from './directives/delete-my-daily.directive';
+import { DeleteCommentDirective } from './directives/delete-comment.directive';
+import { HideinputDirective } from './directives/hideinput.directive';
+
+//导入组件
+import { DailyMainComponent } from './main/daily-main/daily-main.component';
+import { BottomComponent } from './main/bottom/bottom.component';
 import { ShanswerComponent } from './search/shanswer/shanswer.component';
 import { ShpeopleComponent } from './search/shpeople/shpeople.component';
 import { ShdailyComponent } from './search/shdaily/shdaily.component';
+import {MyDailyComponent} from './personal/myDaily/myDaily.component';
+import {MyDailyMainComponent} from './personal/myDaily/myDaily-main/myDaily-main';
+
+import { BasicInfoComponent } from './set/basic-info/basic-info.component';
+import { IdPwdComponent } from './set/id-pwd/id-pwd.component';
+import { ShieldComponent } from './set/shield/shield.component';
+import { MailComponent } from './set/mail/mail.component';
+
+
+
+
 
 import { TapersonalComponent } from './tapersonal/tapersonal.component';
 import { TacollectComponent } from './tapersonal/tacollect/tacollect.component';
@@ -69,6 +90,7 @@ import { TafollowerComponent } from './tapersonal/tafollower/tafollower.componen
 import { TaproblemComponent } from './tapersonal/taproblem/taproblem.component';
 import { ProblemComponent } from './personal/problem/problem.component';
 import { AnswerProblemComponent } from './answer-problem/answer-problem.component';
+import { MySayCardComponent } from './personal/myDaily/my-say-card/my-say-card.component';
 
 @NgModule({
   declarations: [
@@ -98,6 +120,20 @@ import { AnswerProblemComponent } from './answer-problem/answer-problem.componen
     HotComponent,
     CloseDirective,
     ModifyNickNameDirective,
+    DeleteDailyDirective,
+    MyhideDirective,
+    DeleteMyDailyDirective,
+    DeleteCommentDirective,
+    HideinputDirective,
+    DailyMainComponent,
+    BottomComponent,
+    MyDailyComponent,
+    MyDailyMainComponent,
+    MySayCardComponent,
+    BasicInfoComponent,
+    IdPwdComponent,
+    ShieldComponent,
+    MailComponent,
     SearchComponent,LikeDirective,SetNavClickDirective,AnswerNavClickDirective,HoverProfileDirective,HoverDirective, FollowerComponent, FansComponent, CollectComponent, ShanswerComponent, ShpeopleComponent, ShdailyComponent, TapersonalComponent, TacollectComponent, TafansComponent, TaanswerComponent, TadailyComponent,  TafollowerComponent, TaproblemComponent, ProblemComponent, AnswerProblemComponent
   ],
   imports: [
@@ -107,8 +143,12 @@ import { AnswerProblemComponent } from './answer-problem/answer-problem.componen
     AnswerRoutingModule,
     TapersonalRoutingModule,
     SearchRoutingModule,
+
+    SetRoutingModule,
+
     PersonalRoutingModule,
     AppRoutingModule,
+    ImageUploadModule.forRoot(),
     QuillEditorModule
   ],
   providers: [LocalStorageService],

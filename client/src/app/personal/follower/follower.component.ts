@@ -11,14 +11,21 @@ export class FollowerComponent implements OnInit {
   user_id:any;
   showfoll:any;
   delfoll:any;
+  isFollower:boolean=false;
+  noFollower:boolean=false;
+
   constructor(private userSer:UserService,private upser:UpdataService) { }
 
   ngOnInit() {
     let that=this;
     that.upser.showfoll(function (result) {
-      that.showfoll=result.data;
-      console.log(result);
-      // alert(result);
+
+      if(result.code=="r200")
+      {that.showfoll=result.data;
+        that.isFollower=true;}
+      else if(result.code=="r904"){
+        that.noFollower=true;}
+
     })
   }
 

@@ -39,6 +39,11 @@ export class IndexComponent implements OnInit {
       });
     that.indexSer.getAnswerer(function (result) {
        that.qus=result.data;
+      // if(that.qus.answer.img.length!=0){
+      //   that.qus.img=that.qus.answer.img[0].substring(4,that.qus.answer.img[0].length-2);
+      //   console.log("11",that.qus.img,"22");
+      // }
+
        that.next=result.next;
       console.log(result);
       // that.index=result.length;

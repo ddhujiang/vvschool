@@ -1,7 +1,21 @@
-
+.publish_component{
+  width: 100%;
+  height: 66px;
+  padding-top: 10px;
+  background-color: white;
+  border-top: solid 1px darkgrey;
+  border-top: solid 1px darkgrey;
+  margin-bottom: 10px;
+}
 .comments_text{
+  height: 44px;
+  width: 72%;
   margin-left: 10px;
   float: left;
+}
+.comments_text>textarea{
+  height: 44px;
+  width: 100%;
 }
 .my_icon{
   width: 44px;
@@ -9,7 +23,6 @@
   float: left;
   border: solid 1px rgba(255, 255, 255, 0);
   border-radius: 22px;
-  margin-left: 20px;
 }
 .my_icon img{
   width: 100%;
@@ -32,4 +45,7 @@ position: relative;
 .publish:hover{
   cursor: pointer;
   background-color: #43d28d;
+}
+._others_comments{
+  margin-bottom: 10px;
 }

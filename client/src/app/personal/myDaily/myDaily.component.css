@@ -1,0 +1,23 @@
+.addMore{
+  width:100%;
+  height: 66px;
+  background-color: white;
+  margin-top: 20px;
+  text-align: center;
+  line-height: 66px;
+  font-size: 1.5em;
+}
+.addMore:hover{
+  cursor: pointer;
+  color: red;
+}
+.noMore{
+  width:100%;
+  height: 66px;
+  background-color: white;
+  margin-top: 20px;
+  text-align: center;
+  line-height: 66px;
+  font-size: 1.5em;
+
+}

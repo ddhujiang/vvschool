@@ -1,12 +1,20 @@
+
 <div class="say_component">
-  <span class="saywhat">有什么新鲜事想告诉大家?</span>
-  <form action="">
-    <textarea name="say" id="say" cols="102" rows="8"></textarea>
-  </form>
-  <ul>
-    <li class="iconfont"><i class="fa fa-picture-o" aria-hidden="true"></i><span class="icon_text">图片</span></li>
-    <li class="iconfont"><i class="fa fa-microphone" aria-hidden="true"></i> <span class="icon_text">音频</span></li>
-    <li class="iconfont"><i class="fa fa-video-camera" aria-hidden="true"></i><span class="icon_text">视频</span></li>
-    <li class="send"><div class="send_div">发布</div></li>
-  </ul>
+  <quill-editor [(ngModel)]="EDayContent" [options]="EDayOptions" ></quill-editor>
+  <image-upload [url]="imgUrl"
+                [max]="9"
+                [maxFileSize]="1048576"
+                [buttonCaption]="'选择图片'"
+                [dropBoxMessage]="'拖拽图片到这...'"
+                [fileTooLargeMessage]="'图像太大，未上传!'"
+                (onFileUploadFinish)="imageFinishedUploading($event)"
+                (onRemove)="imageRemoved($event)"
+                (isPending)="uploadStateChange($event)"></image-upload>
+  <div class="send_div"  (click)="send()">发布</div>
 </div>
+
+<ng-container *ngFor="let item of _data">
+  <app-say-card [_onesay]="item"></app-say-card>
+</ng-container>
+<div class="addMore" *ngIf="next!=-1" (click)="addMore()">加载更多</div>
+<div class="noMore" *ngIf="next==-1">没有更多了</div>

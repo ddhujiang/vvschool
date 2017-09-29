@@ -19,9 +19,9 @@ const Quill = require('quill');
   template: `<div class="quill-editor"></div>`,
   styleUrls: [
     './quill-editor.component.css',
-    // './quill.core.css',
-    // './quill.snow.css',
-    // './quill.bubble.css'
+    './quill.core.css',
+    './quill.snow.css',
+    './quill.bubble.css'
   ],
   providers: [{
     provide: NG_VALUE_ACCESSOR,
@@ -40,18 +40,11 @@ export class QuillEditorComponent implements AfterViewInit, ControlValueAccessor
     // formula:true,
     // syntax:true,
     toolbar: [
-      [ 'bold','italic', 'underline', 'strike',{ 'script': 'sub'}, { 'script': 'super' }],        // toggled buttons
-      [{ 'color': [] }, { 'background': [] },'clean'],          // dropdown with defaults from theme
-      ['blockquote', 'code-block',{ 'list': 'ordered'}, { 'list': 'bullet' }],
-      // [],               // custom button values
-      // [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-      [{ 'align': [] },{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-      // [{ 'direction': 'rtl' }],                         // text direction
-      [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+      [ 'bold','italic', 'underline', 'strike',{ 'script': 'sub'}, { 'script': 'super' },'blockquote', 'code-block'],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' },{ 'indent': '-1'}, { 'indent': '+1' },{ 'align': [] }],
+      [{ 'size': ['small', false, 'large', 'huge'] },{ 'color': [] }, { 'background': [] },'clean'],
       [{ 'header': 1}, { 'header': 2 },{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-      // [{ 'font': [] }],
-      // [],                                         // remove formatting button
-      ['link', 'image']                         // link and image, video
+      ['link', 'image']
     ]
   };
 

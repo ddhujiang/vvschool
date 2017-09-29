@@ -1,0 +1,30 @@
+ <li class="myId">
+    <span>昵称</span>
+    <span class="nickname">{{info?.name}}</span>
+    <span appModifyNickName class="fa fa-pencil" aria-hidden="true"  >修改</span>
+   <input type="text" [(ngModel)]="nickname" >
+  </li>
+  <li>
+    <span>ICON</span>
+
+      <img class="myicon_img" src="http://localhost:3000/{{info?.icon}}" />
+    <div class="myIcon">
+      <image-upload [url]="'http://127.0.0.1:3000/api/iconUpload'"
+                    [max]="1"
+                    [maxFileSize]="1048576"
+                    [buttonCaption]="'选择图片'"
+                    [dropBoxMessage]="'拖拽图片到这...'"
+                    [fileTooLargeMessage]="'图像太大，未上传!'"
+                    (onFileUploadFinish)="imageFinishedUploading($event)"
+                    (onRemove)="imageRemoved($event)"
+                    (isPending)="uploadStateChange($event)"></image-upload>
+    </div>
+  </li>
+  <li class="bottom_part">
+    <span>自我介绍</span>
+    <form action="#">
+      <textarea name="selfIntroduce" [(ngModel)]="selfIntroduce" placeholder="{{info?.describe}}" id="" cols="80" rows="6"></textarea>
+    </form>
+    <div class="main_fix" (click)="fix()" appHideinput>修改</div>
+  </li>
+

@@ -1,0 +1,14 @@
+.card_main{
+  height: auto;
+  width: 100%;
+}
+.img_div img{
+  height:88px;
+  width: 88px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+.img_div{
+  height:auto;
+  max-width: 279px;
+}

@@ -1,0 +1,5 @@
+<ng-container *ngFor="let item of myDailys">
+  <app-my-say-card [_mysay]="item"></app-my-say-card>
+</ng-container>
+<div class="addMore" *ngIf="next!=-1" (click)="getMore()">加载更多</div>
+<div class="noMore" *ngIf="next==-1">没有更多了</div>

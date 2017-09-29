@@ -1,0 +1,6 @@
+<div class="_card_main">
+  <quill-editor [(ngModel)]="_oneDaily.everyday.link" [options]="{ readOnly: true,theme: 'bubble'}"></quill-editor>
+  <div class="_img_div">
+    <img *ngFor="let imgurl of _oneDaily?.img" src="http://localhost:3000/{{imgurl}}"/>
+  </div>
+</div>

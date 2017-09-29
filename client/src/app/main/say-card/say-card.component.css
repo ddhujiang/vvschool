@@ -1,0 +1,207 @@
+._one_complete_card{
+  width:100%;
+  height: auto;
+  margin-top: 20px;
+  border-bottom: solid 1px lightgrey;
+  border-radius: 6px;
+  background-color: white;
+}
+._single_card{
+  width:100%;
+  height: auto;
+  position: relative;
+  padding: 10px;
+  margin-top: 10px;
+}
+._card_top{
+  height: 76px;
+  width: 100%;
+}
+._dropdown{
+  width: 125px;
+  height: auto;
+  position: absolute;
+  top:5px;
+  right: 5px;
+  z-index: 5;
+}
+._dropdown>div:first-child{
+  height: 26px;
+  width: 20%;
+  text-align: center;
+  position: absolute;
+  top:0;
+  right: 0;
+}
+._dropdown>div:first-child:hover{
+  color: red !important;
+  cursor: pointer;
+}
+._box{
+  height: auto;
+  width: 100%;
+  display: none;
+  margin-top: 30px;
+  background-color: white;
+  box-shadow: 0 0 2px lightgrey;
+}
+._delete{
+  height: 30px;
+  width: 100%;
+  text-align: center;
+  line-height: 30px;
+}
+._delete:hover{
+  color: red;
+  cursor: pointer;
+  background-color: rgba(211, 211, 211, 0.57);
+}
+._myhide{
+  height: 30px;
+  width: 100%;
+  text-align: center;
+  line-height: 30px;
+}
+._myhide:hover{
+  color: red;
+  cursor: pointer;
+  background-color: rgba(211, 211, 211, 0.57);
+}
+._user_icon{
+  width: 66px;
+  height: 66px;
+  float: left;
+}
+._user_icon:hover{
+  cursor: pointer;
+}
+._user_icon img{
+  width: 100%;
+  height: 100%;
+border: solid 1px rgba(255, 255, 255, 0);
+  border-radius: 33px;
+}
+._othersId{
+  height:20px;
+  margin-left: 66px;
+  position: relative;
+  top: 20px;
+}
+._when_where{
+  height:20px;
+  margin-left: 66px;
+  position: relative;
+  top: 20px;
+}
+
+._interact_part{
+  height: 35px;
+  width: 100%;
+  margin-top: 10px;
+  text-align: center;
+}
+._interact{
+  float: left;
+  width: 30%;
+  text-align: center;
+  margin: 1%;
+}
+._interact:hover{
+  cursor: pointer;
+  color: #ff0c1b;
+}
+._middle{
+  border-left: solid 1px darkgrey;
+  border-right: solid 1px darkgrey;
+}
+._publish_comments{
+  width: 100%;
+  height: auto;
+}
+.showup{
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  background-color: white;
+  border-radius: 6px;
+}
+.showup:hover{
+  color: red;
+  cursor: pointer;
+  background-color: rgba(211, 211, 211, 0.57);
+}
+/*----------------*/
+
+._user_profile{
+  width: 300px;
+  height: 200px;
+  position: absolute;
+  display: none;
+  padding:10px;
+  background-color: white;
+  box-shadow: 0 0 8px rgba(206, 206, 206, 0.42);
+  top: 40px;
+  z-index: 2;
+}
+._top_part{
+  width: 100%;
+  height:66px;
+}
+._user_profile_icon{
+  width: 66px;
+  height:66px;
+  float: left;
+
+}
+._top_part div img{
+  width: 100%;
+  height:100%;
+}
+._user_profile_top_right{
+  margin-left: 66px;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+._user_profile_top_right span{
+  display: block;
+}
+._middle_part{
+  width: 100%;
+  height: 66px;
+}
+._middle_part>div{
+  float: left;
+  width: 30%;
+  margin: 1.5%;
+}
+._middle_part>div>p{
+  height: auto;
+  width: auto;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.2em;
+}
+._bottom_part{
+  width: 100%;
+  height: 46px;
+}
+._bottom_part>div{
+  height: 26px;
+  width: 30%;
+  float: left;
+  margin: 10px 10%;
+  text-align: center;
+  line-height: 26px;
+  border-radius: 4px;
+  border: solid 1px darkgrey;
+}
+._bottom_part>div:first-child{
+  background-color: #51d2b7;
+  color: white;
+}
+
+
+
+
+

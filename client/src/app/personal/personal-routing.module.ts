@@ -3,7 +3,7 @@ import {NgModule}             from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
 import {PersonalComponent} from './personal.component';
-import {SayCardComponent} from './say-card/say-card.component';
+import {MyDailyComponent} from './myDaily/myDaily.component';
 import { MyanswerComponent } from './myanswer/myanswer.component';
 import { FollowerComponent } from './follower/follower.component';
 import { FansComponent } from './fans/fans.component';
@@ -29,8 +29,8 @@ const routes: Routes = [
         component:CollectComponent
       },
       {
-        path: 'say-card/:id',
-        component:SayCardComponent
+        path: 'myDaily',
+        component:MyDailyComponent
       },
       {
         path: 'follower',
@@ -41,12 +41,12 @@ const routes: Routes = [
         component:FansComponent
       },
       {
-        path: 'collect',
-        component:CollectComponent
-      },
+         path: 'collect',
+  component:CollectComponent
+},
 
-    ]
-  }
+]
+}
 
 ];
 

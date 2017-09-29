@@ -24,10 +24,21 @@
       <div class="con">
         <img src="../../assets/首页.jpg" alt="" style="height: 105px;width: 190px;float: left;margin-right: 5px">
         <span *ngIf="isCut">
-        {{_qus.answer.link|cut:120}}
+        <!--{{_qus.answer.link|cut:120}}-->
+           <quill-editor [(ngModel)]="_qus.answer.link"
+                         [options]="{readOnly:true,theme:'bubble'}">
+          </quill-editor>
+
+
        </span>
         <span *ngIf="noCut">
-        {{_qus.answer.link}}
+        <!--{{_qus.answer.link}}-->
+
+           <quill-editor [(ngModel)]="_qus.answer.link"
+                         [options]="{readOnly:true,theme:'bubble'}">
+          </quill-editor>
+
+
        </span>
         <span class="read " (click)="toRead()">阅读全文 <i class="fa fa-chevron-down" aria-hidden="true"></i>
          </span>

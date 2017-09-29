@@ -1,7 +1,12 @@
-<div class="my_icon"><img src="../../../assets/images/user_icon002.jpg"></div>
-<form action="#" class="comments_text">
-  <textarea name="" id="" cols="66" rows="2"></textarea>
-</form>
-<div class="publish">评论</div>
+<div class="publish_component">
+  <div class="my_icon"><img src="http://localhost:3000/{{_info?.icon}}"></div>
+  <form action="#" class="comments_text">
+    <textarea name="commentText" id="commentText" [(ngModel)]="commentText"></textarea>
+  </form>
+  <div class="publish" (click)="deliverComment(commentText)">评论</div>
+</div>
 
+<div class="_others_comments"  *ngIf="com">
+  <app-others-comments [singlesay]="_oneDaily" [comments]="_comments"></app-others-comments>
+</div>
 

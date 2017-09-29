@@ -1,4 +1,4 @@
-<ul class="list-group ">
+<ul class="list-group " *ngIf="isFan">
   <li class="list-group-item" style="height: 70px"  *ngFor="let _showfans of showfans">
     <div>
       <img src="http://localhost:3000/{{_showfans.icon}}" alt="" style="width: 50px;height: 50px;float: left">
@@ -21,3 +21,9 @@
   </li>
 
 </ul>
+
+<div *ngIf="noFan">
+  <p class="noMore">
+    ...........没有被任何人关注............
+  </p>
+</div>

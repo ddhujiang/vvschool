@@ -1,0 +1,44 @@
+.idPwd_title{
+  color: darkgrey;
+  margin: 20px;
+}
+.idPwd_email{
+  margin-top: 66px;
+  margin-left: 20px;
+}
+.idPwd_email a{
+position: relative;
+  left: 100px;
+}
+.idPwd_tel{
+  margin-top: 66px;
+  margin-left: 20px;
+}
+.idPwd_tel span:last-child{
+  position: relative;
+  left: 100px;
+}
+.idPwd_pwd{
+  margin-top: 66px;
+  margin-left: 20px;
+}
+.idPwd_pwd a{
+  position: relative;
+  left: 100px;
+}
+.preserve{
+  height: 40px;
+  width: 80px;
+  background-color: #51D2B7;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  border-radius: 4px;
+}
+.preserve:hover{
+  cursor: pointer;
+  background-color: #40d296;
+}

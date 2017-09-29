@@ -159,7 +159,7 @@ router.post("/search", function (req, res, next) {
                 "name": result[i].user_nickname,
                 "describe": result[i].user_self,
                 "profession": result[i].profession_name,
-                "icon": "static/" + (result[i].user_icon_path ? +result[i].user_icon_path : "icon.default.png")
+                "icon": "static/" + (result[i].user_icon_path ? result[i].user_icon_path : "icon.default.png")
               }
             });
           }

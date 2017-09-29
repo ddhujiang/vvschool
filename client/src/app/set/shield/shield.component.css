@@ -1,0 +1,95 @@
+.shield_user_title{
+  font-size: 18px;
+  position: absolute;
+  left: 88px;
+  top:88px;
+}
+.shield_user{
+  width: 266px;
+  height: 288px;
+  border: solid 1px grey;
+  float: left;
+  margin: 88px;
+  overflow: scroll;
+}
+.single_user{
+  margin: 16px;
+  width: 100%;
+  height: 60px;
+}
+.user_icon{
+  width: 66px;
+  height: 66px;
+  float: left;
+}
+.user_icon img{
+  width: 100%;
+  height:100%;
+}
+.userId_cancel{
+  margin-left: 16px;
+  float: left;
+}
+.userId_cancel a{
+  display: block;
+}
+.userId_cancel button{
+  display: block;
+  margin-top: 16px;
+}
+.shield_community_title{
+  font-size: 18px;
+  top:-36px;
+  position: absolute;
+  left: 442px;
+  top:88px;
+}
+.shield_community{
+  width: 266px;
+  height: 288px;
+  border: solid 1px grey;
+  float: left;
+  margin-top: 88px;
+  overflow: scroll;
+}
+.single_community{
+  margin: 16px;
+  width: 100%;
+  height: 60px;
+}
+.community_icon{
+  width: 66px;
+  height: 66px;
+  float: left;
+}
+.community_icon img{
+  width: 100%;
+  height:100%;
+}
+.communityId_cancel{
+  margin-left: 16px;
+  float: left;
+}
+.communityId_cancel a{
+  display: block;
+}
+.communityId_cancel button{
+  display: block;
+  margin-top: 16px;
+}
+.preserve{
+  height: 40px;
+  width: 80px;
+  background-color: #51D2B7;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  border-radius: 4px;
+}
+.preserve:hover{
+  cursor: pointer;
+  background-color: #40d296;
+}

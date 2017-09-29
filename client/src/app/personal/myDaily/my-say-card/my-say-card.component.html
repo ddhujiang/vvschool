@@ -1,0 +1,31 @@
+
+<div class="one_complete_card">
+  <div class="single_card">
+    <div class="dropdown">
+      <div appDeleteDaily><i class="fa fa-sort-desc" aria-hidden="true"></i></div>
+      <div class="box">
+        <div class="delete" (click)="delete(_mysay.everyday.id)" appDeleteMyDaily>删除</div>
+        <div class="myhide" appMyhide>隐形</div>
+      </div>
+    </div>
+    <div class="card_top">
+      <div class="user_icon"><img src="http://localhost:3000/{{_myInfo?.icon}}"/></div>
+      <div class="othersId">{{_mysay.user.name}}</div>
+      <div class="when_where">
+        <span>{{_mysay.everyday.time}}</span>
+        <span>来自vvschool</span>
+      </div>
+    </div>
+    <app-myDaily-main [_oneDaily]="_mysay"></app-myDaily-main>
+    <div class="interact_part">
+      <div class="interact" id="repost"><i class="fa fa-reply-all" aria-hidden="true"></i><span>{{_mysay.quantity.transpond}}</span></div>
+      <div class="interact middle" id="comment" (click)="comments()"><i class="fa fa-commenting-o" aria-hidden="true"></i><span>{{_mysay.quantity.comment}}</span></div>
+      <div class="interact" id="like" appLike><i class="fa fa-thumbs-up" aria-hidden="true"></i><span>{{_mysay.quantity.praise}}</span></div>
+    </div>
+  </div>
+
+  <div class="publish_comments" *ngIf="_comment">
+    <app-publish-comments [_info]="_myInfo" [_oneDaily]="_mysay" [com]="_comment"></app-publish-comments>
+  </div>
+</div>
+<div></div>

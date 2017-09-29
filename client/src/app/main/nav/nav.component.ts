@@ -17,7 +17,7 @@ export class NavComponent implements OnInit {
               private userSer:UserService,) { }
 
   ngOnInit() {
-let that=this;
+    let that=this;
     that.userSer.getAllUser(function (result) {
       if(result.code=='u200'||result.code=="u402"){
         that.user_name=result.data.name;
@@ -48,7 +48,7 @@ let that=this;
   };
 
   toRegist(){
-    this.router.navigate(['regist']);
+    this.router.navigate(['login']);
   };
 
 }

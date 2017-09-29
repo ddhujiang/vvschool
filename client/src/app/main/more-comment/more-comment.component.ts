@@ -82,9 +82,6 @@ export class MoreCommentComponent implements OnInit {
         console.log(result);
       })
     }
-
-
-
   }
 
 }

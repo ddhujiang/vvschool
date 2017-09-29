@@ -1,3 +1,9 @@
+.bg_pic{
+  position: fixed;
+  top:0;
+  left: 0;
+  z-index: -100;
+}
 .err{
   color: #a94442;
   margin-top: 10px;

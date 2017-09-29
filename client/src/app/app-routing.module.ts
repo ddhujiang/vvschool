@@ -11,7 +11,8 @@ import {DailyComponent} from './daily/daily.component';
 import {ProblemDetailComponent} from './problem-detail/problem-detail.component';
 import {AnswerComponent} from './answer/answer.component';
  import { SetComponent } from './set/set.component';
-// import { SearchComponent } from './search/search.component';
+import { AnswerProblemComponent } from './answer-problem/answer-problem.component';
+
 const routes: Routes = [
   {
     path: 'index',
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'problem-detail/:id',
     component: ProblemDetailComponent
+  },
+  {
+    path: 'answer-problem/:id',
+    component: AnswerProblemComponent
   },
   {
     path: 'answer',

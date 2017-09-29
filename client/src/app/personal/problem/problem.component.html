@@ -1,16 +1,17 @@
-<div *ngIf="noAns">
+<div *ngIf="noAns" class="hujiang">
   <p class="noMore">
     ...........没有提问............
   </p>
 </div>
 
-<div *ngIf="isAns">
+<div *ngIf="isAns" class="hujiang">
   <div *ngFor="let _qus of userValue" >
     <div class="comment prob-module" >
-      <p class="til" (click)="toqus()" class="pro-content">
-        <!--<a [routerLink]="['/problem-detail']" routerLinkActive="active" >-->
+      <!--(click)="toqus()"-->
+      <p  class="til pro-content">
+        <a [routerLink]="['/answer-problem',_qus.question.id]" routerLinkActive="active" >
           {{_qus.question.title}}
-        <!--</a>-->
+        </a>
       </p>
       <span class="pro-time">时间：{{_qus.question.time}}</span>
       <span class="pro-ans">回答数：{{_qus.question.ansNum}}</span>

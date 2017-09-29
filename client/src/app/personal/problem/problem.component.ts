@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../services/user.service';  //导入服务
 import {DetailService} from '../../services/detail.service';
@@ -14,12 +15,11 @@ export class ProblemComponent implements OnInit {
   isAns:boolean=false;
   noAns:boolean=false;
   myQus:any;
-  constructor(private ar:ActivatedRoute,private userSer:UserService,private detailSer:DetailService) { }
+  constructor(private router:Router,private ar:ActivatedRoute,private userSer:UserService,private detailSer:DetailService) { }
 
   ngOnInit() {
     let that=this;
     that.user_id=that.ar.snapshot.params['id'];
-
     that.userSer.getsMyqus(that.user_id,function (result) {
       console.log(result);
       if(result.code=="u200"){
@@ -34,15 +34,16 @@ export class ProblemComponent implements OnInit {
     })
 
   }
-  toqus(){
-    let that=this;
-    alert(that.userValue.question.id);
-    that.detailSer.getmyQus(that.userValue.question.id,function (result) {
-      console.log(that.myQus.answerer.id);
-      alert(that.myQus.answerer.id)
-      that.myQus=result.data;
-    })
-  }
+
+  // toqus(){
+  //   let that=this;
+  //   alert(that.userValue.question.id);
+  //   that.detailSer.getmyQus(that.userValue.question.id,function (result) {
+  //     console.log(that.myQus.answerer.id);
+  //     alert(that.myQus.answerer.id)
+  //     that.myQus=result.data;
+  //   })
+  // }
 
 
 }

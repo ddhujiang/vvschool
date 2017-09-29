@@ -1,0 +1,80 @@
+
+li{
+  list-style: none;
+  margin: 15px;
+}
+li span:first-child{
+  font-size: 16px;
+}
+.nickname{
+  margin-left: 50px;
+}
+.myId>span:nth-child(3){
+  margin-left: 10px;
+  color: darkgrey;
+}
+.myId>span:nth-child(3):hover{
+  cursor: pointer;
+}
+.myId>input{
+  display: none;
+}
+.myIcon{
+  height: 88px;
+  width: 30%;
+  position: relative;
+  left: 50px;
+  float: right;
+  margin-right: 50%;
+}
+.myicon_img{
+  width: 130px;
+  height: 130px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  border-radius: 65px;
+}
+.myIcon>span{
+  display: inline-block;
+  position:absolute;
+  bottom:0px;
+  color: darkgrey;
+}
+.myIcon input{
+  display: inline-block;
+  width: 45px;
+  height: 20px;
+  position: absolute;
+  bottom: 0;
+  opacity: 0;
+}
+li form{
+  margin-left: 66px;
+}
+li form>textarea{
+  width: 70%;
+  height: 110px;
+  margin-top: 20px;
+}
+.bottom_part{
+  height: auto;
+  width: 100%;
+  margin-top: 40px;
+}
+.main_fix{
+  width: 80px;
+  height: 40px;
+  font-size: 18px;
+  background-color: #51D2B7;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  float: right;
+  border-radius: 4px;
+  position: relative;
+  top:-20px;
+}
+.main_fix:hover{
+  cursor: pointer;
+  background-color: #40d296;
+}

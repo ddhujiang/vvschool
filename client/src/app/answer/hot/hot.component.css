@@ -23,3 +23,6 @@
 .close:hover{
   color: red !important;
 }
+a{
+  text-decoration: none;
+}

@@ -1,23 +1,11 @@
-<div class="single_comment">
-  <div class="others_icon"><img src="../../../assets/images/user_icon003.jpg"/></div>
-  <div class="comments_text">
-    <a href="#">半羽流风</a>:带上的耳机听asmr直播
-    <p>9月13日 09:06</p>
-  </div>
-  <ul class="respond">
-    <li class="respond_reply">回复</li>
-    <li class="respond_like" appLike><i class="fa fa-thumbs-up" aria-hidden="true"></i>赞 {{like_count}}</li>
-  </ul>
+<ng-container *ngFor="let item of comments;let i = index;"  >
+<div class="single_comment" *ngIf="i<=_count">
+    <div class="others_icon"><img src="http://localhost:3000/{{item.user?.icon}}"/></div>
+    <div class="comments_text">
+      <a href="#">{{item.user.name}}</a>:{{item.comment.link}}
+      <p>{{item.comment.time}}——{{i+1}}楼</p>
+    </div>
+  <a *ngIf="info.id==singlesay.user.id||info.id==item.user.id" class="close" (click)="deleteComment(item.comment?.id)" appDeleteComment><i class="fa fa-times" aria-hidden="true"></i></a>
 </div>
-<div class="single_comment" *ngIf="_viewmore">
-  <div class="others_icon"><img src="../../../assets/images/user_icon003.jpg"/></div>
-  <div class="comments_text">
-    <a href="#">半羽流风</a>:带上的耳机听asmr直播
-    <p>9月13日 09:06</p>
-  </div>
-  <ul class="respond">
-    <li class="respond_reply">回复</li>
-    <li class="respond_like" appLike ><i class="fa fa-thumbs-up" aria-hidden="true"></i>赞 {{like_count}}</li>
-  </ul>
-</div>
-<div class="view_more" (click)="viewmore()">查看更多<i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+  <div class="view_more" *ngIf="i==_count && (i+1)!=comments.length" (click)="viewmore()">查看更多<i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+</ng-container>
