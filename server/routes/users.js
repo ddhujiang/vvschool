@@ -102,7 +102,6 @@ router.get("/data", _token.power, function (req, res, next) {
 });
 
 /*获取用户详情*/
-/*有BUG----------------------------------------------------------------------*/
 router.post("/info", function (req, res, next) {
   req.ID = req.body.ID;
   if (!req.ID) {res.json({"code": "err601"});} else {
@@ -116,23 +115,29 @@ router.post("/info", function (req, res, next) {
         "follower": 0,
         "fans": 0,
         "question": 0,
-        "answer": 0
+        "answer": 0,
+        "collect": 0,
+        "everyday": 0
       };
       if (results[0].length) {
         data = extendParameters({
           "name": results[0][0]["user_nickname"],
           "describe": results[0][0]["user_self"],
+          "profession":results[0][0]["profession_name"],
           "icon": "static/" + (results[0][0]["user_icon_path"] ? results[0][0]["user_icon_path"] : "icon.default.png")
         }, defaults);
       } else {
         data = extendParameters({}, defaults);
       }
 
-      data["profession"] = results[0][0]["profession_name"];
+
       data["follower"] = results[1][0]["by_att"];
       data["fans"] = results[2][0]["att"];
       data["question"] = results[3][0]["count"];
       data["answer"] = results[4][0]["count"];
+      data["collect"] = results[5][0]["count"];
+      data["everyday"] = results[6][0]["count"];
+
       res.json({"code": "u200", "data": data});
     });
   }
@@ -223,10 +228,10 @@ router.post("/answer", function (req, res, next) {
               "answer": {
                 "id": result[i].answer_id,
                 "link": result[i].ans_content,
-                "text": result[i].ans_content.replace(/<[^>]+>/ig,""),
-                "img":result[i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig)&&result[i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig).length
-                  ?result[i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig)[0].slice(5,-1)
-                  :"",
+                "text": result[i].ans_content.replace(/<[^>]+>/ig, ""),
+                "img": result[i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig) && result[i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig).length
+                  ? result[i].ans_content.match(/src=(\'|\")(.*?)(\'|\")/ig)[0].slice(5, -1)
+                  : "",
                 "time": moment() - moment(result[i].ans_time, moment.ISO_8601) > 259200000
                   ? moment(result[i].ans_time).format("YYYY年MMMDo,dddd,h:mm:ss")
                   : moment(result[i].ans_time, moment.ISO_8601).fromNow()
@@ -256,7 +261,7 @@ router.post("/answer", function (req, res, next) {
 
 /*设置*/
 // 查询头像
-router.post("/queryIcon",_token.power,function (req, res, next) {
+router.post("/queryIcon", _token.power, function (req, res, next) {
   db.queryIcon(req.ID, function (result) {
     if (result === "err501") {res.json({"code": result});}
     else {
@@ -269,7 +274,7 @@ router.post("/queryIcon",_token.power,function (req, res, next) {
           count++;
           if (count < (~~start)) {continue;}
           if (count >= end) {break;}
-          arr.push("static/"+result[i].user_icon_path);
+          arr.push("static/" + result[i].user_icon_path);
         }
         res.json({"code": "u200", "data": arr, "next": (end > result.length) ? -1 : count});
       }
@@ -277,38 +282,39 @@ router.post("/queryIcon",_token.power,function (req, res, next) {
   });
 });
 // 添加头像(旧的)
-router.post("/addIcon",_token.power,function (req, res, next) {
+router.post("/addIcon", _token.power, function (req, res, next) {
   if (req.body.src) {
-    db.addIcon(req,function (result) {
+    db.addIcon(req, function (result) {
       if (result === "err501") {res.json({"code": result});}
       else {
         res.json({"code": result, "src": req.body.src});
       }
-    })
-  }else {res.json({"code": "err601"});}
+    });
+  } else {res.json({"code": "err601"});}
 });
 // 更改昵称
-router.post("/addName",_token.power,function (req, res, next) {
+router.post("/addName", _token.power, function (req, res, next) {
   if (req.body.name) {
-    db.addName(req,function (result) {
+    db.addName(req, function (result) {
       if (result === "err501") {res.json({"code": result});}
       else {
         res.json({"code": result});
       }
-    })
-  }else {res.json({"code": "err601"});}
+    });
+  } else {res.json({"code": "err601"});}
 });
 // 更改描述
-router.post("/addDescribe",_token.power,function (req, res, next) {
+router.post("/addDescribe", _token.power, function (req, res, next) {
   if (req.body.describe) {
-    db.addDescribe(req,function (result) {
+    db.addDescribe(req, function (result) {
       if (result === "err501") {res.json({"code": result});}
       else {
         res.json({"code": result});
       }
-    })
-  }else {res.json({"code": "err601"});}
+    });
+  } else {res.json({"code": "err601"});}
 });
+
 
 module.exports = router;
 

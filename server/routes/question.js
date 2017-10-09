@@ -18,7 +18,7 @@ var _token = require("./../tool/token");
 router.post("/index", _token.power, function (req, res, next) {
   if (!req.ID) {res.json({"code": "err601"});}
   else {
-    db.getListByPro(req.ID, function (result) {
+    db.getListByPro(req, function (result) {
       if (result === "err501") {res.json({"code": result});}
       else {
         if (!result.length) {res.json({"code": "q301"}); }

@@ -34,7 +34,7 @@ var userDAO = {
           [
             [info.user_id, info.user_tel, info.user_pwd, info.school_id, info.profession_id],
             [info.user_id, "icon.default.png"],
-            [info.user_id,info.user_id.substr(0, 8)]
+            [info.user_id, info.user_id.substr(0, 8)]
           ], {
             skip: function (i, arg, results) {
               var skip = true;
@@ -53,7 +53,7 @@ var userDAO = {
               console.error("addUser: " + err.message);
               cb({"code": "err501"});
             }
-            cb((results[1].affectedRows === 1 && results[2].affectedRows === 1)?"u200":"err501");
+            cb((results[1].affectedRows === 1 && results[2].affectedRows === 1) ? "u200" : "err501");
           });
       } else {cb("u101");}
     });
@@ -93,7 +93,7 @@ var userDAO = {
     });
   },
   getInfoById: function (id, cb) {
-    sqlclient.queries(inquire.getInfoById, [[id, id], [id], [id], [id], [id]], function (err, results) {
+    sqlclient.queries(inquire.getInfoById, [[id, id], [id], [id], [id], [id], [id], [id]], function (err, results) {
       if (!!err) {
         console.log("getInfoById:" + err.message);
         cb({"code": "err501"});
@@ -107,7 +107,7 @@ var userDAO = {
         cb("err501");
         return;
       }
-      client.query(inquire.getSearchByKeyName, [name], function (err, result) {
+      client.query(inquire.getSearchByKeyName, [name, name], function (err, result) {
         if (err) {
           cb("err501");
           console.error("getSearchByKeyName: " + err.message);
@@ -154,7 +154,7 @@ var userDAO = {
       });
     });
   },
-  queryIcon:function  (id,cb) {
+  queryIcon: function (id, cb) {
     pool.getConnection(function (err, client) {
       if (err) {
         console.error("queryIcon: " + err.message);
@@ -172,56 +172,56 @@ var userDAO = {
       });
     });
   },
-  addIcon:function (req,cb) {
+  addIcon: function (req, cb) {
     pool.getConnection(function (err, client) {
       if (err) {
         console.error("iconUpload: " + err.message);
         cb("err501");
         return;
       }
-      client.query(inquire.addIcon, [req.ID,req.body.src], function (err, result) {
+      client.query(inquire.addIcon, [req.ID, req.body.src], function (err, result) {
         if (err) {
           cb("err501");
           console.error("iconUpload: " + err.message);
           return;
         }
-        cb(result.affectedRows===1?"f200":"f301");
+        cb(result.affectedRows === 1 ? "f200" : "f301");
         client.release();
       });
     });
   },
-  addName:function (req,cb) {
+  addName: function (req, cb) {
     pool.getConnection(function (err, client) {
       if (err) {
         console.error("addName: " + err.message);
         cb("err501");
         return;
       }
-      client.query(inquire.addName, [req.body.name,req.ID], function (err, result) {
+      client.query(inquire.addName, [req.body.name, req.ID], function (err, result) {
         if (err) {
           cb("err501");
           console.error("addName: " + err.message);
           return;
         }
-        cb(result.affectedRows===1?"u200":"u301");
+        cb(result.affectedRows === 1 ? "u200" : "u301");
         client.release();
       });
     });
   },
-  addDescribe:function (req,cb) {
+  addDescribe: function (req, cb) {
     pool.getConnection(function (err, client) {
       if (err) {
         console.error("addDescribe: " + err.message);
         cb("err501");
         return;
       }
-      client.query(inquire.addDescribe, [req.body.describe,req.ID], function (err, result) {
+      client.query(inquire.addDescribe, [req.body.describe, req.ID], function (err, result) {
         if (err) {
           cb("err501");
           console.error("addDescribe: " + err.message);
           return;
         }
-        cb(result.affectedRows===1?"u200":"u301");
+        cb(result.affectedRows === 1 ? "u200" : "u301");
         client.release();
       });
     });

@@ -7,17 +7,19 @@ var inquire = require("./../inquire/question.inquire").query;
 
 
 var questionDAO = {
-  getListByPro: function (ID, cb) {
+  getListByPro: function (req, cb) {
+    console.log(req.body.sort);
+    console.log(req.body.sort ? "p.prob_time" : "()");
     pool.getConnection(function (err, client) {
       if (err) {
         console.error("getListByPro: " + err.message);
         cb("err501");
         return;
       }
-      client.query(inquire.getListByPro, [ID], function (err, result) {
+      client.query(inquire.getListByPro(req.ID,req.body.sort ? "p.prob_time" : "a.like_num*0.4+sumcm*0.6"), function (err, result) {
         if (err) {
           cb("err501");
-          console.error("getPasswordById: " + err.message);
+          console.error("getListByPro: " + err.message);
           return;
         }
         cb(result);
